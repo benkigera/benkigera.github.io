@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benson Kigera - Full-Stack Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111; /* Deeper dark background */
+            color: #e5e5e5; /* Light text */
+            scroll-behavior: smooth;
+        }
+        .section-header {
+            border-left: 4px solid #8b5cf6; /* Purple accent */
+            padding-left: 0.75rem;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: #27272a; /* Zinc-800 */
+            color: #d4d4d8; /* Zinc-300 */
+        }
+        .project-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.1), 0 4px 6px -2px rgba(139, 92, 246, 0.05);
+        }
+        /* Modal Backdrop */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 50;
+        }
+        /* Modal Content */
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div id="app" class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- Navigation / Header -->
+        <header class="flex justify-between items-center py-4 mb-8 border-b border-gray-800">
+            <h1 class="text-2xl font-bold text-white">Benson Kigera</h1>
+            <nav class="hidden sm:block">
+                <a href="#about" class="text-gray-300 hover:text-white mx-3 transition-colors">About</a>
+                <a href="#projects" class="text-gray-300 hover:text-white mx-3 transition-colors">Work</a>
+                <a href="#skills" class="text-gray-300 hover:text-white mx-3 transition-colors">Stack</a>
+                <a href="#contact" class="text-gray-300 hover:text-white mx-3 transition-colors">Contact</a>
+            </nav>
+        </header>
+
+        <!-- 1. Hero / About Section -->
+        <section id="about" class="mb-16 pt-10">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center">
+                
+                <!-- Avatar Placeholder -->
+                <div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-white/10 flex items-center justify-center mb-4 sm:mb-0 sm:mr-6">
+                    <svg viewBox="0 0 100 100" class="w-full h-full p-2">
+                        <circle cx="50" cy="50" r="45" fill="#27272a"/>
+                        <circle cx="50" cy="40" r="15" fill="#8b5cf6"/>
+                        <rect x="25" y="55" width="50" height="30" rx="5" fill="#111111"/>
+                        <circle cx="42" cy="40" r="4" fill="#111111"/>
+                        <circle cx="58" cy="40" r="4" fill="#111111"/>
+                        <path d="M 35 45 Q 50 55, 65 45" stroke="#111111" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                
+                <div class="flex-1">
+                    <h2 class="text-5xl font-extrabold text-white mb-3">Benson Kigera</h2>
+                    <p class="text-lg text-gray-300">
+                        Hey 👋. I'm a <strong class="text-purple-400">Full-Stack Engineer</strong> with 5+ years of experience, passionate about creating stunning **mobile apps**, **progressive web apps**, and **reliable backend systems**. I specialize in user-centric design, fintech integrations, and IoT telemetry.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Tech Stack / Skills Section -->
+        <section id="skills" class="mb-16">
+            <h3 class="text-3xl font-bold mb-6 section-header text-white">Core Tech Stack 👨‍💻</h3>
+            
+            <div class="space-y-6">
+                <!-- Mobile & Web Skills -->
+                <div>
+                    <h4 class="text-xl font-semibold text-purple-400 mb-3">Front-End & Mobile</h4>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Swift</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <!-- Backend & Specialized Domains -->
+                <div>
+                    <h4 class="text-xl font-semibold text-purple-400 mb-3">Backend & Specialized Domains</h4>
+                    <div class="flex flex-wrap">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Express</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">IoT Telemetry (MQTT)</span>
+                        <span class="tag">Fintech (M-Pesa, PayFast)</span>
+                        <span class="tag">CI/CD & Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Featured Work / Projects Section -->
+        <section id="projects" class="mb-16">
+            <h3 class="text-3xl font-bold mb-8 section-header text-white">Featured Work 🚀</h3>
+
+            <div class="grid gap-8 sm:grid-cols-2">
+                <!-- Project Card 1: Pawa Ne (CV Focus) -->
+                <div data-project-id="pawa_ne" class="project-card p-5 bg-gray-800/70 rounded-xl shadow-lg border border-gray-700 group">
+                    <h4 class="text-2xl font-bold text-purple-300 mb-2">Pawa Ne (IoT/Fintech)</h4>
+                    <p class="text-gray-400 mb-4">Directed the prepaid energy platform, leading cross-functional coordination and integrating iPay/M-Pesa for automated billing.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag bg-purple-900/40 text-purple-300">Flutter</span>
+                        <span class="tag bg-green-900/40 text-green-300">Next.js</span>
+                        <span class="tag bg-red-900/40 text-red-300">Node.js</span>
+                        <span class="tag bg-indigo-900/40 text-indigo-300">IoT Metering</span>
+                    </div>
+                    <!-- Placeholder Image -->
+                    <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Pawa+Ne+App+Preview" 
+                         alt="Pawa Ne App Mockup" 
+                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                </div>
+                
+                <!-- Project Card 2: Aquilatrac (CV Focus) -->
+                <div data-project-id="aquilatrac" class="project-card p-5 bg-gray-800/70 rounded-xl shadow-lg border border-gray-700 group">
+                    <h4 class="text-2xl font-bold text-purple-300 mb-2">Aquilatrac (IoT Fleet SaaS)</h4>
+                    <p class="text-gray-400 mb-4">IoT fleet tracker built to reduce manual check-ins by 70% using real-time APIs and geofencing. Led to a 30% client retention lift.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag bg-purple-900/40 text-purple-300">Flutter</span>
+                        <span class="tag bg-yellow-900/40 text-yellow-300">Firebase</span>
+                        <span class="tag bg-blue-900/40 text-blue-300">Geofencing</span>
+                        <span class="tag bg-pink-900/40 text-pink-300">Realtime APIs</span>
+                    </div>
+                    <!-- Placeholder Image -->
+                    <img src="https://placehold.co/600x350/7c3aed/ffffff?text=Aquilatrac+Fleet+SaaS" 
+                         alt="Aquilatrac Website Mockup" 
+                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                </div>
+
+                <!-- Project Card 3: Kharsh.art (Screenshots) -->
+                <div data-project-id="kharsh_art" class="project-card p-5 bg-gray-800/70 rounded-xl shadow-lg border border-gray-700 group">
+                    <h4 class="text-2xl font-bold text-purple-300 mb-2">Kharsh.art (Web Gallery)</h4>
+                    <p class="text-gray-400 mb-4">A unique web application designed for displaying abstract art, focusing on responsive design and front-end performance.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag bg-green-900/40 text-green-300">Nuxtjs</span>
+                        <span class="tag bg-blue-900/40 text-blue-300">Vue</span>
+                        <span class="tag bg-red-900/40 text-red-300">Web App</span>
+                    </div>
+                    <!-- Placeholder Image -->
+                    <img src="https://placehold.co/600x350/374151/ffffff?text=Kharsh.art+Art+Gallery" 
+                         alt="Kharsh.art Art Gallery Mockup" 
+                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                </div>
+
+                <!-- Project Card 4: Taifa-1 Satellite (CV) -->
+                <div data-project-id="taifa_1" class="project-card p-5 bg-gray-800/70 rounded-xl shadow-lg border border-gray-700 group">
+                    <h4 class="text-2xl font-bold text-purple-300 mb-2">Taifa-1 Satellite (QA Lead)</h4>
+                    <p class="text-gray-400 mb-4">As QA Lead for Kenya's first satellite, I authored and implemented the rigorous, standardized test systems that ensured a zero-defect launch.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag bg-gray-500/40 text-gray-300">QA Automation</span>
+                        <span class="tag bg-yellow-900/40 text-yellow-300">Mission-Critical Testing</span>
+                    </div>
+                    <!-- Placeholder Image -->
+                    <img src="https://placehold.co/600x350/1f2937/d1d5db?text=Taifa-1+Satellite+Launch" 
+                         alt="Taifa-1 Satellite Launch Mockup" 
+                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. Contact Section -->
+        <section id="contact" class="mb-16">
+            <h3 class="text-3xl font-bold mb-6 section-header text-white">Connect with Me 📧</h3>
+            <p class="text-gray-300 mb-8">Ready to collaborate on a stunning mobile or web project? Reach out below!</p>
+
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                
+                <!-- Email -->
+                <a href="mailto:benkigera@gmail.com" class="flex-1 p-4 bg-purple-600 hover:bg-purple-700 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
+                    <div class="flex items-center justify-center">
+                        <span class="mr-2">✉️</span>
+                        benkigera@gmail.com
+                    </div>
+                </a>
+
+                <!-- LinkedIn Placeholder -->
+                <a href="#" target="_blank" class="flex-1 p-4 bg-gray-700 hover:bg-gray-600 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
+                    <div class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        LinkedIn (Placeholder)
+                    </div>
+                </a>
+
+                <!-- GitHub Placeholder -->
+                <a href="#" target="_blank" class="flex-1 p-4 bg-gray-700 hover:bg-gray-600 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
+                    <div class="flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.167 6.839 9.504.5.092.682-.217.682-.483 0-.237-.007-.866-.012-1.703-2.782.605-3.369-1.343-3.369-1.343-.455-1.152-1.11-1.458-1.11-1.458-.908-.618.069-.606.069-.606 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.907.828.092-.643.354-1.088.649-1.336-2.22-.251-4.555-1.115-4.555-4.942 0-1.09.39-1.984 1.029-2.682-.103-.251-.446-1.272.098-2.65 0 0 .84-.268 2.75 1.022A9.607 9.607 0 0112 6.862c.85.089 1.70.165 2.551.242 1.908-1.29 2.748-1.022 2.748-1.022.546 1.379.202 2.398.1 2.649.64.698 1.028 1.592 1.028 2.682 0 3.832-2.336 4.681-4.564 4.935.359.307.678.924.678 1.855 0 1.336-.012 2.417-.012 2.747 0 .268.18.577.688.484C19.13 20.183 22 16.43 22 12.017 22 6.484 17.523 2 12 2z" clip-rule="evenodd"/></svg>
+                        GitHub (Placeholder)
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-gray-800 mt-12">
+            <p class="text-sm text-gray-500">Last updated: November 2025 | Built with Tailwind CSS.</p>
+        </footer>
+    </div>
+    
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="hidden fixed inset-0 modal-backdrop flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="modal-content bg-gray-900 rounded-xl w-full max-w-2xl shadow-2xl" onclick="event.stopPropagation()">
+            <div class="p-6">
+                <div class="flex justify-between items-center border-b border-gray-700 pb-3 mb-4">
+                    <h3 id="modal-title" class="text-2xl font-bold text-purple-400">Project Title</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-colors text-3xl font-light leading-none">
+                        &times;
+                    </button>
+                </div>
+                <div id="modal-details" class="text-gray-300 space-y-4">
+                    <!-- Dynamic content inserted here -->
+                </div>
+                <div class="flex space-x-4 mt-6">
+                    <a id="modal-live-link" href="#" target="_blank" class="px-4 py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors shadow-md flex items-center">
+                        <span class="mr-2">▶️</span> Live Demo / Test App (Simulated)
+                    </a>
+                    <button onclick="closeModal()" class="px-4 py-2 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-700 transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Define Project Data
+        const projects = {
+            pawa_ne: {
+                title: "Pawa Ne (IoT/Fintech)",
+                description: "Pawa Ne is an energy platform directed from prototype to pilot phase. It bridges hardware and software to provide **real-time prepaid vending and billing automation** for smart meters.",
+                details: [
+                    "**Role & Leadership:** Directed Pawa Ne's technical delivery, coordinating hardware and backend teams for a pilot with Kenya Power and Syntell.",
+                    "**Fintech Integration:** Implemented iPay, Syntell, PayFast/PayGate for mobile money top-ups (M-Pesa) and billing automation.",
+                    "**Architecture:** Designed an **offline-first delta-sync architecture** for reliable operation in low-connectivity rural deployments, achieving 99.7% uptime.",
+                    "**Key Technology:** Flutter for mobile, Next.js for web/admin, Node.js backend, MQTT for IoT telemetry."
+                ],
+                live_link: "#" // Placeholder
+            },
+            aquilatrac: {
+                title: "Aquilatrac (IoT Fleet SaaS)",
+                description: "A robust IoT fleet tracking Software-as-a-Service (SaaS) application built to enhance asset monitoring and operational efficiency.",
+                details: [
+                    "**Impact:** Reduced manual driver check-ins by **70%** and resulted in a **30% client retention lift** for 8teq Technologies.",
+                    "**Features:** Utilizes Firebase Realtime APIs and Geofencing to enable driver alert automation and real-time tracking.",
+                    "**Challenge:** Delivering highly reliable, sub-second latency location data under various network conditions.",
+                    "**Key Technology:** Flutter, Firebase, Realtime APIs, Geofencing."
+                ],
+                live_link: "#" // Placeholder
+            },
+            kharsh_art: {
+                title: "Kharsh.art (Web Gallery)",
+                description: "A public-facing web application focused on high-performance front-end delivery for displaying abstract art.",
+                details: [
+                    "**Focus:** Optimized for responsive design and fast loading times across all devices (mobile, tablet, desktop).",
+                    "**Design:** Emphasis on a unique, visually stunning gallery experience with clean UI/UX.",
+                    "**Key Technology:** Nuxt.js (Vue framework) for server-side rendering and efficient client-side hydration."
+                ],
+                live_link: "https://kharsh.art" // Example URL based on previous data
+            },
+            taifa_1: {
+                title: "Taifa-1 Satellite (QA Lead)",
+                description: "Mission-critical quality assurance project for Kenya's first operational satellite.",
+                details: [
+                    "**Role:** QA Lead, responsible for establishing testing protocols for a zero-defect launch.",
+                    "**Process:** Authored the engineering standards and test playbook that was adopted organization-wide for high-stakes aerospace projects.",
+                    "**Result:** Successful, defect-free deployment validating the robustness of the testing systems developed."
+                ],
+                live_link: "#" // Placeholder
+            }
+        };
+
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDetails = document.getElementById('modal-details');
+        const modalLiveLink = document.getElementById('modal-live-link');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        // Function to close the modal
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Function to open the modal and populate content
+        function openModal(projectId) {
+            const project = projects[projectId];
+            if (!project) return;
+
+            modalTitle.textContent = project.title;
+            
+            // Populate Details
+            modalDetails.innerHTML = `
+                <p class="text-xl font-semibold text-white mb-3">${project.description}</p>
+                <ul class="list-disc list-outside space-y-2 pl-6">
+                    ${project.details.map(detail => `<li class="text-gray-400">${detail}</li>`).join('')}
+                </ul>
+            `;
+            
+            // Update Live Link button
+            modalLiveLink.href = project.live_link || "#";
+            modalLiveLink.textContent = project.live_link === "#" 
+                ? "▶️ Live Demo / Test App (Link Unavailable)" 
+                : "▶️ Live Demo / Test App";
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Add event listeners to project cards
+        projectCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const projectId = card.getAttribute('data-project-id');
+                openModal(projectId);
+            });
+        });
+        
+        // Close modal on escape key press
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
