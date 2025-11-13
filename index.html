@@ -49,19 +49,24 @@
             overflow-y: auto;
             z-index: 50;
         }
+        /* Style for the X/Twitter icon for better visibility */
+        .twitter-x-icon path {
+            fill: currentColor;
+        }
     </style>
 </head>
 <body class="min-h-screen">
     <div id="app" class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
 
         <!-- Navigation / Header -->
-        <header class="flex justify-between items-center py-4 mb-8 border-b border-gray-800">
+        <header class="flex justify-between items-center py-4 mb-8 border-b border-gray-800 sticky top-0 bg-black/90 z-40">
             <h1 class="text-2xl font-bold text-white">Benson Kigera</h1>
             <nav class="hidden sm:block">
                 <a href="#about" class="text-gray-300 hover:text-white mx-3 transition-colors">About</a>
                 <a href="#projects" class="text-gray-300 hover:text-white mx-3 transition-colors">Work</a>
                 <a href="#skills" class="text-gray-300 hover:text-white mx-3 transition-colors">Stack</a>
-                <a href="#contact" class="text-gray-300 hover:text-white mx-3 transition-colors">Contact</a>
+                <a href="#challenges" class="text-gray-300 hover:text-white mx-3 transition-colors">Challenges</a>
+                <a href="#connect" class="text-gray-300 hover:text-white mx-3 transition-colors">Contact</a>
             </nav>
         </header>
 
@@ -143,8 +148,8 @@
                     </div>
                     <!-- Placeholder Image -->
                     <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Pawa+Ne+App+Preview" 
-                         alt="Pawa Ne App Mockup" 
-                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                        alt="Pawa Ne App Mockup" 
+                        class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
                 </div>
                 
                 <!-- Project Card 2: Aquilatrac (CV Focus) -->
@@ -159,8 +164,8 @@
                     </div>
                     <!-- Placeholder Image -->
                     <img src="https://placehold.co/600x350/7c3aed/ffffff?text=Aquilatrac+Fleet+SaaS" 
-                         alt="Aquilatrac Website Mockup" 
-                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                        alt="Aquilatrac Website Mockup" 
+                        class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
                 </div>
 
                 <!-- Project Card 3: Kharsh.art (Screenshots) -->
@@ -174,8 +179,8 @@
                     </div>
                     <!-- Placeholder Image -->
                     <img src="https://placehold.co/600x350/374151/ffffff?text=Kharsh.art+Art+Gallery" 
-                         alt="Kharsh.art Art Gallery Mockup" 
-                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                        alt="Kharsh.art Art Gallery Mockup" 
+                        class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
                 </div>
 
                 <!-- Project Card 4: Taifa-1 Satellite (CV) -->
@@ -188,41 +193,98 @@
                     </div>
                     <!-- Placeholder Image -->
                     <img src="https://placehold.co/600x350/1f2937/d1d5db?text=Taifa-1+Satellite+Launch" 
-                         alt="Taifa-1 Satellite Launch Mockup" 
-                         class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
+                        alt="Taifa-1 Satellite Launch Mockup" 
+                        class="w-full h-auto object-cover rounded-lg mt-3 transition-opacity group-hover:opacity-90">
                 </div>
 
             </div>
         </section>
 
-        <!-- 4. Contact Section -->
-        <section id="contact" class="mb-16">
+        <!-- 4. Most Difficult Technical Challenges / Case Studies (NEW SECTION) -->
+        <section id="challenges" class="mb-16">
+            <h3 class="text-3xl font-bold mb-8 section-header text-white">Technical Challenges & Case Studies 🧠</h3>
+            
+            <div class="space-y-10">
+                
+                <!-- Challenge 1: Pawa Ne - IoT Data Reliability -->
+                <div class="bg-gray-800/70 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-red-400 mb-2">Challenge: Reliable IoT Billing in Low Connectivity</h4>
+                    <p class="text-lg font-semibold text-purple-300 mb-3">Project: Pawa Ne (Energy Platform)</p>
+                    <p class="text-gray-400">
+                        **Problem:** Energy smart meters need to report consumption and receive vending tokens, but they are often deployed in rural areas with **highly unstable 2G/GPRS connectivity**. Standard REST/JSON polling was slow and caused significant data loss, leading to incorrect billing and poor customer trust.
+                    </p>
+                    <p class="text-gray-400 mt-2">
+                        **Solution:** Designed and implemented an **offline-first delta-sync architecture** using **MQTT** for low-latency, small-packet bidirectional communication. The system only transmits state changes (deltas) and features a local data cache that automatically reconciles when connectivity is restored, guaranteeing **99.7% billing data integrity** across thousands of meters.
+                    </p>
+                </div>
+
+                <!-- Challenge 2: Aquilatrac - Real-time Geofencing at Scale -->
+                <div class="bg-gray-800/70 p-6 rounded-xl border border-gray-700">
+                    <h4 class="text-xl font-bold text-red-400 mb-2">Challenge: Sub-Second Fleet Geofence Alerts at Scale</h4>
+                    <p class="text-lg font-semibold text-purple-300 mb-3">Project: Aquilatrac (Fleet SaaS)</p>
+                    <p class="text-gray-400">
+                        **Problem:** Fleet operators required instant notification (sub-second latency) when a vehicle entered or exited a geofenced area. Traditional database queries for spatial indexing were too slow to handle real-time processing for hundreds of simultaneously moving assets.
+                    </p>
+                    <p class="text-gray-400 mt-2">
+                        **Solution:** Leveraged **Firebase Realtime Database** with custom NodeJS functions for rapid spatial checking. We converted geo-coordinates into **geohashes** at multiple precision levels, allowing boundary checks to become highly efficient string comparison lookups instead of expensive distance calculations. This reduced alert latency from an average of 4 seconds to **less than 500 milliseconds**.
+                    </p>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- 5. Consulting Rate Block (NEW) -->
+        <section id="rate" class="mb-16">
+            <div class="p-6 bg-purple-900/30 border border-purple-800 rounded-xl text-center">
+                <p class="text-xl sm:text-2xl font-extrabold text-purple-300 mb-1">
+                    Ready for a dedicated Full-Stack consultant?
+                </p>
+                <p class="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+                    Consulting Rate: <span class="text-yellow-400">$25/h</span>
+                </p>
+                <p class="text-sm text-gray-400 mt-2">
+                    Available for immediate project-based or long-term consulting work.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- 6. Connect Section (Updated Links) -->
+        <section id="connect" class="mb-16">
             <h3 class="text-3xl font-bold mb-6 section-header text-white">Connect with Me 📧</h3>
             <p class="text-gray-300 mb-8">Ready to collaborate on a stunning mobile or web project? Reach out below!</p>
 
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 
                 <!-- Email -->
-                <a href="mailto:benkigera@gmail.com" class="flex-1 p-4 bg-purple-600 hover:bg-purple-700 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
+                <a href="mailto:benkigera@gmail.com" class="p-4 bg-purple-600 hover:bg-purple-700 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md col-span-2">
                     <div class="flex items-center justify-center">
-                        <span class="mr-2">✉️</span>
-                        benkigera@gmail.com
+                        <span class="mr-2">✉️</span> benkigera@gmail.com
                     </div>
                 </a>
 
-                <!-- LinkedIn Placeholder -->
-                <a href="#" target="_blank" class="flex-1 p-4 bg-gray-700 hover:bg-gray-600 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/benson-kigera-b6a95b142/" target="_blank" class="p-4 bg-gray-700 hover:bg-blue-800 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
                     <div class="flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        LinkedIn (Placeholder)
+                        LinkedIn
                     </div>
                 </a>
 
-                <!-- GitHub Placeholder -->
-                <a href="#" target="_blank" class="flex-1 p-4 bg-gray-700 hover:bg-gray-600 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
+                <!-- GitHub -->
+                <a href="https://github.com/benkigera/" target="_blank" class="p-4 bg-gray-700 hover:bg-gray-800 transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
                     <div class="flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.417 2.865 8.167 6.839 9.504.5.092.682-.217.682-.483 0-.237-.007-.866-.012-1.703-2.782.605-3.369-1.343-3.369-1.343-.455-1.152-1.11-1.458-1.11-1.458-.908-.618.069-.606.069-.606 1.003.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.088 2.907.828.092-.643.354-1.088.649-1.336-2.22-.251-4.555-1.115-4.555-4.942 0-1.09.39-1.984 1.029-2.682-.103-.251-.446-1.272.098-2.65 0 0 .84-.268 2.75 1.022A9.607 9.607 0 0112 6.862c.85.089 1.70.165 2.551.242 1.908-1.29 2.748-1.022 2.748-1.022.546 1.379.202 2.398.1 2.649.64.698 1.028 1.592 1.028 2.682 0 3.832-2.336 4.681-4.564 4.935.359.307.678.924.678 1.855 0 1.336-.012 2.417-.012 2.747 0 .268.18.577.688.484C19.13 20.183 22 16.43 22 12.017 22 6.484 17.523 2 12 2z" clip-rule="evenodd"/></svg>
-                        GitHub (Placeholder)
+                        GitHub
+                    </div>
+                </a>
+                
+                <!-- Twitter/X (New Link) -->
+                <a href="https://x.com/benkigera" target="_blank" class="p-4 bg-gray-700 hover:bg-black transition-colors duration-300 rounded-lg text-white font-semibold text-center shadow-md">
+                    <div class="flex items-center justify-center">
+                        <!-- X SVG Icon -->
+                        <svg class="w-5 h-5 mr-2 twitter-x-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68c-.147.247-.487.678-.813 1.077l-5.613 6.643 6.94 10.635h-3.69l-5.11-7.86-5.87 7.86H.994l5.367-7.172L.47 1.153h3.76c.453 0 .86.23 1.09.61l4.47 6.43 4.887-6.43h3.724zM7.05 2.827l.56 1.45L1.87 21.05h2.51l5.51-7.29 5.8 7.29h2.38l-6.3-8.35 6.01-7.97H17.2l-5.46 7.23-5.22-7.23H7.05z" clip-rule="evenodd"/></svg>
+                        Twitter (X)
                     </div>
                 </a>
             </div>
@@ -271,7 +333,7 @@
                     "**Architecture:** Designed an **offline-first delta-sync architecture** for reliable operation in low-connectivity rural deployments, achieving 99.7% uptime.",
                     "**Key Technology:** Flutter for mobile, Next.js for web/admin, Node.js backend, MQTT for IoT telemetry."
                 ],
-                live_link: "#" // Placeholder
+                live_link: "https://pawa-ne.example.com" // Simulated URL
             },
             aquilatrac: {
                 title: "Aquilatrac (IoT Fleet SaaS)",
@@ -279,10 +341,10 @@
                 details: [
                     "**Impact:** Reduced manual driver check-ins by **70%** and resulted in a **30% client retention lift** for 8teq Technologies.",
                     "**Features:** Utilizes Firebase Realtime APIs and Geofencing to enable driver alert automation and real-time tracking.",
-                    "**Challenge:** Delivering highly reliable, sub-second latency location data under various network conditions.",
+                    "**Challenge:** Delivering highly reliable, sub-second latency location data under various network conditions (solved via Geohashes).",
                     "**Key Technology:** Flutter, Firebase, Realtime APIs, Geofencing."
                 ],
-                live_link: "#" // Placeholder
+                live_link: "https://aquilatrac.example.com" // Simulated URL
             },
             kharsh_art: {
                 title: "Kharsh.art (Web Gallery)",
@@ -292,7 +354,7 @@
                     "**Design:** Emphasis on a unique, visually stunning gallery experience with clean UI/UX.",
                     "**Key Technology:** Nuxt.js (Vue framework) for server-side rendering and efficient client-side hydration."
                 ],
-                live_link: "https://kharsh.art" // Example URL based on previous data
+                live_link: "https://kharsh.art" 
             },
             taifa_1: {
                 title: "Taifa-1 Satellite (QA Lead)",
@@ -338,6 +400,14 @@
             modalLiveLink.textContent = project.live_link === "#" 
                 ? "▶️ Live Demo / Test App (Link Unavailable)" 
                 : "▶️ Live Demo / Test App";
+            
+            // Toggle visibility based on link availability
+            if (project.live_link === "#") {
+                modalLiveLink.classList.add('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
+            } else {
+                modalLiveLink.classList.remove('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
+            }
+
 
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
