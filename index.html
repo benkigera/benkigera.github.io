@@ -27,6 +27,11 @@
                         safi: {
                             400: '#4ade80', // Green for SafiCharge
                             900: '#14532d'
+                        },
+                        discord: {
+                            bg: '#313338',
+                            text: '#dbdee1',
+                            spine: '#4e5058'
                         }
                     },
                     animation: {
@@ -46,7 +51,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;900&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
 
     <style>
         body {
@@ -188,7 +193,36 @@
             <!-- Masonry Grid for Chats -->
             <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                 
-                <!-- Feedback Card 1: Greg -->
+                <!-- Feedback Card 1: Discord (New) -->
+                <div class="break-inside-avoid rounded-md p-3 bg-discord-bg border border-black/20 hover:border-brand-500/30 transition-colors font-sans relative group">
+                    <!-- Reply Context Line -->
+                    <div class="absolute left-5 top-4 w-8 h-3 border-l-2 border-t-2 border-discord-spine rounded-tl-lg opacity-60"></div>
+                    
+                    <!-- Reply Text -->
+                    <div class="flex items-center gap-2 text-[11px] text-gray-400 mb-1 pl-12 opacity-90">
+                        <div class="w-4 h-4 rounded-full bg-brand-600 flex items-center justify-center text-[8px] text-white">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+                        </div>
+                        <span class="text-brand-400 font-bold hover:underline cursor-pointer">@benkigera</span>
+                        <span class="truncate max-w-[150px]">New Update: • Fixed bug with deleting the last scheduler item.</span>
+                    </div>
+
+                    <!-- Main Message -->
+                    <div class="flex gap-3 mt-1 hover:bg-black/10 p-2 -ml-2 rounded transition-colors">
+                        <div class="w-10 h-10 rounded-full bg-gray-600 flex-shrink-0 overflow-hidden mt-0.5">
+                             <img src="https://api.dicebear.com/9.x/initials/svg?seed=NK&backgroundColor=1e1e1e" alt="NK">
+                        </div>
+                        <div class="leading-snug">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-white font-medium text-sm hover:underline cursor-pointer">Ngaruiya Kamau</span>
+                                <span class="text-[10px] text-gray-500 font-medium">09/18/2024 9:26 AM</span>
+                            </div>
+                            <p class="text-discord-text text-[15px] mt-0.5 font-light">Good Job bro 👏🏿👏🏿👏🏿 . I have tested the Android and IOS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Card 2: Greg -->
                 <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
                     <div class="flex items-center gap-3 border-b border-white/5 pb-2">
                         <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-xs font-bold text-white overflow-hidden">
@@ -204,7 +238,7 @@
                     </div>
                 </div>
 
-                <!-- Feedback Card 2: Ngaruiya Kamau (The Ninja) -->
+                <!-- Feedback Card 3: Ngaruiya Kamau (WhatsApp) -->
                 <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
                     <div class="flex items-center gap-3 border-b border-white/5 pb-2">
                         <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-bold text-white">N</div>
@@ -223,7 +257,7 @@
                     </div>
                 </div>
 
-                <!-- Feedback Card 3: Timothy Hardware (Full Context) -->
+                <!-- Feedback Card 4: Timothy Hardware (Full Context) -->
                 <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
                     <div class="flex items-center gap-3 border-b border-white/5 pb-2">
                         <div class="w-8 h-8 rounded-full bg-orange-600 flex items-center justify-center text-xs font-bold text-white">T</div>
@@ -275,7 +309,7 @@
                     </div>
                 </div>
 
-                <!-- Feedback Card 4: Team Love -->
+                <!-- Feedback Card 5: Team Love -->
                 <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
                     <div class="flex items-center gap-3 border-b border-white/5 pb-2">
                         <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-xs font-bold text-white">J</div>
@@ -315,7 +349,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
                 
-                <!-- SafiCharge (New & Prominent) -->
+                <!-- SafiCharge -->
                 <div class="group md:col-span-12 lg:col-span-8 glass-panel rounded-2xl p-8 hover:border-safi-400/40 transition-all cursor-pointer relative overflow-hidden reveal" onclick="openModal('saficharge')">
                     <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
                         <!-- EV Icon -->
@@ -497,10 +531,6 @@
             ctx.beginPath();
             for (let i = 0; i < points.length; i++) {
                 const p1 = points[i];
-                // Check neighbors (right and bottom) to optimize drawing
-                // Simple check: look at points that are somewhat close in the array or position
-                // For a proper grid, we can cheat and just connect to neighbors if we knew indices,
-                // but generic distance check is easier for responsive resizing.
                 for (let j = i + 1; j < points.length; j++) {
                     const p2 = points[j];
                     const dx = p1.x - p2.x;
@@ -550,7 +580,7 @@
                         <li><strong>Guided Experience:</strong> 'Start Charge' wizard to assist new EV drivers.</li>
                     </ul>
                 `,
-                link: "#" // No link provided, button will hide or stay empty
+                link: "#"
             },
             aquilatrac: { 
                 title: "Aquilatrac Logistics", 
