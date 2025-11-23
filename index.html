@@ -35,15 +35,20 @@
                             spine: '#4e5058'
                         }
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                    },
                     keyframes: {
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         }
-                    }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'scroll': 'scroll 20s linear infinite',
+                    },
                 }
             }
         }
@@ -179,8 +184,15 @@
 
         <!-- Tech Marquee -->
         <div class="py-10 border-y border-white/5 mb-24 overflow-hidden opacity-60">
-            <div class="flex justify-between items-center text-gray-500 font-mono text-sm">
-                <span>FLUTTER</span> • <span>REACT</span> • <span>NODE.JS</span> • <span>HCI</span> • <span>FIGMA</span> • <span>IOT</span> • <span>NEXT.JS</span> • <span>TAILWIND</span>
+            <div class="flex animate-scroll whitespace-nowrap w-max">
+                <!-- Original Set -->
+                <div class="flex space-x-12 mx-6 text-gray-500 font-mono text-sm items-center">
+                    <span>FLUTTER</span> <span>•</span> <span>REACT</span> <span>•</span> <span>NODE.JS</span> <span>•</span> <span>HCI</span> <span>•</span> <span>FIGMA</span> <span>•</span> <span>IOT</span> <span>•</span> <span>NEXT.JS</span> <span>•</span> <span>TAILWIND</span> <span>•</span>
+                </div>
+                <!-- Duplicate Set -->
+                <div class="flex space-x-12 mx-6 text-gray-500 font-mono text-sm items-center">
+                    <span>FLUTTER</span> <span>•</span> <span>REACT</span> <span>•</span> <span>NODE.JS</span> <span>•</span> <span>HCI</span> <span>•</span> <span>FIGMA</span> <span>•</span> <span>IOT</span> <span>•</span> <span>NEXT.JS</span> <span>•</span> <span>TAILWIND</span> <span>•</span>
+                </div>
             </div>
         </div>
 
