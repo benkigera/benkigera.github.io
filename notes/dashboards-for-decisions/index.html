@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The frontier keeps moving | Benson Kigera</title>
-    <meta name="description" content="A note on AI, useful work, and biology as a frontier for engineers.">
+    <title>Dashboards for decisions | Benson Kigera</title>
+    <meta name="description" content="A working note on designing operational dashboards around decisions, actions, and trusted data.">
     <link rel="icon" type="image/x-icon" href="../../icon-512.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,8 @@
         h1 { max-width:760px; margin:0 0 26px; font-size:clamp(3.2rem,7vw,5.6rem); line-height:.92; letter-spacing:-.02em; }
         .dek { max-width:720px; margin:0 0 34px; color:#30333d; font-size:1.16rem; }
         .body { max-width:720px; display:grid; gap:18px; color:#30333d; font-size:1.02rem; }
+        .body h2 { margin:16px 0 0; font-size:2rem; line-height:1; }
+        .body p { margin:0; }
         .footer { display:flex; justify-content:space-between; gap:16px; padding:16px 28px; border-top:1px solid var(--line); font-size:.84rem; font-weight:800; }
         @media (max-width:700px){ .shell{width:calc(100% - 18px); margin:9px auto;} .nav{align-items:flex-start; flex-direction:column; padding:18px;} article{padding:26px 18px;} h1{font-size:3.4rem;} .footer{flex-direction:column; padding:16px 18px;} }
     </style>
@@ -34,17 +36,18 @@
     <div class="shell">
         <nav class="nav"><a class="mark" href="../../">BK.</a><a class="nav-link" href="../">All Notes</a></nav>
         <article>
-            <p class="meta">May 5, 2026 · Note</p>
-            <h1>The frontier keeps moving</h1>
-            <p class="dek">I used to worry about AI and work. Now I look for domains where software can help teams handle messy physical systems.</p>
+            <p class="meta">May 5, 2026 · Working Note</p>
+            <h1>Dashboards for decisions</h1>
+            <p class="dek">Operational dashboards earn their place when each metric helps someone choose the next action.</p>
             <div class="body">
-                <p>I pursued software engineering because it felt like frontier work. I wanted to build in a field where teams still had to invent the tools as they went.</p>
-                <p>Many old frontier technologies now run in the background. Wheels, taps, engines, electricity, antibiotics, and the internet reached that point because generations of builders made them reliable.</p>
-                <p>Biology now pulls my attention. Disease, aging, regeneration, cognition, food systems, diagnostics, and drug discovery still resist clean models. Researchers work across wet labs, patients, manufacturing, policy, and data systems.</p>
-                <p>Builders can help there. Better tools can shorten experiment loops, make evidence easier to compare, reduce manual review, and help researchers move from messy observations to testable hypotheses.</p>
-                <p>Computer science gave me a useful habit: break problems down, model systems, test assumptions, and build feedback loops. I can use that habit anywhere complexity blocks useful work.</p>
-                <p>AI changed the shape of software work. Domain judgment now carries more weight. You still need to understand the workflow, the evidence, the constraints, and the people who will rely on the tool.</p>
-                <p>I want to work near that edge.</p>
+                <p>An operator opens the screen with a decision in mind. A vehicle needs attention, a charger may be down, a test needs review, inventory looks wrong, or a scientific lead needs enough evidence to move a hypothesis forward.</p>
+                <p>I start there. I give the operator the state, the owner, the last trusted update, and the next action. Extra charts can wait.</p>
+                <h2>Compress the context</h2>
+                <p>A strong operational view answers a few plain questions: what changed, who owns it, what needs attention, and how much confidence the team should place in the reading.</p>
+                <p>State, thresholds, provenance, exceptions, and empty states matter because field data arrives late, partial, duplicated, or noisy. Operators trust the screen when it handles those cases without making them guess.</p>
+                <h2>Design for the operator</h2>
+                <p>Real-world systems put users under time pressure. They need to know where attention should go. I reduce visual ambiguity and give the operator a clear path through the work.</p>
+                <p>I ask one question while designing these screens: after the team reads this, what can they do with more confidence?</p>
             </div>
         </article>
         <footer class="footer"><a href="../">← Notes</a></footer>

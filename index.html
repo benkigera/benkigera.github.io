@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benson Kigera | Software for real-world systems</title>
-    <meta name="description" content="Product-minded software engineer building scientific software, energy platforms, telemetry systems, and hardware-adjacent tools.">
+    <meta name="description" content="Product-minded software engineer building operational tools for science, energy, telemetry, and hardware-adjacent teams.">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://benkigera.github.io/">
     <meta property="og:title" content="Benson Kigera | Software for real-world systems">
-    <meta property="og:description" content="Software for scientific, energy, telemetry, and hardware-adjacent systems.">
+    <meta property="og:description" content="Operational software for scientific, energy, telemetry, and hardware-adjacent teams.">
     <meta property="og:image" content="https://benkigera.github.io/og-image.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Benson Kigera | Software for real-world systems">
-    <meta name="twitter:description" content="Software for scientific, energy, telemetry, and hardware-adjacent systems.">
+    <meta name="twitter:description" content="Operational software for scientific, energy, telemetry, and hardware-adjacent teams.">
     <meta name="twitter:image" content="https://benkigera.github.io/og-image.jpg">
 
     <link rel="icon" type="image/x-icon" href="icon-512.ico">
@@ -247,6 +247,40 @@
             padding: 0 clamp(28px, 5vw, 72px) 22px;
         }
 
+        .capability-band {
+            display: grid;
+            grid-template-columns: minmax(180px, 0.32fr) 1fr;
+            gap: 28px;
+            padding-top: 22px;
+            padding-bottom: 34px;
+            border-top: 1px solid var(--line);
+        }
+
+        .capability-band h2,
+        .working-method h2 {
+            margin: 0;
+            font-size: clamp(1.55rem, 2.4vw, 2rem);
+            line-height: 1;
+        }
+
+        .capability-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .capability-list li {
+            padding: 8px 10px;
+            border: 1px solid var(--line-soft);
+            color: #30333d;
+            font-size: 0.82rem;
+            font-weight: 700;
+            background: rgba(255, 252, 244, 0.44);
+        }
+
         .section-head {
             display: grid;
             grid-template-columns: auto 1fr auto;
@@ -380,6 +414,27 @@
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 24px;
             margin-bottom: 22px;
+        }
+
+        .working-method {
+            display: grid;
+            grid-template-columns: minmax(180px, 0.36fr) minmax(0, 1fr);
+            gap: 34px;
+            padding-top: 22px;
+            padding-bottom: 34px;
+            border-top: 1px solid var(--line);
+        }
+
+        .method-copy {
+            display: grid;
+            gap: 16px;
+            max-width: 820px;
+            color: #30333d;
+            font-size: 1rem;
+        }
+
+        .method-copy p {
+            margin: 0;
         }
 
         .note-card {
@@ -612,7 +667,9 @@
             }
 
             .project-grid,
-            .writing-grid {
+            .writing-grid,
+            .capability-band,
+            .working-method {
                 grid-template-columns: 1fr;
             }
 
@@ -706,8 +763,7 @@
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#work" aria-current="page">Work</a>
-                <a href="#experiments">Experiments</a>
-                <a href="notes/">Writing</a>
+                <a href="#thinking">Thinking</a>
                 <a href="#contact">Contact</a>
             </div>
         </nav>
@@ -718,7 +774,7 @@
                     <p class="eyebrow">Product Engineer / Software Engineer</p>
                     <h1>Software for real-world systems.</h1>
                     <div class="rule"></div>
-                    <p class="hero-copy">I build scientific software, energy platforms, telemetry systems, and hardware-adjacent tools that operate in the real world: reliably, at scale, and with purpose.</p>
+                    <p class="hero-copy">I build software for teams working in the physical world: science, energy, telemetry, hardware, and field operations. My strength is turning messy operational workflows into reliable products, dashboards, data systems, and internal tools that help small teams move faster.</p>
                     <div class="expertise" aria-label="Areas of work">
                         <span><svg class="icon" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.2 9.1A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.9L14 9V3"/><path d="M8 16h8"/></svg>Scientific Software</span>
                         <span><svg class="icon" viewBox="0 0 24 24"><path d="m13 2-8 12h7l-1 8 8-12h-7z"/></svg>Energy Systems</span>
@@ -730,12 +786,24 @@
                 <aside class="profile-card">
                     <div class="monogram">BK</div>
                     <h2>Benson Kigera</h2>
-                    <p>Product-minded engineer with a systems approach. I enjoy working at the intersection of software, hardware, and science to solve problems that matter.</p>
+                    <p>Product-minded engineer with a systems approach. I turn experiments, field data, devices, QA loops, and operational decisions into software teams can run.</p>
                     <div class="profile-line"></div>
                     <p class="location"><svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Nairobi, Kenya</p>
                     <p>Available for meaningful work.</p>
                 </aside>
             </header>
+
+            <section class="section capability-band" aria-labelledby="capabilities-title">
+                <h2 id="capabilities-title">What I build</h2>
+                <ul class="capability-list">
+                    <li>Internal tools for expert users</li>
+                    <li>Operational dashboards backed by real data</li>
+                    <li>Scientific evidence and decision systems</li>
+                    <li>Telemetry and device visibility</li>
+                    <li>QA and launch-readiness workflows</li>
+                    <li>Fast prototypes that can become production systems</li>
+                </ul>
+            </section>
 
             <section id="work" class="section">
                 <div class="section-head">
@@ -747,19 +815,46 @@
                 </div>
             </section>
 
-            <section id="experiments" class="section">
+            <section class="section working-method" aria-labelledby="method-title">
+                <h2 id="method-title">How I work</h2>
+                <div class="method-copy">
+                    <p>I am strongest in ambiguous domains where the software problem is still being discovered.</p>
+                    <p>I start by mapping the workflow: who makes decisions, what data they trust, where context gets lost, what is painful to repeat, and what needs to become visible.</p>
+                    <p>Then I build the smallest serious version: real data model, real UI flows, operational edge cases, and enough system structure that the prototype can keep evolving.</p>
+                </div>
+            </section>
+
+            <section id="thinking" class="section">
                 <div class="section-head">
-                    <h2>Writing / Notes / Ideas</h2>
-                    <a class="section-link" href="notes/">View all writing&nbsp; →</a>
+                    <h2>Thinking Artifacts</h2>
+                    <a class="section-link" href="notes/">View all notes&nbsp; →</a>
                 </div>
                 <div id="writing" class="writing-grid">
                     <article class="note-card">
                         <div class="note-art"><svg viewBox="0 0 64 64"><path d="M10 46c14-1 25-7 33-18"/><path d="M31 17h16v16"/><path d="m47 17-28 28"/><path d="M14 18c6 0 10 4 10 10"/><path d="M14 28h10"/></svg></div>
                         <div class="note-body">
-                            <h3>The frontier never disappears</h3>
+                            <h3>The frontier keeps moving</h3>
                             <div class="note-meta">May 5, 2026 · Note</div>
-                            <p>Why AI does not end useful work, and why biology feels like one of the next great frontiers.</p>
+                            <p>AI keeps changing software work. Biology gives builders a hard, physical domain where better tools can help.</p>
                             <a href="notes/the-frontier-never-disappears/">View Note →</a>
+                        </div>
+                    </article>
+                    <article class="note-card">
+                        <div class="note-art"><svg viewBox="0 0 64 64"><path d="M14 18h36"/><path d="M14 32h36"/><path d="M14 46h36"/><path d="M22 12v40"/><path d="M42 12v40"/></svg></div>
+                        <div class="note-body">
+                            <h3>Dashboards for decisions</h3>
+                            <div class="note-meta">Working note</div>
+                            <p>Operational dashboards earn their place when each metric helps someone choose the next action.</p>
+                            <a href="notes/dashboards-for-decisions/">View Note →</a>
+                        </div>
+                    </article>
+                    <article class="note-card">
+                        <div class="note-art"><svg viewBox="0 0 64 64"><path d="M12 44c8-18 20-26 40-24"/><path d="M18 44h28"/><path d="M24 34h22"/><path d="M30 24h16"/><path d="M44 16l8 4-6 7"/></svg></div>
+                        <div class="note-body">
+                            <h3>The software layer around hard-tech</h3>
+                            <div class="note-meta">Working note</div>
+                            <p>Hard-tech teams need internal tools, telemetry loops, QA systems, and evidence workflows before work scatters across tools.</p>
+                            <a href="notes/software-layer-around-hard-tech/">View Note →</a>
                         </div>
                     </article>
                 </div>
@@ -771,7 +866,8 @@
                 <div class="footer-panel">
                     <h2>Let's build systems<br>that make a difference.</h2>
                     <div>
-                        <a class="button" href="https://mail.google.com/mail/?view=cm&fs=1&to=benkigera@gmail.com" target="_blank" rel="noreferrer">Get in Touch</a>
+                        <p class="footer-note">Working on scientific, energy, telemetry, or hardware-adjacent software?</p>
+                        <a class="button" href="https://mail.google.com/mail/?view=cm&fs=1&to=benkigera@gmail.com" target="_blank" rel="noreferrer">Tell me what you're building</a>
                     </div>
                 </div>
                 <div class="footer-panel">
@@ -803,7 +899,7 @@
                         <nav class="footer-links" aria-label="Footer navigation">
                             <a href="#about">About</a>
                             <a href="#work">Work</a>
-                            <a href="#experiments">Experiments</a>
+                            <a href="#thinking">Thinking</a>
                             <a href="notes/">Writing</a>
                         </nav>
                     </div>
@@ -811,7 +907,7 @@
                 <div class="footer-panel">
                     <div>
                         <p class="footer-title">Status</p>
-                        <p class="footer-note">Product engineering for scientific, energy, telemetry, and field systems.</p>
+                        <p class="footer-note">Product engineering for messy real-world workflows, field systems, and decision loops.</p>
                     </div>
                     <span class="footer-status">Available for meaningful work</span>
                 </div>
@@ -857,7 +953,7 @@
         async function loadProjects() {
             try {
                 const manifestResponse = await fetch(manifestPath, { cache: "no-store" });
-                if (!manifestResponse.ok) throw new Error("Project manifest not found");
+                if (!manifestResponse.ok) throw new Error("Project manifest unavailable");
                 const manifest = await manifestResponse.json();
                 const folders = Array.isArray(manifest.projects) ? manifest.projects : [];
                 const projects = await Promise.all(folders.map(async (folder) => {
@@ -877,7 +973,7 @@
                     .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
                 renderProjects(projectData);
             } catch (error) {
-                grid.innerHTML = `<div class="status">Project folders could not be loaded. Run a local server or deploy to GitHub Pages.</div>`;
+                grid.innerHTML = `<div class="status">Project folders are unavailable. Run a local server or deploy to GitHub Pages.</div>`;
                 console.error(error);
             }
         }
@@ -906,7 +1002,7 @@
                         <div class="project-links">
                             ${project.client && project.client.url ? `<a class="client-link" href="${project.client.url}" target="_blank" rel="noreferrer" onclick="event.stopPropagation()">Client: ${escapeHtml(project.client.name)}</a>` : ""}
                         </div>
-                        <button class="button" type="button" data-project-button="${project.slug}">View Case Study</button>
+                        <button class="button" type="button" data-project-button="${project.slug}">${escapeHtml(project.ctaLabel || "View System Case Study")}</button>
                     </div>
                 </article>
             `).join("");

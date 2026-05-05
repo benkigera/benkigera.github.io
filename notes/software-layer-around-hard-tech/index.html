@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The frontier keeps moving | Benson Kigera</title>
-    <meta name="description" content="A note on AI, useful work, and biology as a frontier for engineers.">
+    <title>The software layer around hard-tech | Benson Kigera</title>
+    <meta name="description" content="A working note on internal tools, telemetry, QA, and evidence systems for hard-tech teams.">
     <link rel="icon" type="image/x-icon" href="../../icon-512.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,8 @@
         h1 { max-width:760px; margin:0 0 26px; font-size:clamp(3.2rem,7vw,5.6rem); line-height:.92; letter-spacing:-.02em; }
         .dek { max-width:720px; margin:0 0 34px; color:#30333d; font-size:1.16rem; }
         .body { max-width:720px; display:grid; gap:18px; color:#30333d; font-size:1.02rem; }
+        .body h2 { margin:16px 0 0; font-size:2rem; line-height:1; }
+        .body p { margin:0; }
         .footer { display:flex; justify-content:space-between; gap:16px; padding:16px 28px; border-top:1px solid var(--line); font-size:.84rem; font-weight:800; }
         @media (max-width:700px){ .shell{width:calc(100% - 18px); margin:9px auto;} .nav{align-items:flex-start; flex-direction:column; padding:18px;} article{padding:26px 18px;} h1{font-size:3.4rem;} .footer{flex-direction:column; padding:16px 18px;} }
     </style>
@@ -34,17 +36,18 @@
     <div class="shell">
         <nav class="nav"><a class="mark" href="../../">BK.</a><a class="nav-link" href="../">All Notes</a></nav>
         <article>
-            <p class="meta">May 5, 2026 · Note</p>
-            <h1>The frontier keeps moving</h1>
-            <p class="dek">I used to worry about AI and work. Now I look for domains where software can help teams handle messy physical systems.</p>
+            <p class="meta">May 5, 2026 · Working Note</p>
+            <h1>The software layer around hard-tech</h1>
+            <p class="dek">Hard-tech teams need internal software for experiments, QA, telemetry, and operations before the work scatters across tools.</p>
             <div class="body">
-                <p>I pursued software engineering because it felt like frontier work. I wanted to build in a field where teams still had to invent the tools as they went.</p>
-                <p>Many old frontier technologies now run in the background. Wheels, taps, engines, electricity, antibiotics, and the internet reached that point because generations of builders made them reliable.</p>
-                <p>Biology now pulls my attention. Disease, aging, regeneration, cognition, food systems, diagnostics, and drug discovery still resist clean models. Researchers work across wet labs, patients, manufacturing, policy, and data systems.</p>
-                <p>Builders can help there. Better tools can shorten experiment loops, make evidence easier to compare, reduce manual review, and help researchers move from messy observations to testable hypotheses.</p>
-                <p>Computer science gave me a useful habit: break problems down, model systems, test assumptions, and build feedback loops. I can use that habit anywhere complexity blocks useful work.</p>
-                <p>AI changed the shape of software work. Domain judgment now carries more weight. You still need to understand the workflow, the evidence, the constraints, and the people who will rely on the tool.</p>
-                <p>I want to work near that edge.</p>
+                <p>A hardware-adjacent team may begin with spreadsheets, lab notes, device logs, Slack messages, vendor documents, and one-off scripts. As the work speeds up, the team starts making decisions faster than those tools can support.</p>
+                <p>I use internal software to keep the physical work visible. The team can see what they tested, what failed, what changed, which unit runs in the field, which evidence they trust, and which issue needs attention.</p>
+                <h2>Keep the first version serious</h2>
+                <p>A prototype can stay small and still carry the real workflow. It needs a real data model, clear user flows, traceable state, and a path from messy input to operational action.</p>
+                <p>For a scientific team, that may mean evidence grading and target mapping. For an energy team, device health and meter readings may matter first. An aerospace or robotics team may need QA evidence, subsystem readiness, and issue tracking.</p>
+                <h2>Build shared memory</h2>
+                <p>I pull context out of private notes and scattered conversations. A small technical team can share the same operating picture, trust the same evidence, and move without rebuilding context before each decision.</p>
+                <p>I like building that layer for complex real-world systems.</p>
             </div>
         </article>
         <footer class="footer"><a href="../">← Notes</a></footer>

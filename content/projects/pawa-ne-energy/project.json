@@ -7,12 +7,13 @@
   "featured": true,
   "image": "client-sustaingroup.webp",
   "imageAlt": "SustainGroup battery energy storage installation",
-  "description": "Smart metering platform for gas, power, and water utilities across African field conditions.",
-  "longDescription": "A smart metering solution designed for utility operators working across African field conditions. The platform supports reliable key utilities data capture, remote monitoring, and resilient transmission through mesh-networked devices.",
+  "description": "Smart-metering platform for gas, power, and water utilities, built for unreliable connectivity, field operations, and real-world deployment constraints.",
+  "longDescription": "A smart metering solution designed for utility operators working across African field conditions. The platform supports reliable utilities data capture, remote monitoring, and resilient transmission through mesh-networked devices so operators can keep visibility even when connectivity and deployment conditions are imperfect.",
   "client": {
     "name": "SustainGroup",
     "url": "https://sustaingroup.energy/"
   },
   "projectUrl": "https://www.nordicsemi.com/Nordic-news/2026/01/Smart-metering-solution-designed-for-use-across-Africa-captures-key-utilities-data",
+  "ctaLabel": "Read Product Breakdown",
   "tags": ["Smart metering", "Utilities data", "Mesh networking", "Field operations"]
 }

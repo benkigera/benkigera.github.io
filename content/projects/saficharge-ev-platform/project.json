@@ -7,12 +7,13 @@
   "featured": true,
   "image": "client-safivolt.avif",
   "imageAlt": "SafiVolt charging station with electric vehicles",
-  "description": "EV charging platform for drivers and operators with payments, monitoring, and uptime focus.",
-  "longDescription": "A charging experience for drivers and operators, designed around station discovery, session visibility, payment flow, and operational clarity. The work balanced product usability with the realities of energy infrastructure.",
+  "description": "EV charging platform for drivers and operators, combining payments, station monitoring, availability, and uptime workflows.",
+  "longDescription": "A charging experience for drivers and operators, designed around station discovery, session visibility, payment flow, station monitoring, availability, and operational clarity. The work balanced product usability with the realities of energy infrastructure and uptime-sensitive workflows.",
   "client": {
     "name": "SafiVolt",
     "url": "https://safivolt.africa/"
   },
   "projectUrl": "https://play.google.com/store/apps/details?id=app.safivolt.saficharge",
+  "ctaLabel": "View Platform Notes",
   "tags": ["EV charging", "Payments", "Station discovery", "Session monitoring"]
 }

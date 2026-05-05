@@ -7,8 +7,9 @@
   "featured": true,
   "image": "preview.webp",
   "imageAlt": "Parasite Therapeutics target mapping dashboard",
-  "description": "Personal research software for learning about parasite-derived molecules, protein libraries, target mapping, and therapeutic evidence review.",
-  "longDescription": "A personal research software project built for my own education and interest in parasite-derived therapeutic candidates. The product brings together protein libraries, disease-conditioned target mapping, evidence grading, pathway context, and exploratory research workflows for autoimmune therapeutic discovery.",
+  "description": "Personal evidence workspace for mapping autoimmune targets to parasite-derived molecules, ranking scientific confidence, and turning scattered research into experiment-ready briefs.",
+  "longDescription": "A personal research software project built for my own education and interest in parasite-derived therapeutic candidates. The workspace brings together protein libraries, disease-conditioned target mapping, evidence grading, pathway context, and exploratory research flows so scattered literature can become clearer hypotheses and experiment-ready briefs.",
   "projectUrl": "https://parasite-therapeutics.vercel.app/target-mapping",
+  "ctaLabel": "Explore Prototype",
   "tags": ["Personal research", "Protein library", "Target mapping", "Evidence grading"]
 }

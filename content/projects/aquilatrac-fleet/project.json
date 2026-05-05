@@ -7,12 +7,13 @@
   "featured": true,
   "image": "client-aquilatrac.webp",
   "imageAlt": "Aquilatrac fleet management homepage preview",
-  "description": "Fleet telemetry and tracking platform with real-time data, geofencing, and insights.",
-  "longDescription": "A fleet operations product for location-aware monitoring, alerting, and asset visibility. The core work involved turning raw telemetry into clear workflows for tracking vehicles and understanding exceptions quickly.",
+  "description": "Real-time fleet telemetry platform for tracking vehicles, geofencing operations, surfacing anomalies, and giving operators live visibility into distributed assets.",
+  "longDescription": "A fleet operations product for location-aware monitoring, alerting, and asset visibility. The core work involved turning raw telemetry into clear operator workflows for tracking vehicles, managing geofences, understanding exceptions quickly, and keeping distributed assets visible.",
   "client": {
     "name": "Aquilatrac",
     "url": "https://aquilatrac.co.ke/"
   },
   "projectUrl": "https://aquilatrac.co.ke/",
+  "ctaLabel": "View Product Breakdown",
   "tags": ["Geofencing", "Realtime tracking", "Fleet operations", "Maps"]
 }
