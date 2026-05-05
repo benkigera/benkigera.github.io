@@ -1,0 +1,18 @@
+{
+  "slug": "taifa-1-satellite-qa",
+  "name": "Taifa-1 Satellite QA",
+  "category": "Aerospace QA",
+  "year": "2023",
+  "order": 1,
+  "featured": true,
+  "image": "client-sayari-card.webp",
+  "imageAlt": "Satellite view of East Africa from SayariLabs",
+  "description": "Test orchestration and quality assurance for satellite subsystems and integration.",
+  "longDescription": "Quality assurance work for a satellite mission environment where reliability, traceability, and clear engineering handoff mattered. The work focused on test planning, subsystem checks, integration readiness, and practical documentation for launch-facing review cycles.",
+  "client": {
+    "name": "SayariLabs",
+    "url": "https://sayarilabs.ke/"
+  },
+  "projectUrl": "https://sayarilabs.ke/",
+  "tags": ["Test plans", "Subsystem QA", "Mission readiness", "Hardware-adjacent software"]
+}

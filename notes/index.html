@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | Benson Kigera</title>
+    <meta name="description" content="Notes and essays by Benson Kigera on real-world software systems, telemetry, and research product work.">
+    <link rel="icon" type="image/x-icon" href="../icon-512.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #f7f4ec;
+            --paper-soft: #fbf8ef;
+            --ink: #151824;
+            --muted: #60646f;
+            --line: #83806f;
+            --line-soft: rgba(21, 24, 36, 0.22);
+            --accent: #536455;
+            --accent-2: #9b4f3f;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.85), transparent 32rem),
+                var(--paper);
+            color: var(--ink);
+            font-family: "Manrope", sans-serif;
+            line-height: 1.5;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.42;
+            background-image:
+                linear-gradient(rgba(21, 24, 36, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 24, 36, 0.025) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        h1, h2, h3, p { margin-top: 0; }
+        h1, h2, h3, .mark { font-family: "Cormorant Garamond", serif; }
+
+        .shell {
+            width: min(1216px, calc(100% - 32px));
+            margin: 24px auto;
+            border: 1px solid var(--line);
+            background: rgba(251, 248, 239, 0.88);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 0 28px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .mark {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(18px, 4vw, 48px);
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            padding: 8px 0;
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            border-bottom-color: currentColor;
+        }
+
+        .hero {
+            padding: clamp(30px, 4.4vw, 54px) clamp(24px, 5vw, 72px) 28px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            margin-bottom: 18px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 760px;
+            margin-bottom: 18px;
+            font-size: clamp(3.7rem, 6.6vw, 5.8rem);
+            line-height: 0.92;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin-bottom: 0;
+            color: #30333d;
+            font-size: 1.05rem;
+        }
+
+        .notes {
+            display: grid;
+            gap: 0;
+        }
+
+        .note {
+            display: grid;
+            grid-template-columns: 210px 1fr 170px;
+            gap: 28px;
+            padding: 30px clamp(24px, 5vw, 72px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .note:last-child {
+            border-bottom: 0;
+        }
+
+        .note-meta {
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .note h2 {
+            margin-bottom: 12px;
+            font-size: clamp(1.9rem, 3.2vw, 2.85rem);
+            line-height: 0.95;
+        }
+
+        .note p {
+            max-width: 690px;
+            color: #30333d;
+        }
+
+        .note-action {
+            align-self: start;
+            justify-self: end;
+            padding: 10px 14px;
+            border: 1px solid var(--line);
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        .note-action:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 16px clamp(24px, 5vw, 72px);
+            border-top: 1px solid var(--line);
+            color: #30333d;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .footer a {
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer a:hover {
+            border-bottom-color: currentColor;
+        }
+
+        @media (max-width: 760px) {
+            .shell {
+                width: calc(100% - 18px);
+                margin: 9px auto;
+            }
+
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 18px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+                font-size: 0.8rem;
+            }
+
+            h1 {
+                font-size: clamp(3.4rem, 17vw, 4.8rem);
+            }
+
+            .note {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 26px 18px;
+            }
+
+            .note-action {
+                justify-self: start;
+            }
+
+            .footer {
+                flex-direction: column;
+                padding: 16px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <nav class="nav" aria-label="Primary navigation">
+            <a class="mark" href="../">BK.</a>
+            <div class="nav-links">
+                <a href="../#about">About</a>
+                <a href="../#work">Work</a>
+                <a href="../#experiments">Experiments</a>
+                <a href="./" aria-current="page">Writing</a>
+                <a href="../#contact">Contact</a>
+            </div>
+        </nav>
+
+        <main>
+            <header class="hero">
+                <p class="eyebrow">Writing / Notes / Ideas</p>
+                <h1>Field notes on building systems.</h1>
+                <p>Short essays and working notes on scientific software, telemetry, operational tools, and product decisions that have to survive outside perfect lab conditions.</p>
+            </header>
+
+            <section class="notes" aria-label="Notes">
+                <article class="note" id="the-frontier-never-disappears">
+                    <div class="note-meta">May 5, 2026 · Note</div>
+                    <div>
+                        <h2>The frontier never disappears</h2>
+                        <p>I used to worry about AI and the future of work, but now I keep returning to one conviction: the frontier never disappears. It only moves.</p>
+                    </div>
+                    <a class="note-action" href="the-frontier-never-disappears/">View Note →</a>
+                </article>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <span>© 2026 Benson Kigera</span>
+            <span><a href="../">Home</a> · <a href="../#work">Work</a> · <a href="mailto:benkigera@gmail.com">Contact</a></span>
+        </footer>
+    </div>
+</body>
+</html>

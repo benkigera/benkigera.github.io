@@ -1,0 +1,18 @@
+{
+  "slug": "gasfuli-for-business",
+  "name": "Gasfuli for Business",
+  "category": "Supply Chain Platform",
+  "year": "2026",
+  "order": 7,
+  "featured": true,
+  "image": "preview.webp",
+  "imageAlt": "Gasfuli LPG depot dashboard shown on a laptop",
+  "description": "Cloud-based platform giving LPG brands complete supply chain visibility.",
+  "longDescription": "Gasfuli is a cloud-based platform giving LPG brands complete supply chain visibility. It transforms cylinders into digital assets using QR identities for real-time traceability, then tracks refill, dispatch, and delivery to eliminate loss, mitigate unauthorized refills, and support total accountability and revenue assurance.",
+  "client": {
+    "name": "Truthfuli",
+    "url": "https://www.truthfuli.com/"
+  },
+  "projectUrl": "https://www.truthfuli.com/",
+  "tags": ["LPG operations", "QR traceability", "Supply chain visibility", "Revenue assurance"]
+}

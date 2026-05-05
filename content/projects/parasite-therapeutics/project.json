@@ -1,0 +1,18 @@
+{
+  "slug": "parasite-therapeutics",
+  "name": "Parasite Therapeutics",
+  "category": "Scientific Software",
+  "year": "2026",
+  "order": 0,
+  "featured": true,
+  "image": "preview.webp",
+  "imageAlt": "Parasite Therapeutics target mapping dashboard",
+  "description": "Research platform for parasite-derived molecules, protein libraries, target mapping, and therapeutic evidence review.",
+  "longDescription": "A scientific software platform for exploring parasite-derived therapeutic candidates. The product brings together protein libraries, disease-conditioned target mapping, evidence grading, pathway context, and research workflows for autoimmune therapeutic discovery.",
+  "client": {
+    "name": "Parasite Therapeutics",
+    "url": "https://parasite-therapeutics.vercel.app/"
+  },
+  "projectUrl": "https://parasite-therapeutics.vercel.app/target-mapping",
+  "tags": ["Protein library", "Target mapping", "Evidence grading", "Scientific workflow"]
+}

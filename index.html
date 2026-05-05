@@ -1,670 +1,1006 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ben Kigera | HCI & Full-Stack Engineer</title>
-    <meta name="description" content="Software Engineer with a passion for Human-Computer Interaction (HCI) and seamless user experiences.">
-    
-    <!-- Open Graph / Facebook -->
+    <title>Benson Kigera | Software for real-world systems</title>
+    <meta name="description" content="Product-minded software engineer building scientific software, energy platforms, telemetry systems, and hardware-adjacent tools.">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://benkigera.github.io/">
-    <meta property="og:title" content="Ben Kigera | HCI & Full-Stack Engineer">
-    <meta property="og:description" content="Bridging Technology & Humanity. Explore my work in HCI, IoT, and Full-Stack Engineering.">
+    <meta property="og:title" content="Benson Kigera | Software for real-world systems">
+    <meta property="og:description" content="Software for scientific, energy, telemetry, and hardware-adjacent systems.">
     <meta property="og:image" content="https://benkigera.github.io/og-image.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://benkigera.github.io/">
-    <meta name="twitter:title" content="Ben Kigera | HCI & Full-Stack Engineer">
-    <meta name="twitter:description" content="Bridging Technology & Humanity. Explore my work in HCI, IoT, and Full-Stack Engineering.">
+    <meta name="twitter:title" content="Benson Kigera | Software for real-world systems">
+    <meta name="twitter:description" content="Software for scientific, energy, telemetry, and hardware-adjacent systems.">
     <meta name="twitter:image" content="https://benkigera.github.io/og-image.jpg">
 
     <link rel="icon" type="image/x-icon" href="icon-512.ico">
-    
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f5f3ff',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            900: '#4c1d95',
-                        },
-                        safi: {
-                            400: '#4ade80', // Green for SafiCharge
-                            900: '#14532d'
-                        },
-                        discord: {
-                            bg: '#313338',
-                            text: '#dbdee1',
-                            spine: '#4e5058'
-                        }
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        scroll: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        }
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'scroll': 'scroll 20s linear infinite',
-                    },
-                }
-            }
-        }
-    </script>
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;900&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --paper: #f7f4ec;
+            --paper-soft: #fbf8ef;
+            --ink: #151824;
+            --muted: #60646f;
+            --line: #83806f;
+            --line-soft: rgba(21, 24, 36, 0.22);
+            --accent: #536455;
+            --accent-2: #9b4f3f;
+            --shadow: rgba(21, 24, 36, 0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: #050505;
-            color: #e5e5e5;
-            overflow-x: hidden;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        
-        /* Utilities */
-        .glass-panel {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .chat-bubble {
-            background: rgba(32, 44, 51, 0.85);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 0;
+            background:
+                radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.85), transparent 32rem),
+                linear-gradient(135deg, rgba(83, 100, 85, 0.08), transparent 24rem),
+                var(--paper);
+            color: var(--ink);
+            font-family: "Manrope", sans-serif;
+            line-height: 1.5;
         }
 
-        .text-gradient {
-            background: linear-gradient(to right, #fff, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* Canvas Background Layer */
-        #net-canvas {
+        body::before {
+            content: "";
             position: fixed;
-            top: 0;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.42;
+            background-image:
+                linear-gradient(rgba(21, 24, 36, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(21, 24, 36, 0.025) 1px, transparent 1px);
+            background-size: 28px 28px;
+            mix-blend-mode: multiply;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .shell {
+            width: min(1216px, calc(100% - 32px));
+            margin: 24px auto;
+            border: 1px solid var(--line);
+            background: rgba(251, 248, 239, 0.86);
+            box-shadow: 0 24px 70px var(--shadow);
+        }
+
+        .nav {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .mark, .stamp-main {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 700;
+        }
+
+        .mark {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            line-height: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: clamp(18px, 4vw, 48px);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
             left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            transform: scaleX(0);
+            transform-origin: center;
+            background: var(--ink);
+            transition: transform 180ms ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a[aria-current="page"]::after {
+            transform: scaleX(1);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
+            gap: 48px;
+            padding: clamp(30px, 4.2vw, 48px) clamp(28px, 5vw, 72px) clamp(16px, 2.8vw, 30px);
+        }
+
+        .eyebrow {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        h1, h2, h3, p { margin-top: 0; }
+
+        h1, h2, h3, .quote {
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        h1 {
+            max-width: 620px;
+            margin-bottom: 24px;
+            font-size: clamp(3.75rem, 5.9vw, 5.45rem);
+            line-height: 0.94;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+        }
+
+        .rule {
+            width: 128px;
+            height: 1px;
+            margin: 0 0 24px;
+            background: var(--ink);
+        }
+
+        .hero-copy {
+            max-width: 650px;
+            font-size: clamp(1rem, 1.5vw, 1.18rem);
+            color: #30333d;
+        }
+
+        .expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 28px;
+            margin-top: 32px;
+        }
+
+        .expertise span,
+        .meta-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #343842;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 1.7;
+            fill: none;
+        }
+
+        .profile-card {
+            border-left: 1px solid var(--line-soft);
+            padding-left: clamp(28px, 4vw, 44px);
+            align-self: center;
+        }
+
+        .monogram {
+            width: 70px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.85rem;
+            margin-bottom: 24px;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 12px;
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .profile-card p {
+            color: #30333d;
+        }
+
+        .profile-line {
+            height: 1px;
+            background: var(--line);
+            margin: 28px 0;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #30333d;
+            font-weight: 600;
+            font-size: 0.92rem;
+        }
+
+        .section {
+            padding: 0 clamp(28px, 5vw, 72px) 22px;
+        }
+
+        .section-head {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .section-head h2 {
+            margin: 0;
+            font-size: clamp(1.65rem, 2.7vw, 2.2rem);
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .section-head::after {
+            content: "";
+            height: 1px;
+            background: var(--line);
+        }
+
+        .section-link {
+            font-size: 0.88rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .project-card {
+            min-height: 540px;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 0;
+            padding: 0;
+            border: 1px solid var(--line);
+            background: rgba(251, 248, 239, 0.56);
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 42px rgba(21, 24, 36, 0.1);
+            background: rgba(255, 252, 244, 0.92);
+        }
+
+        .project-media {
+            aspect-ratio: 16 / 10;
+            min-height: 300px;
+            border-bottom: 1px solid var(--line-soft);
+            background: #e9e5da;
+        }
+
+        .project-media img {
             width: 100%;
             height: 100%;
-            z-index: -1;
-            pointer-events: none; /* Let clicks pass through to content */
+            min-height: 0;
+            object-fit: cover;
+            border: 0;
+            filter: saturate(0.72) contrast(0.94);
+            background: #e9e5da;
+        }
+
+        .project-media img[src$=".svg"] {
+            object-fit: contain;
+            padding: 28px;
+        }
+
+        .project-body {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            padding: 24px 26px 26px;
+        }
+
+        .project-body h3 {
+            margin-bottom: 10px;
+            font-size: clamp(2.2rem, 3vw, 3.05rem);
+            line-height: 0.9;
+            font-weight: 600;
+        }
+
+        .project-description {
+            margin: 14px 0 20px;
+            color: #30333d;
+            font-size: 0.98rem;
+        }
+
+        .project-links {
+            margin-top: auto;
+            display: grid;
+            gap: 6px;
+        }
+
+        .client-link {
+            width: fit-content;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--accent-2);
+        }
+
+        .button {
+            width: fit-content;
+            margin-top: 14px;
+            padding: 8px 14px;
+            border: 1px solid var(--line);
+            background: transparent;
+            color: var(--ink);
+            font: inherit;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 160ms ease, color 160ms ease;
+        }
+
+        .button:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .writing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            margin-bottom: 22px;
+        }
+
+        .note-card {
+            display: grid;
+            grid-template-columns: 98px 1fr;
+            min-height: 142px;
+            border: 1px solid var(--line);
+            background: rgba(251, 248, 239, 0.56);
+        }
+
+        .note-art {
+            display: grid;
+            place-items: center;
+            border-right: 1px solid var(--line-soft);
+            color: var(--accent);
+        }
+
+        .note-art svg {
+            width: 54px;
+            height: 54px;
+            stroke: currentColor;
+            stroke-width: 1.2;
+            fill: none;
+        }
+
+        .note-body {
+            padding: 18px 16px;
+        }
+
+        .note-body h3 {
+            margin-bottom: 6px;
+            font-size: 1.3rem;
+            line-height: 1.02;
+        }
+
+        .note-meta {
+            margin-bottom: 10px;
+            color: #444955;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .note-body p {
+            margin-bottom: 10px;
+            color: #30333d;
+            font-size: 0.8rem;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: 1.2fr 0.9fr 0.8fr 1fr;
+            gap: 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-panel {
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 22px;
+            padding: 28px clamp(22px, 3vw, 34px);
+            border-right: 1px solid var(--line-soft);
+        }
+
+        .footer-panel:last-child {
+            border-right: 0;
+        }
+
+        .footer h2 {
+            margin: 0;
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            line-height: 0.95;
+        }
+
+        .footer-title {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .footer-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            width: fit-content;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: currentColor;
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            display: inline-grid;
+            place-items: center;
+            flex: 0 0 auto;
+            color: var(--accent-2);
+        }
+
+        .contact-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            fill: none;
+        }
+
+        .contact-icon .fill-icon {
+            fill: currentColor;
+            stroke: none;
+        }
+
+        .footer-note {
+            margin: 0;
+            color: #30333d;
+            font-size: 0.9rem;
+        }
+
+        .footer-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .footer-status::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .copyright {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px clamp(28px, 5vw, 72px);
+            border-top: 1px solid var(--line);
+            font-size: 0.75rem;
+            color: #30333d;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(15, 17, 24, 0.54);
+            backdrop-filter: blur(6px);
+        }
+
+        .modal.is-open { display: flex; }
+
+        .modal-panel {
+            width: min(780px, 100%);
+            max-height: min(760px, calc(100vh - 48px));
+            overflow: auto;
+            border: 1px solid var(--line);
+            background: var(--paper-soft);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--line);
+            filter: saturate(0.76) contrast(0.96);
+        }
+
+        .modal-content {
+            padding: 28px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 12px;
+            font-size: 2.4rem;
+            line-height: 0.92;
+        }
+
+        .modal-content p {
+            color: #30333d;
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .status {
+            min-height: 120px;
+            display: grid;
+            place-items: center;
+            border: 1px dashed var(--line);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 980px) {
+            .hero,
+            .footer {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                border-left: 0;
+                padding-left: 0;
+            }
+
+            .project-grid,
+            .writing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-panel:nth-child(2n) {
+                border-right: 0;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .shell {
+                width: calc(100% - 18px);
+                margin: 9px auto;
+            }
+
+            .nav {
+                align-items: flex-start;
+                gap: 16px;
+                flex-direction: column;
+                padding: 18px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+                font-size: 0.8rem;
+            }
+
+            .hero,
+            .section,
+            .copyright {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .footer {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-panel {
+                min-height: auto;
+                border-right: 0;
+                border-bottom: 1px solid var(--line-soft);
+                padding: 22px 18px;
+            }
+
+            .footer-panel:last-child {
+                border-bottom: 0;
+            }
+
+            h1 {
+                font-size: clamp(3.45rem, 17vw, 4.7rem);
+            }
+
+            .section-head {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .section-head::after {
+                display: none;
+            }
+
+            .project-grid,
+            .writing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                min-height: 0;
+            }
+
+            .project-media {
+                min-height: 220px;
+            }
+
+            .project-description {
+                font-size: 0.88rem;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-500 selection:text-white">
-
-    <!-- Interactive Canvas Background -->
-    <canvas id="net-canvas"></canvas>
-
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Navbar -->
-        <nav class="flex justify-between items-center py-6 sticky top-0 z-50 backdrop-blur-md border-b border-white/5 -mx-4 px-4 sm:mx-0 sm:rounded-b-2xl">
-            <div class="text-xl font-black tracking-tighter text-white">
-                BK<span class="text-brand-500">.</span>
+<body>
+    <div class="shell">
+        <nav class="nav" aria-label="Primary navigation">
+            <a class="mark" href="#top" aria-label="Benson Kigera home">BK.</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#work" aria-current="page">Work</a>
+                <a href="#experiments">Experiments</a>
+                <a href="notes/">Writing</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#about" class="hover:text-white transition-colors">About</a>
-                <a href="#work" class="hover:text-white transition-colors">Work</a>
-                <a href="#feedback" class="hover:text-white transition-colors">Client Love</a>
-            </div>
-            <a href="#contact" class="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-gray-200 transition-colors">
-                Let's Talk
-            </a>
         </nav>
 
-        <!-- Hero / About Section -->
-        <header id="about" class="py-20 sm:py-28 flex flex-col md:flex-row items-center justify-between reveal active">
-            <div class="md:w-3/5 z-10">
-                <div class="inline-flex items-center px-3 py-1 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300 text-xs font-medium mb-6">
-                    <span class="flex h-2 w-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
-                    Open for Contracts
-                </div>
-                <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                    Bridging <br>
-                    <span class="text-gradient">Technology & Humanity</span>
-                </h1>
-                
-                <div class="prose prose-invert mb-8">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        I’m a <strong>Software Engineer</strong> with a strong passion for <span class="text-brand-400">Human-Computer Interaction (HCI)</span>. My mission is to bridge the gap between complex logic and human users by creating intuitive, accessible, and beautiful interfaces.
-                    </p>
-                    <p class="text-gray-400">
-                        My mantra: <em>“Technology is only as powerful as its ability to be understood and enjoyed by its users.”</em>
-                    </p>
-                </div>
-
-                <div class="flex flex-wrap gap-4">
-                    <a href="#work" class="px-7 py-3.5 bg-brand-600 text-white rounded-lg font-semibold hover:bg-brand-500 transition-all shadow-lg shadow-brand-500/25">
-                        View Case Studies
-                    </a>
-                    <a href="#feedback" class="px-7 py-3.5 glass-panel text-white rounded-lg font-semibold hover:bg-white/10 transition-all">
-                        Read Reviews
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Abstract Visual -->
-            <div class="md:w-2/5 mt-12 md:mt-0 relative flex justify-center">
-                <div class="relative w-64 h-64 sm:w-80 sm:h-80">
-                    <div class="absolute inset-0 border-2 border-brand-500/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                    <div class="absolute inset-4 border border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-48 h-48 bg-gray-800 rounded-full overflow-hidden border-4 border-gray-900 shadow-2xl relative z-10">
-                           <!-- Avatar SVG -->
-                           <svg viewBox="0 0 100 100" class="w-full h-full bg-zinc-900">
-                                <path d="M50 100 C 20 100 0 80 0 50 C 0 20 20 0 50 0 C 80 0 100 20 100 50" fill="#27272a"/>
-                                <circle cx="50" cy="40" r="18" fill="#e5e5e5"/>
-                                <path d="M15 100 Q 50 40 85 100" fill="#e5e5e5"/>
-                           </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Tech Marquee -->
-        <div class="py-10 border-y border-white/5 mb-24 overflow-hidden opacity-60">
-            <div class="flex animate-scroll whitespace-nowrap w-max">
-                <!-- Original Set -->
-                <div class="flex space-x-12 mx-6 text-gray-500 font-mono text-sm items-center">
-                    <span>FLUTTER</span> <span>•</span> <span>REACT</span> <span>•</span> <span>Go</span> <span>•</span> <span>NODE.JS</span> <span>•</span> <span>HCI</span> <span>•</span> <span>FIGMA</span> <span>•</span> <span>IOT</span> <span>•</span> <span>NEXT.JS</span> <span>•</span> <span>TAILWIND</span> <span>•</span>
-                </div>
-                <!-- Duplicate Set -->
-                <div class="flex space-x-12 mx-6 text-gray-500 font-mono text-sm items-center">
-                    <span>FLUTTER</span> <span>•</span> <span>REACT</span> <span>•</span> <span>NODE.JS</span> <span>•</span> <span>HCI</span> <span>•</span> <span>FIGMA</span> <span>•</span> <span>IOT</span> <span>•</span> <span>NEXT.JS</span> <span>•</span> <span>TAILWIND</span> <span>•</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Client Feedback Section -->
-        <section id="feedback" class="mb-32 reveal">
-            <div class="mb-12 text-center sm:text-left">
-                <h2 class="text-3xl font-bold text-white mb-2">Genuine Client Reactions</h2>
-                <p class="text-gray-400">Real screenshots from delivery days. No edits.</p>
-            </div>
-
-            <!-- Masonry Grid for Chats -->
-            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                
-                <!-- Feedback Card 1: Discord (New) -->
-                <div class="break-inside-avoid rounded-md p-3 bg-discord-bg border border-black/20 hover:border-brand-500/30 transition-colors font-sans relative group">
-                    <!-- Reply Context Line -->
-                    <div class="absolute left-5 top-4 w-8 h-3 border-l-2 border-t-2 border-discord-spine rounded-tl-lg opacity-60"></div>
-                    
-                    <!-- Reply Text -->
-                    <div class="flex items-center gap-2 text-[11px] text-gray-400 mb-1 pl-12 opacity-90">
-                        <div class="w-4 h-4 rounded-full bg-brand-600 flex items-center justify-center text-[8px] text-white">
-                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
-                        </div>
-                        <span class="text-brand-400 font-bold hover:underline cursor-pointer">@benkigera</span>
-                        <span class="truncate max-w-[150px]">New Update: • Fixed bug with deleting the last scheduler item.</span>
-                    </div>
-
-                    <!-- Main Message -->
-                    <div class="flex gap-3 mt-1 hover:bg-black/10 p-2 -ml-2 rounded transition-colors">
-                        <div class="w-10 h-10 rounded-full bg-gray-600 flex-shrink-0 overflow-hidden mt-0.5">
-                             <img src="https://api.dicebear.com/9.x/initials/svg?seed=NK&backgroundColor=1e1e1e" alt="NK">
-                        </div>
-                        <div class="leading-snug">
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-white font-medium text-sm hover:underline cursor-pointer">Ngaruiya Kamau</span>
-                                <span class="text-[10px] text-gray-500 font-medium">09/18/2024 9:26 AM</span>
-                            </div>
-                            <p class="text-discord-text text-[15px] mt-0.5 font-light">Good Job bro 👏🏿👏🏿👏🏿 . I have tested the Android and IOS</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feedback Card 2: Greg -->
-                <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
-                    <div class="flex items-center gap-3 border-b border-white/5 pb-2">
-                        <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center text-xs font-bold text-white overflow-hidden">
-                            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Greg" alt="Greg" class="w-full h-full">
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-gray-200">Greg</p>
-                        </div>
-                    </div>
-                    <div class="bg-[#0b141a] p-3 rounded-lg rounded-tl-none border border-white/5 mt-3">
-                        <p class="text-white text-sm font-medium">Great demo Ben! 🙏</p>
-                        <p class="text-[10px] text-gray-500 text-right mt-1">3:33 PM</p>
-                    </div>
-                </div>
-
-                <!-- Feedback Card 3: Ngaruiya Kamau (WhatsApp) -->
-                <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
-                    <div class="flex items-center gap-3 border-b border-white/5 pb-2">
-                        <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-bold text-white">N</div>
-                        <div>
-                            <p class="text-sm font-bold text-indigo-400">Ngaruiya Kamau</p>
-                        </div>
-                    </div>
-                    <div class="bg-[#0b141a] p-3 rounded-lg rounded-tl-none border border-white/5 mt-3">
-                        <p class="text-gray-300 text-sm mb-2">Yo... Looking So Good. I love it</p>
-                        <div class="w-full h-20 bg-gray-800 rounded flex items-center justify-center mb-2 relative overflow-hidden group">
-                             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 group-hover:animate-[shimmer_1s_infinite]"></div>
-                             <span class="text-xs text-gray-500">▶️ Login UI Demo</span>
-                        </div>
-                        <p class="text-white font-medium text-sm">Bro you're a NINJA 🥷</p>
-                        <p class="text-[10px] text-gray-500 text-right mt-1">9:56 AM</p>
-                    </div>
-                </div>
-
-                <!-- Feedback Card 4: Timothy Hardware (Full Context) -->
-                <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
-                    <div class="flex items-center gap-3 border-b border-white/5 pb-2">
-                        <div class="w-8 h-8 rounded-full bg-orange-600 flex items-center justify-center text-xs font-bold text-white">T</div>
-                        <div>
-                            <p class="text-sm font-bold text-orange-400">Timothy Hardware</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2 mt-3">
-                        <!-- Message 1 -->
-                        <div class="bg-[#0b141a] p-2 rounded-lg rounded-tl-none border border-white/5 max-w-[90%]">
-                            <p class="text-gray-300 text-sm">hiyo CIU ni wewe ulifanya?</p>
-                        </div>
-                        <!-- Context Reply -->
-                        <div class="flex justify-end">
-                            <div class="bg-[#005c4b] p-2 rounded-lg rounded-tr-none border border-white/5 max-w-[90%]">
-                                <div class="bg-black/20 rounded p-1 mb-1 border-l-2 border-orange-500">
-                                    <p class="text-[10px] text-orange-400 font-bold">Timothy Hardware</p>
-                                    <p class="text-[10px] text-gray-300 truncate">hiyo CIU ni wewe ulifanya?</p>
-                                </div>
-                                <p class="text-white text-sm">Eeeh ...</p>
-                                <div class="flex justify-end items-center gap-1">
-                                    <p class="text-[10px] text-white/70">5:47 PM</p>
-                                    <span class="text-blue-400 text-[10px]">✓✓</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Message 2 -->
-                        <div class="bg-[#0b141a] p-2 rounded-lg rounded-tl-none border border-white/5 max-w-[90%]">
-                            <p class="text-gray-300 text-sm">damn. inakaa fiti sana.</p>
-                        </div>
-                        <div class="bg-[#0b141a] p-2 rounded-lg rounded-tl-none border border-white/5 max-w-[90%]">
-                            <p class="text-white text-sm font-bold">kazi mzuri bwana 🤝</p>
-                            <p class="text-[10px] text-gray-500 text-right mt-1">5:48 PM</p>
-                        </div>
-                         <!-- Final Reply -->
-                         <div class="flex justify-end">
-                            <div class="bg-[#005c4b] p-2 rounded-lg rounded-tr-none border border-white/5 max-w-[90%]">
-                                <div class="bg-black/20 rounded p-1 mb-1 border-l-2 border-orange-500">
-                                    <p class="text-[10px] text-orange-400 font-bold">Timothy Hardware</p>
-                                    <p class="text-[10px] text-gray-300 truncate">kazi mzuri bwana</p>
-                                </div>
-                                <p class="text-white text-sm">Asante 🙏🏾</p>
-                                <div class="flex justify-end items-center gap-1">
-                                    <p class="text-[10px] text-white/70">5:48 PM</p>
-                                    <span class="text-blue-400 text-[10px]">✓✓</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feedback Card 5: Team Love -->
-                <div class="chat-bubble rounded-2xl p-4 break-inside-avoid hover:border-brand-500/30 transition-colors">
-                    <div class="flex items-center gap-3 border-b border-white/5 pb-2">
-                        <div class="w-8 h-8 rounded-full bg-green-600 flex items-center justify-center text-xs font-bold text-white">J</div>
-                        <div>
-                            <p class="text-sm font-bold text-green-400">Joseph Wamicha</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Message -->
-                    <div class="bg-[#0b141a] p-3 rounded-lg rounded-tl-none border border-white/5 mt-3">
-                        <p class="text-gray-300 text-sm">Wow Ben you've done an incredible job.</p>
-                        <p class="text-gray-300 text-sm mt-1">My friends here love it too! 🔥</p>
-                        <p class="text-[10px] text-gray-500 text-right mt-1">4:08 PM</p>
-                    </div>
-
-                    <!-- Context -->
-                    <div class="ml-4 border-l-2 border-brand-500 pl-3 py-1 mt-2 opacity-70">
-                        <p class="text-xs text-brand-400 font-bold">Lawrence Backend</p>
-                        <p class="text-xs text-gray-500">Nice work @benkigera!</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Work Section (Bento Grid) -->
-        <section id="work" class="mb-32">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+        <main id="top">
+            <header id="about" class="hero">
                 <div>
-                    <h2 class="text-3xl font-bold text-white mb-2">Selected Works</h2>
-                    <p class="text-gray-400">Projects where HCI meets Backend Performance.</p>
-                </div>
-                <a href="https://github.com/benkigera/" target="_blank" class="text-brand-400 hover:text-white transition-colors text-sm font-medium mt-4 md:mt-0 flex items-center">
-                    View Github <span class="ml-1">→</span>
-                </a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                
-                <!-- SafiCharge -->
-                <div class="group md:col-span-12 lg:col-span-8 glass-panel rounded-2xl p-8 hover:border-safi-400/40 transition-all cursor-pointer relative overflow-hidden reveal" onclick="openModal('saficharge')">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <!-- EV Icon -->
-                        <svg class="w-32 h-32 text-safi-400" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"></path><path d="M7 20h10v2H7z" fill="none"></path></svg>
-                    </div>
-                    <span class="px-3 py-1 bg-safi-900/50 text-safi-400 rounded-full text-xs font-bold border border-safi-400/20 mb-4 inline-block">EV Infrastructure</span>
-                    <h3 class="text-2xl font-bold text-white mb-2">SafiCharge Network</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed max-w-lg">
-                        Kenya's first nationwide EV fast-charging network. Built the mobile app enabling drivers to locate stations, monitor charging in real-time, and filter by plug type/speed.
-                    </p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="text-xs font-mono px-2 py-1 rounded bg-gray-800 text-gray-300">Real-time Map</span>
-                        <span class="text-xs font-mono px-2 py-1 rounded bg-gray-800 text-gray-300">Live Session Monitor</span>
-                        <span class="text-xs font-mono px-2 py-1 rounded bg-gray-800 text-gray-300">Payment Gateway</span>
+                    <p class="eyebrow">Product Engineer / Software Engineer</p>
+                    <h1>Software for real-world systems.</h1>
+                    <div class="rule"></div>
+                    <p class="hero-copy">I build scientific software, energy platforms, telemetry systems, and hardware-adjacent tools that operate in the real world: reliably, at scale, and with purpose.</p>
+                    <div class="expertise" aria-label="Areas of work">
+                        <span><svg class="icon" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.2 9.1A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.9L14 9V3"/><path d="M8 16h8"/></svg>Scientific Software</span>
+                        <span><svg class="icon" viewBox="0 0 24 24"><path d="m13 2-8 12h7l-1 8 8-12h-7z"/></svg>Energy Systems</span>
+                        <span><svg class="icon" viewBox="0 0 24 24"><path d="M6.5 8.5a5 5 0 0 0 0 7M17.5 8.5a5 5 0 0 1 0 7"/><path d="M9.5 10.5a2 2 0 0 0 0 3M14.5 10.5a2 2 0 0 1 0 3"/><circle cx="12" cy="12" r="1"/></svg>Telemetry & IoT</span>
+                        <span><svg class="icon" viewBox="0 0 24 24"><path d="M4.5 16.5 3 21l4.5-1.5L19 8l-3-3z"/><path d="m14 6 4 4"/><path d="M12 3h7v7"/></svg>Aerospace QA</span>
                     </div>
                 </div>
 
-                <!-- Pawa Ne -->
-                <div class="group md:col-span-6 lg:col-span-4 glass-panel rounded-2xl p-8 hover:border-brand-500/40 transition-all cursor-pointer reveal" onclick="openModal('pawa_ne')">
-                    <span class="px-3 py-1 bg-brand-900/50 text-brand-300 rounded-full text-xs font-bold border border-brand-500/20 mb-4 inline-block">Fintech + IoT</span>
-                    <h3 class="text-xl font-bold text-white mb-2">Pawa Ne Energy</h3>
-                    <p class="text-gray-400 mb-4 text-sm">
-                        Offline-first delta-sync architecture for rural smart meters. 99.7% billing integrity with M-Pesa integration.
-                    </p>
-                    <div class="mt-auto flex items-center text-brand-400 text-sm font-bold">
-                        View on Play Store <span class="ml-2">→</span>
-                    </div>
-                </div>
+                <aside class="profile-card">
+                    <div class="monogram">BK</div>
+                    <h2>Benson Kigera</h2>
+                    <p>Product-minded engineer with a systems approach. I enjoy working at the intersection of software, hardware, and science to solve problems that matter.</p>
+                    <div class="profile-line"></div>
+                    <p class="location"><svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Nairobi, Kenya</p>
+                    <p>Available for meaningful work.</p>
+                </aside>
+            </header>
 
-                <!-- Aquilatrac -->
-                <div class="group md:col-span-6 glass-panel rounded-2xl p-8 hover:border-brand-500/40 transition-all cursor-pointer reveal" onclick="openModal('aquilatrac')">
-                    <span class="px-3 py-1 bg-blue-900/40 text-blue-300 rounded-full text-xs font-bold border border-blue-500/20 mb-4 inline-block">SaaS + Logistics</span>
-                    <h3 class="text-xl font-bold text-white mb-2">Aquilatrac Fleet</h3>
-                    <p class="text-gray-400 mb-4 text-sm">
-                        Real-time geofencing engine processing sub-second alerts for hundreds of assets.
-                    </p>
-                    <p class="text-3xl font-bold text-green-400">30% Lift</p>
-                    <p class="text-xs text-gray-500">Client Retention</p>
+            <section id="work" class="section">
+                <div class="section-head">
+                    <h2>Selected Work</h2>
+                    <a class="section-link" href="https://github.com/benkigera/" target="_blank" rel="noreferrer">View all work&nbsp; →</a>
                 </div>
-
-                <!-- Taifa-1 -->
-                <div class="group md:col-span-6 glass-panel rounded-2xl p-8 hover:border-brand-500/40 transition-all cursor-pointer reveal" onclick="openModal('taifa_1')">
-                    <span class="px-3 py-1 bg-yellow-900/40 text-yellow-300 rounded-full text-xs font-bold border border-yellow-500/20 mb-4 inline-block">Aerospace QA</span>
-                    <h3 class="text-xl font-bold text-white mb-2">Taifa-1 Satellite</h3>
-                    <p class="text-gray-400 mb-4 text-sm">
-                        QA Lead for Kenya's first operational satellite. Authored the engineering playbook for zero-defect launch.
-                    </p>
+                <div id="project-grid" class="project-grid">
+                    <div class="status">Loading project folders...</div>
                 </div>
-                
-            </div>
-        </section>
+            </section>
 
-        <!-- Contact / CTA Section -->
-        <section id="contact" class="mb-20 reveal">
-            <div class="text-center max-w-2xl mx-auto">
-                <h2 class="text-4xl font-bold text-white mb-6">Ready to ship?</h2>
-                <div class="bg-brand-900/20 border border-brand-500/30 rounded-2xl p-8 mb-10">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="text-left">
-                            <p class="text-xs text-brand-300 uppercase tracking-wider font-semibold">Consulting Rate</p>
-                            <p class="text-3xl font-bold text-white">$25<span class="text-lg text-gray-400 font-normal">/hr</span></p>
+            <section id="experiments" class="section">
+                <div class="section-head">
+                    <h2>Writing / Notes / Ideas</h2>
+                    <a class="section-link" href="notes/">View all writing&nbsp; →</a>
+                </div>
+                <div id="writing" class="writing-grid">
+                    <article class="note-card">
+                        <div class="note-art"><svg viewBox="0 0 64 64"><path d="M10 46c14-1 25-7 33-18"/><path d="M31 17h16v16"/><path d="m47 17-28 28"/><path d="M14 18c6 0 10 4 10 10"/><path d="M14 28h10"/></svg></div>
+                        <div class="note-body">
+                            <h3>The frontier never disappears</h3>
+                            <div class="note-meta">May 5, 2026 · Note</div>
+                            <p>Why AI does not end useful work, and why biology feels like one of the next great frontiers.</p>
+                            <a href="notes/the-frontier-never-disappears/">View Note →</a>
                         </div>
-                        <div class="flex items-center justify-end">
-                            <a href="mailto:benkigera@gmail.com" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors shadow-lg hover:shadow-white/20">
-                                benkigera@gmail.com
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer id="contact">
+            <div class="footer">
+                <div class="footer-panel">
+                    <h2>Let's build systems<br>that make a difference.</h2>
+                    <div>
+                        <a class="button" href="mailto:benkigera@gmail.com">Get in Touch</a>
+                    </div>
+                </div>
+                <div class="footer-panel">
+                    <div>
+                        <p class="footer-title">Contact</p>
+                        <div class="footer-links">
+                            <a href="mailto:benkigera@gmail.com" aria-label="Email Benson Kigera">
+                                <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+                                <span>Email</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/benson-kigera-b6a95b142/" target="_blank" rel="noreferrer" aria-label="Open Benson Kigera on LinkedIn">
+                                <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 10v8"/><path d="M7 7.2v.1"/><path d="M11 18v-8"/><path d="M11 13.5c0-2.2 1.2-3.5 3.1-3.5 1.8 0 2.9 1.2 2.9 3.4V18"/></svg></span>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://x.com/benkigera" target="_blank" rel="noreferrer" aria-label="Open Benson Kigera on X">
+                                <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 5 14 14"/><path d="m19 5-5.3 6.2"/><path d="M10.2 13.8 5 19"/></svg></span>
+                                <span>X</span>
+                            </a>
+                            <a href="https://github.com/benkigera" target="_blank" rel="noreferrer" aria-label="Open Benson Kigera on GitHub">
+                                <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 19c-4.5 1.5-4.5-2.5-6-3"/><path d="M15 22v-3.9c0-1.1.1-1.5-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 3.4 5.4 3.7 5.4 3.7a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 10.1c0 4.6 2.7 5.7 5.5 6-.6.5-.6 1.2-.5 2V22"/></svg></span>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
                 </div>
+                <div class="footer-panel">
+                    <div>
+                        <p class="footer-title">Site</p>
+                        <nav class="footer-links" aria-label="Footer navigation">
+                            <a href="#about">About</a>
+                            <a href="#work">Work</a>
+                            <a href="#experiments">Experiments</a>
+                            <a href="notes/">Writing</a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="footer-panel">
+                    <div>
+                        <p class="footer-title">Status</p>
+                        <p class="footer-note">Product engineering for scientific, energy, telemetry, and field systems.</p>
+                    </div>
+                    <span class="footer-status">Available for meaningful work</span>
+                </div>
             </div>
-        </section>
-
-        <footer class="text-center py-8 border-t border-white/5 text-xs text-gray-600">
-            <p>&copy; 2025 Benson Kigera. Built with ☕ and Code.</p>
+            <div class="copyright">
+                <span>© 2026 Benson Kigera</span>
+                <span><a href="#about">About</a> &nbsp;&nbsp; <a href="#work">Work</a> &nbsp;&nbsp; <a href="notes/">Writing</a> &nbsp;&nbsp; <a href="#contact">Contact</a></span>
+            </div>
         </footer>
     </div>
 
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-black/90 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop"></div>
-        <div class="fixed inset-0 z-10 overflow-y-auto">
-            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-                <div class="relative transform overflow-hidden rounded-2xl bg-gray-900 border border-gray-800 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-2xl opacity-0 translate-y-4 scale-95" id="modal-panel">
-                    <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                        <h3 class="text-2xl font-bold leading-6 text-white mb-1" id="modal-title">Project Title</h3>
-                        <div class="mt-4">
-                            <div id="modal-details" class="text-gray-300 space-y-3 text-sm leading-relaxed"></div>
-                        </div>
-                    </div>
-                    <div class="bg-gray-800/50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <a href="#" id="modal-link" target="_blank" class="inline-flex w-full justify-center rounded-md bg-brand-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-500 sm:ml-3 sm:w-auto transition-all">View Project</a>
-                        <button type="button" onclick="closeModal()" class="mt-3 inline-flex w-full justify-center rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-gray-300 ring-1 ring-inset ring-gray-600 hover:bg-gray-800 sm:mt-0 sm:w-auto transition-all">Close</button>
-                    </div>
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <article class="modal-panel">
+            <img id="modal-image" class="modal-image" src="" alt="">
+            <div class="modal-content">
+                <p id="modal-kicker" class="eyebrow"></p>
+                <h2 id="modal-title"></h2>
+                <p id="modal-description"></p>
+                <div id="modal-tags" class="expertise"></div>
+                <div class="modal-actions">
+                    <a id="modal-client" class="button" href="#" target="_blank" rel="noreferrer">View Client</a>
+                    <a id="modal-link" class="button" href="#" target="_blank" rel="noreferrer">View Project</a>
+                    <button class="button" type="button" id="modal-close">Close</button>
                 </div>
             </div>
-        </div>
+        </article>
     </div>
 
     <script>
-        // --- Interactive Net Background Script ---
-        const canvas = document.getElementById('net-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let points = [];
-        const mouse = { x: -1000, y: -1000 }; // Init off-screen
+        const manifestPath = "content/projects/index.json";
+        const grid = document.getElementById("project-grid");
+        const modal = document.getElementById("modal");
+        const modalImage = document.getElementById("modal-image");
+        const modalKicker = document.getElementById("modal-kicker");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDescription = document.getElementById("modal-description");
+        const modalTags = document.getElementById("modal-tags");
+        const modalClient = document.getElementById("modal-client");
+        const modalLink = document.getElementById("modal-link");
+        const modalClose = document.getElementById("modal-close");
+        let projectData = [];
 
-        // Config
-        const spacing = 60; // Grid spacing
-        const connectionDist = 90;
-        const mouseDist = 150;
-        const mouseForce = 20; // How hard the mouse pushes
-        const returnForce = 0.05; // How fast points snap back
+        async function loadProjects() {
+            try {
+                const manifestResponse = await fetch(manifestPath, { cache: "no-store" });
+                if (!manifestResponse.ok) throw new Error("Project manifest not found");
+                const manifest = await manifestResponse.json();
+                const folders = Array.isArray(manifest.projects) ? manifest.projects : [];
+                const projects = await Promise.all(folders.map(async (folder) => {
+                    const response = await fetch(`content/projects/${folder}/project.json`, { cache: "no-store" });
+                    if (!response.ok) throw new Error(`Missing project.json for ${folder}`);
+                    const project = await response.json();
+                    return {
+                        ...project,
+                        slug: project.slug || folder,
+                        folder,
+                        image: resolveProjectPath(folder, project.image)
+                    };
+                }));
 
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            points = [];
-            // Create Grid Points
-            for (let x = 0; x < width + spacing; x += spacing) {
-                for (let y = 0; y < height + spacing; y += spacing) {
-                    points.push({
-                        x: x, y: y,         // Current position
-                        ox: x, oy: y,       // Original position
-                        vx: 0, vy: 0        // Velocity
-                    });
-                }
+                projectData = projects
+                    .filter((project) => project.featured !== false)
+                    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+                renderProjects(projectData);
+            } catch (error) {
+                grid.innerHTML = `<div class="status">Project folders could not be loaded. Run a local server or deploy to GitHub Pages.</div>`;
+                console.error(error);
             }
         }
 
-        window.addEventListener('resize', resize);
-        window.addEventListener('mousemove', e => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+        function resolveProjectPath(folder, path) {
+            if (!path) return "";
+            if (/^https?:\/\//.test(path) || path.startsWith("/")) return path;
+            return `content/projects/${folder}/${path}`;
+        }
+
+        function renderProjects(projects) {
+            if (!projects.length) {
+                grid.innerHTML = `<div class="status">No featured projects yet.</div>`;
+                return;
+            }
+
+            grid.innerHTML = projects.map((project) => `
+                <article class="project-card" data-project-card="${project.slug}">
+                    <div class="project-media">
+                        <img src="${project.image}" alt="${escapeHtml(project.imageAlt || project.name)}" loading="lazy">
+                    </div>
+                    <div class="project-body">
+                        <h3>${escapeHtml(project.name)}</h3>
+                        <span class="meta-chip">${iconFor(project.category)}${escapeHtml(project.category || "Project")}</span>
+                        <p class="project-description">${escapeHtml(project.description || "")}</p>
+                        <div class="project-links">
+                            ${project.client && project.client.url ? `<a class="client-link" href="${project.client.url}" target="_blank" rel="noreferrer" onclick="event.stopPropagation()">Client: ${escapeHtml(project.client.name)}</a>` : ""}
+                        </div>
+                        <button class="button" type="button" data-project-button="${project.slug}">View Case Study</button>
+                    </div>
+                </article>
+            `).join("");
+
+            document.querySelectorAll("[data-project-card]").forEach((element) => {
+                element.addEventListener("click", () => openProject(element.dataset.projectCard));
+            });
+
+            document.querySelectorAll("[data-project-button]").forEach((element) => {
+                element.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    openProject(element.dataset.projectButton);
+                });
+                element.addEventListener("keydown", (event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        openProject(element.dataset.projectButton);
+                    }
+                });
+            });
+        }
+
+        function openProject(slug) {
+            const project = projectData.find((item) => item.slug === slug);
+            if (!project) return;
+
+            modalImage.src = project.image;
+            modalImage.alt = project.imageAlt || project.name;
+            modalKicker.textContent = [project.category, project.year].filter(Boolean).join(" / ");
+            modalTitle.textContent = project.name;
+            modalDescription.textContent = project.longDescription || project.description || "";
+            modalTags.innerHTML = (project.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+
+            setAction(modalClient, project.client && project.client.url, project.client ? `View ${project.client.name}` : "View Client");
+            setAction(modalLink, project.projectUrl, project.projectUrl ? `View ${projectLinkLabel(project.projectUrl)}` : "View Project");
+
+            modal.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+        }
+
+        function setAction(element, url, label) {
+            element.textContent = label;
+            if (url) {
+                element.href = url;
+                element.style.display = "";
+            } else {
+                element.style.display = "none";
+            }
+        }
+
+        function projectLinkLabel(url) {
+            try {
+                const host = new URL(url).hostname.replace(/^www\./, "");
+                if (host === "play.google.com") return "Play Store app";
+                return host;
+            } catch {
+                return "Project";
+            }
+        }
+
+        function closeProject() {
+            modal.classList.remove("is-open");
+            document.body.style.overflow = "";
+        }
+
+        function iconFor(category = "") {
+            const key = category.toLowerCase();
+            if (key.includes("energy")) return '<svg class="icon" viewBox="0 0 24 24"><path d="m13 2-8 12h7l-1 8 8-12h-7z"/></svg>';
+            if (key.includes("telemetry") || key.includes("iot") || key.includes("fleet")) return '<svg class="icon" viewBox="0 0 24 24"><path d="M6.5 8.5a5 5 0 0 0 0 7M17.5 8.5a5 5 0 0 1 0 7"/><path d="M9.5 10.5a2 2 0 0 0 0 3M14.5 10.5a2 2 0 0 1 0 3"/><circle cx="12" cy="12" r="1"/></svg>';
+            if (key.includes("aerospace") || key.includes("satellite")) return '<svg class="icon" viewBox="0 0 24 24"><path d="M4.5 16.5 3 21l4.5-1.5L19 8l-3-3z"/><path d="m14 6 4 4"/><path d="M12 3h7v7"/></svg>';
+            if (key.includes("science") || key.includes("experiment")) return '<svg class="icon" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.2 9.1A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.9L14 9V3"/><path d="M8 16h8"/></svg>';
+            return '<svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+        }
+
+        function escapeHtml(value) {
+            return String(value || "").replace(/[&<>"']/g, (char) => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            }[char]));
+        }
+
+        modalClose.addEventListener("click", closeProject);
+        modal.addEventListener("click", (event) => {
+            if (event.target === modal) closeProject();
+        });
+        window.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeProject();
         });
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            
-            // Style for the "Net"
-            ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)'; // Brand color (purple) low opacity
-            ctx.fillStyle = 'rgba(139, 92, 246, 0.4)';
-            
-            points.forEach(p => {
-                // 1. Physics: Mouse Repulsion
-                const dx = mouse.x - p.x;
-                const dy = mouse.y - p.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < mouseDist) {
-                    const angle = Math.atan2(dy, dx);
-                    const force = (mouseDist - dist) / mouseDist; 
-                    const pushX = Math.cos(angle) * force * mouseForce;
-                    const pushY = Math.sin(angle) * force * mouseForce;
-                    p.vx -= pushX;
-                    p.vy -= pushY;
-                }
-
-                // 2. Physics: Spring back to original position
-                const homeDx = p.ox - p.x;
-                const homeDy = p.oy - p.y;
-                p.vx += homeDx * returnForce;
-                p.vy += homeDy * returnForce;
-
-                // 3. Friction (dampening)
-                p.vx *= 0.90;
-                p.vy *= 0.90;
-
-                // 4. Update position
-                p.x += p.vx;
-                p.y += p.vy;
-
-                // Draw Point
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
-                ctx.fill();
-            });
-
-            // Draw Connections (The Net)
-            ctx.beginPath();
-            for (let i = 0; i < points.length; i++) {
-                const p1 = points[i];
-                for (let j = i + 1; j < points.length; j++) {
-                    const p2 = points[j];
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const dist = dx*dx + dy*dy; // Squared distance is faster
-
-                    if (dist < connectionDist * connectionDist) {
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
-                    }
-                }
-            }
-            ctx.stroke();
-
-            requestAnimationFrame(animate);
-        }
-
-        resize();
-        animate();
-
-        // --- Modal Logic ---
-        const modal = document.getElementById('modal');
-        const backdrop = document.getElementById('modal-backdrop');
-        const panel = document.getElementById('modal-panel');
-        
-        const projects = {
-            pawa_ne: { 
-                title: "Pawa Ne Energy", 
-                html: `
-                    <p class="mb-4">A comprehensive IoT solution for prepaid energy billing.</p>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-400">
-                        <li>Bridged hardware & software for rural smart meters.</li>
-                        <li>Designed an offline-first architecture ensuring 0% data loss in 2G areas.</li>
-                        <li>Integrated iPay/M-Pesa for instant token vending.</li>
-                    </ul>
-                `,
-                link: "https://play.google.com/store/apps/details?id=energy.sustaintechnologies.pawane&hl=en"
-            },
-            saficharge: { 
-                title: "SafiCharge EV Network", 
-                html: `
-                    <p class="mb-4">Kenya's first nationwide EV fast-charging network and mobile application.</p>
-                    <ul class="list-disc pl-5 space-y-2 text-gray-400">
-                        <li><strong>Real-time Availability:</strong> Check status of chargers live via WebSocket.</li>
-                        <li><strong>Session Monitoring:</strong> Drivers track charging speed, duration, and cost in real-time.</li>
-                        <li><strong>Smart Filtering:</strong> Filter map by plug type (CSS/CHAdeMO) and charging speed.</li>
-                        <li><strong>Guided Experience:</strong> 'Start Charge' wizard to assist new EV drivers.</li>
-                    </ul>
-                `,
-                link: "#"
-            },
-            aquilatrac: { 
-                title: "Aquilatrac Logistics", 
-                html: `<p>SaaS platform for fleet management. The client needed real-time alerts for geofence entry/exit. Traditional spatial queries were too slow. I implemented a geohash-based lookup system in Firebase Cloud Functions that reduced alert latency from 4s to <500ms.</p>`,
-                link: "#"
-            },
-            taifa_1: {
-                title: "Taifa-1 Satellite QA",
-                html: `<p>As QA Lead, I established the testing framework for Kenya's first satellite. This involved writing automated test scripts for mission-critical embedded systems where failure was not an option.</p>`,
-                link: "#"
-            }
-        };
-
-        function openModal(id) {
-            const p = projects[id];
-            if(!p) return;
-
-            document.getElementById('modal-title').innerText = p.title;
-            document.getElementById('modal-details').innerHTML = p.html;
-            
-            const linkBtn = document.getElementById('modal-link');
-            if(p.link && p.link !== "#") {
-                linkBtn.classList.remove('hidden');
-                linkBtn.href = p.link;
-            } else {
-                linkBtn.classList.add('hidden');
-            }
-
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                backdrop.classList.remove('opacity-0');
-                panel.classList.remove('opacity-0', 'translate-y-4', 'scale-95');
-            }, 10);
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            backdrop.classList.add('opacity-0');
-            panel.classList.add('opacity-0', 'translate-y-4', 'scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
-
-        // Reveal Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        loadProjects();
     </script>
 </body>
 </html>

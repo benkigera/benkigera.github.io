@@ -1,0 +1,18 @@
+{
+  "slug": "pawa-ne-energy",
+  "name": "Pawa Ne Energy",
+  "category": "Energy Platform",
+  "year": "2024",
+  "order": 2,
+  "featured": true,
+  "image": "client-sustaingroup.webp",
+  "imageAlt": "SustainGroup battery energy storage installation",
+  "description": "Smart metering platform for gas, power, and water utilities across African field conditions.",
+  "longDescription": "A smart metering solution designed for utility operators working across African field conditions. The platform supports reliable key utilities data capture, remote monitoring, and resilient transmission through mesh-networked devices.",
+  "client": {
+    "name": "SustainGroup",
+    "url": "https://sustaingroup.energy/"
+  },
+  "projectUrl": "https://www.nordicsemi.com/Nordic-news/2026/01/Smart-metering-solution-designed-for-use-across-Africa-captures-key-utilities-data",
+  "tags": ["Smart metering", "Utilities data", "Mesh networking", "Field operations"]
+}

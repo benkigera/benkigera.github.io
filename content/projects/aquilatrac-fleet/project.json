@@ -1,0 +1,18 @@
+{
+  "slug": "aquilatrac-fleet",
+  "name": "Aquilatrac Fleet",
+  "category": "Telemetry & IoT",
+  "year": "2024",
+  "order": 3,
+  "featured": true,
+  "image": "client-aquilatrac.webp",
+  "imageAlt": "Aquilatrac fleet management homepage preview",
+  "description": "Fleet telemetry and tracking platform with real-time data, geofencing, and insights.",
+  "longDescription": "A fleet operations product for location-aware monitoring, alerting, and asset visibility. The core work involved turning raw telemetry into clear workflows for tracking vehicles and understanding exceptions quickly.",
+  "client": {
+    "name": "Aquilatrac",
+    "url": "https://aquilatrac.co.ke/"
+  },
+  "projectUrl": "https://aquilatrac.co.ke/",
+  "tags": ["Geofencing", "Realtime tracking", "Fleet operations", "Maps"]
+}

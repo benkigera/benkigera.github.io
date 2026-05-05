@@ -1,0 +1,18 @@
+{
+  "slug": "saficharge-ev-platform",
+  "name": "SafiCharge EV Platform",
+  "category": "eMobility",
+  "year": "2024",
+  "order": 4,
+  "featured": true,
+  "image": "client-safivolt.avif",
+  "imageAlt": "SafiVolt charging station with electric vehicles",
+  "description": "EV charging platform for drivers and operators with payments, monitoring, and uptime focus.",
+  "longDescription": "A charging experience for drivers and operators, designed around station discovery, session visibility, payment flow, and operational clarity. The work balanced product usability with the realities of energy infrastructure.",
+  "client": {
+    "name": "SafiVolt",
+    "url": "https://safivolt.africa/"
+  },
+  "projectUrl": "https://play.google.com/store/apps/details?id=app.safivolt.saficharge",
+  "tags": ["EV charging", "Payments", "Station discovery", "Session monitoring"]
+}
