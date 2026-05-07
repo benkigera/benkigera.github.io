@@ -3,7 +3,7 @@
   "name": "SafiCharge EV Platform",
   "category": "eMobility",
   "year": "2024",
-  "order": 4,
+  "order": 2,
   "featured": true,
   "image": "client-safivolt.avif",
   "imageAlt": "SafiVolt charging station with electric vehicles",

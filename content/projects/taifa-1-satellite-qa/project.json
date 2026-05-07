@@ -3,7 +3,7 @@
   "name": "Taifa-1 Satellite QA",
   "category": "Aerospace QA",
   "year": "2023",
-  "order": 1,
+  "order": 4,
   "featured": true,
   "image": "client-sayari-card.webp",
   "imageAlt": "Satellite view of East Africa from SayariLabs",

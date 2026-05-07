@@ -3,7 +3,7 @@
   "name": "Aquilatrac Fleet",
   "category": "Telemetry & IoT",
   "year": "2024",
-  "order": 3,
+  "order": 6,
   "featured": true,
   "image": "client-aquilatrac.webp",
   "imageAlt": "Aquilatrac fleet management homepage preview",

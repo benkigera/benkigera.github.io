@@ -1,0 +1,19 @@
+{
+  "slug": "circle-yetu",
+  "name": "Circle Yetu",
+  "category": "Community Finance Platform",
+  "year": "2026",
+  "order": 0,
+  "featured": true,
+  "image": "preview.webp",
+  "imageAlt": "Circle Point Creator Hub store design preview for Circle Yetu",
+  "description": "Community finance product for coordinating trusted savings circles, member activity, shared contributions, and operational visibility.",
+  "longDescription": "Circle Yetu is a community finance product built around trusted group saving workflows. The work centers on making member participation, shared contributions, rotation logic, and day-to-day group operations easier to coordinate in software.",
+  "client": {
+    "name": "Circle Yetu",
+    "url": "https://circleyetu.com/"
+  },
+  "projectUrl": "https://circleyetu.com/",
+  "ctaLabel": "View Product",
+  "tags": ["Community finance", "Savings circles", "Member operations", "Contribution tracking"]
+}
