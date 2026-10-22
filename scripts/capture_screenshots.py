@@ -18,7 +18,10 @@ Run from the repository root:
 
 import asyncio
 import json
+import os
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 from playwright.async_api import async_playwright
@@ -41,42 +44,76 @@ def write_json(path, data):
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-STORE_STRIP = """<!doctype html><html><head><style>
-html,body{margin:0;height:100%}
-body{display:flex;align-items:center;justify-content:center;gap:28px;background:#eef0f3;padding:56px 48px;box-sizing:border-box}
-img{height:100%;max-height:788px;border-radius:22px;box-shadow:0 12px 32px rgba(0,0,0,.18);object-fit:contain}
-</style></head><body>{imgs}</body></html>"""
+def note(message):
+    """Print a message and also show it as a warning on the GitHub Actions run."""
+    print(f"  {message}", file=sys.stderr)
+    if os.environ.get("GITHUB_ACTIONS"):
+        print(f"::warning title=capture_screenshots::{message}")
+
+
+def compose_strip(parts, out_path):
+    """Lay phone screenshots side by side on a light background, 1440x900."""
+    from PIL import Image, ImageDraw
+
+    width, height, gap, pad = 1440, 900, 28, 64
+    shots = [Image.open(p).convert("RGB") for p in parts][:4]
+    # Pick one height so that every screenshot fits on a single row.
+    ratio_sum = sum(im.width / im.height for im in shots)
+    fit_h = (width - 2 * 48 - gap * (len(shots) - 1)) / ratio_sum
+    target_h = int(min(height - 2 * pad, fit_h))
+    scaled = [im.resize((round(im.width * target_h / im.height), target_h), Image.LANCZOS) for im in shots]
+    total = sum(im.width for im in scaled) + gap * (len(scaled) - 1)
+    top = (height - target_h) // 2
+    canvas = Image.new("RGB", (width, height), (238, 240, 243))
+    x = (width - total) // 2
+    for im in scaled:
+        mask = Image.new("L", im.size, 0)
+        ImageDraw.Draw(mask).rounded_rectangle([0, 0, im.width - 1, im.height - 1], radius=26, fill=255)
+        canvas.paste(im, (x, top), mask)
+        x += im.width + gap
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(out_path, "JPEG", quality=86)
 
 
 async def capture_play_store(browser, url, out_path):
     """Build a cover from the app's own screenshots on its Google Play listing."""
-    context = await browser.new_context(viewport=VIEWPORT, locale="en-US")
+    context = await browser.new_context(viewport=VIEWPORT, device_scale_factor=3, locale="en-US")
     page = await context.new_page()
+    tmp_dir = Path(tempfile.mkdtemp())
     try:
         await page.goto(url + ("&" if "?" in url else "?") + "hl=en&gl=US", wait_until="domcontentloaded", timeout=45000)
-        await page.wait_for_timeout(3000)
-        # The app's screenshots are the large portrait images hosted on play-lh;
-        # the icon and small related-app images are left out.
-        srcs = await page.evaluate("""() => Array.from(document.querySelectorAll('img'))
-            .filter(e => /play-lh\\.googleusercontent\\.com/.test(e.currentSrc || e.src || ''))
-            .filter(e => !/icon/i.test(e.alt || ''))
-            .filter(e => { const r = e.getBoundingClientRect(); return r.height >= 200 && r.height > r.width; })
-            .map(e => e.currentSrc || e.src)""")
-        srcs = [s.split("=")[0] + "=h1000" if "googleusercontent" in s else s for s in dict.fromkeys(srcs)]
-        if not srcs:
-            print("  no store screenshots found; taking a page screenshot", file=sys.stderr)
+        try:
+            await page.wait_for_load_state("networkidle", timeout=15000)
+        except Exception:
+            pass
+        await page.wait_for_timeout(2500)
+        # The app's screenshots are the tall portrait images in the listing.
+        # Find them by their size on the page, not by Play's internal markup.
+        found = []
+        images = await page.query_selector_all("img")
+        for img in images:
+            box = await img.bounding_box()
+            if not box:
+                continue
+            if 180 <= box["height"] <= 700 and box["height"] > box["width"] * 1.3 and box["y"] < 1600:
+                found.append((box["y"], box["x"], img))
+        found.sort(key=lambda item: (round(item[0] / 50), item[1]))
+        note(f"{url}: {len(images)} images on page, {len(found)} portrait screenshots found")
+        if not found:
             return False
-        imgs = "".join(f'<img src="{s}">' for s in srcs[:4])
-        await page.set_content(STORE_STRIP.replace("{imgs}", imgs), wait_until="networkidle", timeout=45000)
-        await page.wait_for_timeout(1000)
-        out_path.parent.mkdir(parents=True, exist_ok=True)
-        await page.screenshot(path=str(out_path), type="jpeg", quality=85)
+        parts = []
+        for i, (_, _, img) in enumerate(found[:5]):
+            path = tmp_dir / f"shot{i}.png"
+            await img.screenshot(path=str(path))
+            parts.append(path)
+        compose_strip(parts, out_path)
         return True
     except Exception as err:
-        print(f"  store capture failed: {err}", file=sys.stderr)
+        note(f"store capture failed for {url}: {err}")
         return False
     finally:
         await context.close()
+        shutil.rmtree(tmp_dir, ignore_errors=True)
 
 
 async def capture(browser, url, out_path):

@@ -44,7 +44,7 @@ jobs:
 
       - name: Install browser
         run: |
-          pip install playwright==1.47.0
+          pip install playwright==1.47.0 pillow
           python -m playwright install --with-deps chromium
 
       - name: Take website screenshots
