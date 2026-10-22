@@ -7,7 +7,7 @@
   "year": "2023",
   "order": 11,
   "featured": true,
-  "image": "client-sayari-card.webp",
+  "image": "cover.webp",
   "imageAlt": "Satellite view of East Africa from SayariLabs",
   "description": "QA orchestration for satellite subsystem testing, integration evidence, issue tracking, and launch-readiness workflows.",
   "longDescription": "Quality assurance work for a satellite mission environment where reliability, traceability, and clear engineering handoff mattered. The work focused on test planning, subsystem checks, integration evidence, issue tracking, readiness signals, and practical documentation for launch-facing review cycles.",
@@ -23,5 +23,6 @@
     "Mission readiness",
     "Hardware-adjacent software"
   ],
-  "group": "Selected work"
+  "group": "Selected work",
+  "thumb": "thumb.webp"
 }

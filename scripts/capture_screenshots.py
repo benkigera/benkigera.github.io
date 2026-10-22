@@ -3,9 +3,9 @@
 
 A project gets a screenshot when its project.json has "screenshot": true and a
 link in "screenshotUrl" or "projectUrl". The picture is saved as
-content/projects/<slug>/screenshot.jpg and project.json "image" is pointed at
-it. Repos found by scan_projects.py (discovered.json) that have a homepage get
-a screenshot in content/projects/_shots/<slug>.jpg.
+content/projects/<slug>/screenshot.webp; optimize_images.py then makes the
+light cover.webp and thumb.webp that the page loads. Repos found by scan_projects.py (discovered.json) that have a homepage get
+a screenshot in content/projects/_shots/<slug>.webp.
 
 Existing screenshots are kept unless --refresh is passed, so the repo does not
 gain a new image every day.
@@ -44,6 +44,15 @@ def write_json(path, data):
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+def to_webp(png_bytes, out_path):
+    """Save a PNG screenshot as WebP (the source for cover.webp and thumb.webp)."""
+    import io
+    from PIL import Image
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    Image.open(io.BytesIO(png_bytes)).convert("RGB").save(out_path, "WEBP", quality=80, method=6)
+
+
 def note(message):
     """Print a message and also show it as a warning on the GitHub Actions run."""
     print(f"  {message}", file=sys.stderr)
@@ -72,7 +81,7 @@ def compose_strip(parts, out_path):
         canvas.paste(im, (x, top), mask)
         x += im.width + gap
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    canvas.save(out_path, "JPEG", quality=86)
+    canvas.save(out_path, "WEBP", quality=80, method=6)
 
 
 async def capture_play_store(browser, url, out_path):
@@ -135,7 +144,7 @@ async def capture(browser, url, out_path):
             pass  # some sites keep long-lived connections open
         await page.wait_for_timeout(2500)  # let fonts, images and animations settle
         out_path.parent.mkdir(parents=True, exist_ok=True)
-        await page.screenshot(path=str(out_path), type="jpeg", quality=82, full_page=False)
+        to_webp(await page.screenshot(type="png", full_page=False), out_path)
         return True
     except Exception as err:
         print(f"  failed: {err}", file=sys.stderr)
@@ -157,14 +166,14 @@ async def main(refresh):
         if not url or any(h in url for h in SKIP_HOSTS):
             print(f"skip  {folder}: no website link")
             continue
-        jobs.append(("project", folder, url, PROJECTS / folder / "screenshot.jpg", path))
+        jobs.append(("project", folder, url, PROJECTS / folder / "screenshot.webp", path))
 
     discovered_path = PROJECTS / "discovered.json"
     discovered = load_json(discovered_path, {"projects": []}) or {"projects": []}
     for item in discovered.get("projects", []):
         url = item.get("projectUrl")
         if url and not any(h in url for h in SKIP_HOSTS):
-            jobs.append(("discovered", item["slug"], url, SHOTS / f"{item['slug']}.jpg", None))
+            jobs.append(("discovered", item["slug"], url, SHOTS / f"{item['slug']}.webp", None))
 
     changed_discovered = False
     async with async_playwright() as p:
@@ -179,11 +188,7 @@ async def main(refresh):
             if not ok:
                 continue
             if kind == "project":
-                project = load_json(json_path)
-                if project.get("image") != "screenshot.jpg":
-                    project["image"] = "screenshot.jpg"
-                    project["imageAlt"] = f"Screenshot of {project.get('name', slug)} website"
-                    write_json(json_path, project)
+                pass  # optimize_images.py turns screenshot.webp into cover.webp and thumb.webp
             else:
                 rel = out_path.relative_to(ROOT).as_posix()
                 for item in discovered["projects"]:

@@ -7,7 +7,7 @@
   "year": "2024",
   "order": 10,
   "featured": true,
-  "image": "client-aquilatrac.webp",
+  "image": "cover.webp",
   "imageAlt": "Aquilatrac fleet management homepage preview",
   "description": "Real-time fleet telemetry platform for tracking vehicles, geofencing operations, surfacing anomalies, and giving operators live visibility into distributed assets.",
   "longDescription": "A fleet operations product for location-aware monitoring, alerting, and asset visibility. The core work involved turning raw telemetry into clear operator workflows for tracking vehicles, managing geofences, understanding exceptions quickly, and keeping distributed assets visible.",
@@ -23,5 +23,6 @@
     "Fleet operations",
     "Maps"
   ],
-  "group": "Selected work"
+  "group": "Selected work",
+  "thumb": "thumb.webp"
 }

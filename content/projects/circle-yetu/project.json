@@ -8,7 +8,7 @@
   "year": "2026",
   "order": 2,
   "featured": true,
-  "image": "screenshot.jpg",
+  "image": "cover.webp",
   "imageAlt": "Screenshot of Circle Yetu website",
   "description": "Creator platform for turning a bio into a storefront, with digital products, 1-on-1 bookings, direct tips, and M-Pesa or card payments built in.",
   "longDescription": "Circle Yetu helps creators turn their bio into a bank account. The platform lets creators sell e-books, templates, courses, and other digital products with automatic email delivery after M-Pesa or card payment. Creators can also take 1-on-1 bookings that sync with Google Calendar and collect direct tips through M-Pesa.",
@@ -25,5 +25,6 @@
     "Direct tips"
   ],
   "group": "Now building",
-  "screenshot": true
+  "screenshot": true,
+  "thumb": "thumb.webp"
 }

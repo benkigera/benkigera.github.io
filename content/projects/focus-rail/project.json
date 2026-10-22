@@ -7,7 +7,7 @@
   "status": "Live",
   "role": "Builder",
   "featured": true,
-  "image": "screenshot.jpg",
+  "image": "cover.webp",
   "description": "Calm railway puzzle game about timing, routing, and focus, made as an alternative to endless scrolling.",
   "longDescription": "Focus Rail is a railway puzzle game: you flip switches so every train reaches its matching station, across twelve lines that get harder as you go. I made it as an alternative to brain rot, a short game that asks for focus instead of endless scrolling. It is live on Google Play with ads and in-app purchases, and I localise it so it can grow in other markets through paid ads.",
   "projectUrl": "https://play.google.com/store/apps/details?id=com.focusrail.game",
@@ -21,5 +21,6 @@
   "order": 0,
   "group": "Now building",
   "screenshot": true,
-  "imageAlt": "Screenshot of Focus Rail website"
+  "imageAlt": "Screenshot of Focus Rail website",
+  "thumb": "thumb.webp"
 }

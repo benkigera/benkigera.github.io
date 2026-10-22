@@ -7,7 +7,7 @@
   "year": "2026",
   "order": 7,
   "featured": true,
-  "image": "preview.webp",
+  "image": "cover.webp",
   "imageAlt": "Truthfuli smart home utility monitoring app shown on a phone",
   "description": "Consumer utility app for monitoring household gas, power, and internet usage, reducing uncertainty around availability, cost, and service interruptions.",
   "longDescription": "Truthfuli is a smart home utility product for monitoring household gas, power, and internet in real time. It reduces uncertainty around availability, cost, and service interruptions by sending proactive gas alerts, supporting refill ordering, surfacing outages, and giving providers a clearer signal before daily disruptions become surprises.",
@@ -23,5 +23,6 @@
     "Utility visibility",
     "Refill ordering"
   ],
-  "group": "Selected work"
+  "group": "Selected work",
+  "thumb": "thumb.webp"
 }

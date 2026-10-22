@@ -55,7 +55,8 @@
                     if (!p) return null;
                     return Object.assign({}, p, {
                         slug: p.slug || folder,
-                        image: resolve(folder, p.image)
+                        image: resolve(folder, p.image),
+                        thumb: resolve(folder, p.thumb)
                     });
                 })),
                 getJSON(BASE + "status.json", true),
@@ -181,7 +182,8 @@
     }
 
     function coverHTML(p, cls) {
-        if (p.image) return '<div class="' + cls + '"><img src="' + esc(p.image) + '" alt="' + esc(p.imageAlt || p.name) + '" loading="lazy"></div>';
+        const src = p.thumb || p.image;
+        if (src) return '<div class="' + cls + '"><img src="' + esc(src) + '" alt="' + esc(p.imageAlt || p.name) + '" loading="lazy" decoding="async" width="640" height="400"></div>';
         return '<div class="' + cls + ' empty" aria-hidden="true">' + esc(p.icon || "📄") + "</div>";
     }
 
@@ -238,7 +240,7 @@
         const p = projects.find((x) => x.slug === slug);
         if (!p) return;
 
-        document.getElementById("peek-cover").innerHTML = p.image ? '<img src="' + esc(p.image) + '" alt="' + esc(p.imageAlt || p.name) + '">' : "";
+        document.getElementById("peek-cover").innerHTML = p.image ? '<img src="' + esc(p.image) + '" alt="' + esc(p.imageAlt || p.name) + '" decoding="async">' : "";
         document.getElementById("peek-cover").style.display = p.image ? "" : "none";
         document.getElementById("peek-icon").textContent = p.icon || "📄";
         document.getElementById("peek-title").textContent = p.name;

@@ -18,6 +18,7 @@ on:
       - "content/projects/index.json"
       - "scripts/scan_projects.py"
       - "scripts/capture_screenshots.py"
+      - "scripts/optimize_images.py"
       - ".github/workflows/scan-projects.yml"
 
 permissions:
@@ -55,6 +56,9 @@ jobs:
           else
             python3 scripts/capture_screenshots.py
           fi
+
+      - name: Make light WebP covers and thumbnails
+        run: python3 scripts/optimize_images.py
 
       - name: Commit changes
         run: |

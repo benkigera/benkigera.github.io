@@ -7,7 +7,7 @@
   "year": "2026",
   "order": 6,
   "featured": true,
-  "image": "preview.webp",
+  "image": "cover.webp",
   "imageAlt": "Gasfuli LPG depot dashboard shown on a laptop",
   "description": "Supply-chain visibility platform for LPG operators, covering inventory, orders, delivery workflows, and business-level reporting.",
   "longDescription": "Gasfuli is a cloud-based platform giving LPG brands supply-chain visibility across inventory, orders, dispatch, delivery, and business-level reporting. It transforms cylinders into digital assets using QR identities for real-time traceability, then tracks refill and delivery workflows to reduce loss, mitigate unauthorized refills, and support accountability and revenue assurance.",
@@ -23,5 +23,6 @@
     "Supply chain visibility",
     "Revenue assurance"
   ],
-  "group": "Selected work"
+  "group": "Selected work",
+  "thumb": "thumb.webp"
 }
