@@ -55,10 +55,13 @@ async def capture_play_store(browser, url, out_path):
     try:
         await page.goto(url + ("&" if "?" in url else "?") + "hl=en&gl=US", wait_until="domcontentloaded", timeout=45000)
         await page.wait_for_timeout(3000)
-        srcs = await page.eval_on_selector_all(
-            'img[alt="Screenshot image"]',
-            "els => els.map(e => e.getAttribute('src') || e.getAttribute('data-src')).filter(Boolean)",
-        )
+        # The app's screenshots are the large portrait images hosted on play-lh;
+        # the icon and small related-app images are left out.
+        srcs = await page.evaluate("""() => Array.from(document.querySelectorAll('img'))
+            .filter(e => /play-lh\\.googleusercontent\\.com/.test(e.currentSrc || e.src || ''))
+            .filter(e => !/icon/i.test(e.alt || ''))
+            .filter(e => { const r = e.getBoundingClientRect(); return r.height >= 200 && r.height > r.width; })
+            .map(e => e.currentSrc || e.src)""")
         srcs = [s.split("=")[0] + "=h1000" if "googleusercontent" in s else s for s in dict.fromkeys(srcs)]
         if not srcs:
             print("  no store screenshots found; taking a page screenshot", file=sys.stderr)
