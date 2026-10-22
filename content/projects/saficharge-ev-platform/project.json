@@ -1,9 +1,11 @@
 {
   "slug": "saficharge-ev-platform",
   "name": "SafiCharge EV Platform",
+  "icon": "🔌",
+  "status": "Shipped",
   "category": "eMobility",
   "year": "2024",
-  "order": 2,
+  "order": 8,
   "featured": true,
   "image": "client-safivolt.avif",
   "imageAlt": "SafiVolt charging station with electric vehicles",
@@ -15,5 +17,11 @@
   },
   "projectUrl": "https://play.google.com/store/apps/details?id=app.safivolt.saficharge",
   "ctaLabel": "View Platform Notes",
-  "tags": ["EV charging", "Payments", "Station discovery", "Session monitoring"]
+  "tags": [
+    "EV charging",
+    "Payments",
+    "Station discovery",
+    "Session monitoring"
+  ],
+  "group": "Selected work"
 }

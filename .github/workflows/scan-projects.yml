@@ -1,0 +1,69 @@
+name: Scan projects
+
+# Checks which project links are live, picks up repos tagged "portfolio",
+# takes real screenshots of project websites, and commits the results so the
+# site shows the current state.
+on:
+  schedule:
+    - cron: "17 3 * * *"   # every day at 06:17 Nairobi time
+  workflow_dispatch:
+    inputs:
+      refresh:
+        description: "Retake every screenshot"
+        type: boolean
+        default: false
+  push:
+    paths:
+      - "content/projects/*/project.json"
+      - "content/projects/index.json"
+      - "scripts/scan_projects.py"
+      - "scripts/capture_screenshots.py"
+      - ".github/workflows/scan-projects.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scan-projects-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan project links and GitHub repos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/scan_projects.py
+
+      - name: Install browser
+        run: |
+          pip install playwright==1.47.0 pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Take website screenshots
+        run: |
+          # Retake all screenshots on Mondays or when asked; otherwise only new ones.
+          if [ "${{ inputs.refresh }}" = "true" ] || [ "$(date -u +%u)" = "1" -a "${{ github.event_name }}" = "schedule" ]; then
+            python3 scripts/capture_screenshots.py --refresh
+          else
+            python3 scripts/capture_screenshots.py
+          fi
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/projects
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update project status and screenshots [scan]"
+            git push origin HEAD:${{ github.ref_name }}
+          fi

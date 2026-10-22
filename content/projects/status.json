@@ -1,0 +1,60 @@
+{
+  "checked": "2026-10-22T16:14:54+00:00",
+  "projects": {
+    "focus-rail": {
+      "url": "https://play.google.com/store/apps/details?id=com.focusrail.game",
+      "code": 200,
+      "ok": true
+    },
+    "dereva-prep": {
+      "url": "https://derevaprep.app/",
+      "code": 200,
+      "ok": true
+    },
+    "circle-yetu": {
+      "url": "https://circleyetu.com/",
+      "code": 200,
+      "ok": true
+    },
+    "parasite-therapeutics": {
+      "url": "https://parasite-target-atlas.vercel.app",
+      "code": 200,
+      "ok": true
+    },
+    "meterflow": {
+      "url": "https://meterflow-app.pages.dev/",
+      "code": 200,
+      "ok": true
+    },
+    "gasfuli-for-business": {
+      "url": "https://www.truthfuli.com/",
+      "code": 200,
+      "ok": true
+    },
+    "truthfuli-for-home": {
+      "url": "https://youtube.com/shorts/WHSDxo454fg",
+      "code": 200,
+      "ok": true
+    },
+    "saficharge-ev-platform": {
+      "url": "https://play.google.com/store/apps/details?id=app.safivolt.saficharge",
+      "code": 200,
+      "ok": true
+    },
+    "pawa-ne-energy": {
+      "url": "https://youtube.com/shorts/wS3hO0uXLkE",
+      "code": 200,
+      "ok": true
+    },
+    "aquilatrac-fleet": {
+      "url": "https://aquilatrac.co.ke/",
+      "code": 200,
+      "ok": true
+    },
+    "taifa-1-satellite-qa": {
+      "url": "https://sayarilabs.ke/",
+      "code": 200,
+      "ok": true
+    }
+  }
+}

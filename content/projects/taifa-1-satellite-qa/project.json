@@ -1,9 +1,11 @@
 {
   "slug": "taifa-1-satellite-qa",
   "name": "Taifa-1 Satellite QA",
+  "icon": "🚀",
+  "status": "Shipped",
   "category": "Aerospace QA",
   "year": "2023",
-  "order": 4,
+  "order": 11,
   "featured": true,
   "image": "client-sayari-card.webp",
   "imageAlt": "Satellite view of East Africa from SayariLabs",
@@ -15,5 +17,11 @@
   },
   "projectUrl": "https://sayarilabs.ke/",
   "ctaLabel": "View System Case Study",
-  "tags": ["Test plans", "Subsystem QA", "Mission readiness", "Hardware-adjacent software"]
+  "tags": [
+    "Test plans",
+    "Subsystem QA",
+    "Mission readiness",
+    "Hardware-adjacent software"
+  ],
+  "group": "Selected work"
 }

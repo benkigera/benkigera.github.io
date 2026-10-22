@@ -3,54 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboards for decisions | Benson Kigera</title>
+    <title>Dashboards for decisions | Ben Kigera</title>
     <meta name="description" content="A working note on designing operational dashboards around decisions, actions, and trusted data.">
     <link rel="icon" type="image/x-icon" href="../../icon-512.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --paper:#f7f4ec; --ink:#151824; --muted:#60646f; --line:#83806f; --line-soft:rgba(21,24,36,.22); }
-        * { box-sizing: border-box; }
-        body { margin:0; background:var(--paper); color:var(--ink); font-family:"Manrope",sans-serif; line-height:1.65; }
-        body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.42; background-image:linear-gradient(rgba(21,24,36,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(21,24,36,.025) 1px,transparent 1px); background-size:28px 28px; }
-        a { color:inherit; text-decoration:none; }
-        h1,h2,.mark { font-family:"Cormorant Garamond",serif; }
-        .shell { width:min(980px,calc(100% - 32px)); margin:24px auto; border:1px solid var(--line); background:rgba(251,248,239,.9); }
-        .nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:0 28px; border-bottom:1px solid var(--line); }
-        .mark { font-size:2.75rem; font-weight:700; line-height:1; }
-        .nav-link { font-weight:800; border-bottom:1px solid transparent; }
-        .nav-link:hover { border-bottom-color:currentColor; }
-        article { padding:clamp(30px,5vw,64px) clamp(24px,6vw,86px); }
-        .meta { margin:0 0 18px; color:var(--muted); font-size:.78rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
-        h1 { max-width:760px; margin:0 0 26px; font-size:clamp(3.2rem,7vw,5.6rem); line-height:.92; letter-spacing:-.02em; }
-        .dek { max-width:720px; margin:0 0 34px; color:#30333d; font-size:1.16rem; }
-        .body { max-width:720px; display:grid; gap:18px; color:#30333d; font-size:1.02rem; }
-        .body h2 { margin:16px 0 0; font-size:2rem; line-height:1; }
-        .body p { margin:0; }
-        .footer { display:flex; justify-content:space-between; gap:16px; padding:16px 28px; border-top:1px solid var(--line); font-size:.84rem; font-weight:800; }
-        @media (max-width:700px){ .shell{width:calc(100% - 18px); margin:9px auto;} .nav{align-items:flex-start; flex-direction:column; padding:18px;} article{padding:26px 18px;} h1{font-size:3.4rem;} .footer{flex-direction:column; padding:16px 18px;} }
-    </style>
+    <link rel="stylesheet" href="../../assets/notion.css">
+    <script src="../../assets/notion.js"></script>
 </head>
 <body>
-    <div class="shell">
-        <nav class="nav"><a class="mark" href="../../">BK.</a><a class="nav-link" href="../">All Notes</a></nav>
-        <article>
-            <p class="meta">May 5, 2026 · Working Note</p>
-            <h1>Dashboards for decisions</h1>
-            <p class="dek">Operational dashboards earn their place when each metric helps someone choose the next action.</p>
-            <div class="body">
+    <header class="topbar">
+        <nav class="crumbs" aria-label="Breadcrumb"><a class="crumb" href="../../"><span aria-hidden="true">🧑🏾‍💻</span><span>Ben Kigera</span></a><span class="crumb-sep">/</span><a class="crumb" href="../"><span aria-hidden="true">📝</span><span>Notes</span></a><span class="crumb-sep">/</span><span class="crumb"><span aria-hidden="true">📊</span><span>Dashboards for decisions</span></span></nav>
+        <div class="top-actions">
+            <button class="top-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5v11a5.5 5.5 0 010-11z"/></svg></button>
+            <a class="top-btn primary" href="mailto:benkigera@gmail.com">Contact</a>
+        </div>
+    </header>
+
+    <main class="page no-cover">
+        <div class="page-icon" aria-hidden="true">📊</div>
+        <h1 class="page-title">Dashboards for decisions</h1>
+        <section class="props" aria-label="Note details">
+            <div class="prop"><div class="prop-name"><svg viewBox="0 0 16 16"><path d="M4 1h1.5v1.5h5V1H12v1.5h2V15H2V2.5h2zm-.5 5V13.5h9V6.5z"/></svg>Date</div><div class="prop-value">May 5, 2026</div></div>
+            <div class="prop"><div class="prop-name"><svg viewBox="0 0 16 16"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-2.5 5.5L8 9l2.5-2.5 1 1L8 11 4.5 7.5z"/></svg>Type</div><div class="prop-value"><span class="tag yellow">Working Note</span></div></div>
+        </section>
+        <div class="blocks">
+            <div class="quote">Operational dashboards earn their place when each metric helps someone choose the next action.</div>
+
                 <p>An operator opens the screen with a decision in mind. A vehicle needs attention, a charger may be down, a test needs review, inventory looks wrong, or a scientific lead needs enough evidence to move a hypothesis forward.</p>
                 <p>I start there. I give the operator the state, the owner, the last trusted update, and the next action. Extra charts can wait.</p>
-                <h2>Compress the context</h2>
+                <h2 class="h2">Compress the context</h2>
                 <p>A strong operational view answers a few plain questions: what changed, who owns it, what needs attention, and how much confidence the team should place in the reading.</p>
                 <p>State, thresholds, provenance, exceptions, and empty states matter because field data arrives late, partial, duplicated, or noisy. Operators trust the screen when it handles those cases without making them guess.</p>
-                <h2>Design for the operator</h2>
+                <h2 class="h2">Design for the operator</h2>
                 <p>Real-world systems put users under time pressure. They need to know where attention should go. I reduce visual ambiguity and give the operator a clear path through the work.</p>
                 <p>I ask one question while designing these screens: after the team reads this, what can they do with more confidence?</p>
-            </div>
-        </article>
-        <footer class="footer"><a href="../">← Notes</a></footer>
-    </div>
+        </div>
+        <footer class="page-foot"><a href="../">← Back to Notes</a><span>© 2026 Benson Kigera</span></footer>
+    </main>
 </body>
 </html>

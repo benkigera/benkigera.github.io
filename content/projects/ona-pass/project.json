@@ -1,0 +1,19 @@
+{
+  "slug": "ona-pass",
+  "name": "ONA Pass",
+  "icon": "🎟️",
+  "category": "Product",
+  "year": "2026",
+  "status": "Live",
+  "role": "Builder",
+  "featured": true,
+  "image": "",
+  "description": "Details coming soon.",
+  "longDescription": "Details coming soon.",
+  "projectUrl": "",
+  "ctaLabel": "View Product",
+  "tags": [],
+  "order": 3,
+  "group": "Now building",
+  "screenshot": true
+}

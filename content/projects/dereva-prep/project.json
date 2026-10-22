@@ -1,0 +1,25 @@
+{
+  "slug": "dereva-prep",
+  "name": "Dereva Prep",
+  "icon": "🚗",
+  "category": "EdTech",
+  "year": "2026",
+  "status": "Live",
+  "role": "Founder",
+  "featured": true,
+  "image": "screenshot.jpg",
+  "description": "Driving-test prep app for Kenyan learner drivers, built around the model town board that many students fail on.",
+  "longDescription": "Dereva Prep helps Kenyan learner drivers prepare for the driving test. I started it as a student at driving school, after I saw more than 40 students in one class struggle with the model town board. The app runs on a KSh 500 monthly subscription. I grow it with Facebook and TikTok ads and use PostHog to find where the funnel loses people.",
+  "projectUrl": "https://derevaprep.app/",
+  "ctaLabel": "Visit Dereva Prep",
+  "tags": [
+    "Model town board",
+    "Subscriptions",
+    "Paid acquisition",
+    "Product analytics"
+  ],
+  "order": 1,
+  "group": "Now building",
+  "screenshot": true,
+  "imageAlt": "Screenshot of Dereva Prep website"
+}

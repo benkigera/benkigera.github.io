@@ -1,12 +1,15 @@
 {
   "slug": "circle-yetu",
   "name": "Circle Yetu",
+  "icon": "🛍️",
+  "status": "Live",
+  "role": "Co-founder & CTO",
   "category": "Creator Monetization Platform",
   "year": "2026",
-  "order": 0,
+  "order": 2,
   "featured": true,
-  "image": "preview.webp",
-  "imageAlt": "Circle Point Creator Hub store design preview for Circle Yetu",
+  "image": "screenshot.jpg",
+  "imageAlt": "Screenshot of Circle Yetu website",
   "description": "Creator platform for turning a bio into a storefront, with digital products, 1-on-1 bookings, direct tips, and M-Pesa or card payments built in.",
   "longDescription": "Circle Yetu helps creators turn their bio into a bank account. The platform lets creators sell e-books, templates, courses, and other digital products with automatic email delivery after M-Pesa or card payment. Creators can also take 1-on-1 bookings that sync with Google Calendar and collect direct tips through M-Pesa.",
   "client": {
@@ -15,5 +18,12 @@
   },
   "projectUrl": "https://circleyetu.com/",
   "ctaLabel": "View Product",
-  "tags": ["Digital products", "Google Calendar bookings", "M-Pesa payments", "Direct tips"]
+  "tags": [
+    "Digital products",
+    "Google Calendar bookings",
+    "M-Pesa payments",
+    "Direct tips"
+  ],
+  "group": "Now building",
+  "screenshot": true
 }
