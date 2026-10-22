@@ -1,12 +1,16 @@
 {
   "projects": [
+    "focus-rail",
+    "dereva-prep",
     "circle-yetu",
+    "ona-pass",
+    "parasite-therapeutics",
+    "meterflow",
     "gasfuli-for-business",
-    "saficharge-ev-platform",
     "truthfuli-for-home",
-    "taifa-1-satellite-qa",
+    "saficharge-ev-platform",
     "pawa-ne-energy",
     "aquilatrac-fleet",
-    "parasite-therapeutics"
+    "taifa-1-satellite-qa"
   ]
 }

@@ -1,9 +1,11 @@
 {
   "slug": "gasfuli-for-business",
   "name": "Gasfuli for Business",
+  "icon": "🔥",
+  "status": "Shipped",
   "category": "Supply Chain Platform",
   "year": "2026",
-  "order": 1,
+  "order": 6,
   "featured": true,
   "image": "preview.webp",
   "imageAlt": "Gasfuli LPG depot dashboard shown on a laptop",
@@ -15,5 +17,11 @@
   },
   "projectUrl": "https://www.truthfuli.com/",
   "ctaLabel": "View Product Breakdown",
-  "tags": ["LPG operations", "QR traceability", "Supply chain visibility", "Revenue assurance"]
+  "tags": [
+    "LPG operations",
+    "QR traceability",
+    "Supply chain visibility",
+    "Revenue assurance"
+  ],
+  "group": "Selected work"
 }

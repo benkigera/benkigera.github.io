@@ -1,9 +1,11 @@
 {
   "slug": "truthfuli-for-home",
   "name": "Truthfuli for Home",
+  "icon": "🏠",
+  "status": "Shipped",
   "category": "Smart Home Utility",
   "year": "2026",
-  "order": 3,
+  "order": 7,
   "featured": true,
   "image": "preview.webp",
   "imageAlt": "Truthfuli smart home utility monitoring app shown on a phone",
@@ -15,5 +17,11 @@
   },
   "projectUrl": "https://youtube.com/shorts/WHSDxo454fg",
   "ctaLabel": "Watch App Walkthrough",
-  "tags": ["Smart monitoring", "Gas alerts", "Utility visibility", "Refill ordering"]
+  "tags": [
+    "Smart monitoring",
+    "Gas alerts",
+    "Utility visibility",
+    "Refill ordering"
+  ],
+  "group": "Selected work"
 }

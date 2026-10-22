@@ -1,9 +1,12 @@
 {
   "slug": "circle-yetu",
   "name": "Circle Yetu",
+  "icon": "🛍️",
+  "status": "Live",
+  "role": "Co-founder & CTO",
   "category": "Creator Monetization Platform",
   "year": "2026",
-  "order": 0,
+  "order": 2,
   "featured": true,
   "image": "preview.webp",
   "imageAlt": "Circle Point Creator Hub store design preview for Circle Yetu",
@@ -15,5 +18,11 @@
   },
   "projectUrl": "https://circleyetu.com/",
   "ctaLabel": "View Product",
-  "tags": ["Digital products", "Google Calendar bookings", "M-Pesa payments", "Direct tips"]
+  "tags": [
+    "Digital products",
+    "Google Calendar bookings",
+    "M-Pesa payments",
+    "Direct tips"
+  ],
+  "group": "Now building"
 }

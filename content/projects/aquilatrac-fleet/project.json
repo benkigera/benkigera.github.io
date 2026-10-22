@@ -1,9 +1,11 @@
 {
   "slug": "aquilatrac-fleet",
   "name": "Aquilatrac Fleet",
+  "icon": "🛰️",
+  "status": "Shipped",
   "category": "Telemetry & IoT",
   "year": "2024",
-  "order": 6,
+  "order": 10,
   "featured": true,
   "image": "client-aquilatrac.webp",
   "imageAlt": "Aquilatrac fleet management homepage preview",
@@ -15,5 +17,11 @@
   },
   "projectUrl": "https://aquilatrac.co.ke/",
   "ctaLabel": "View Product Breakdown",
-  "tags": ["Geofencing", "Realtime tracking", "Fleet operations", "Maps"]
+  "tags": [
+    "Geofencing",
+    "Realtime tracking",
+    "Fleet operations",
+    "Maps"
+  ],
+  "group": "Selected work"
 }

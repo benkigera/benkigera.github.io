@@ -1,0 +1,48 @@
+name: Scan projects
+
+# Checks which project links are live and picks up repos tagged "portfolio",
+# then commits the updated data so the site shows the current state.
+on:
+  schedule:
+    - cron: "17 3 * * *"   # every day at 06:17 Nairobi time
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "content/projects/*/project.json"
+      - "content/projects/index.json"
+      - "scripts/scan_projects.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scan-projects
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scan project links and GitHub repos
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/scan_projects.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/projects/status.json content/projects/discovered.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update project status [scan]"
+            git push
+          fi

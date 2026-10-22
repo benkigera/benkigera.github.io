@@ -1,15 +1,24 @@
 {
   "slug": "parasite-therapeutics",
-  "name": "Parasite Therapeutics",
+  "name": "Parasite Target Atlas",
+  "icon": "🧬",
+  "status": "Live",
+  "role": "Personal research",
   "category": "Scientific Software",
   "year": "2026",
-  "order": 7,
+  "order": 4,
   "featured": true,
   "image": "preview.webp",
   "imageAlt": "Parasite Therapeutics target mapping dashboard",
-  "description": "Personal evidence workspace for mapping autoimmune targets to parasite-derived molecules, ranking scientific confidence, and turning scattered research into experiment-ready briefs.",
-  "longDescription": "A personal research software project built for my own education and interest in parasite-derived therapeutic candidates. The workspace brings together protein libraries, disease-conditioned target mapping, evidence grading, pathway context, and exploratory research flows so scattered literature can become clearer hypotheses and experiment-ready briefs.",
+  "description": "Atlas that maps human disease targets to parasite-derived molecules, grades the evidence, and turns scattered research into experiment-ready briefs.",
+  "longDescription": "My own research project on parasite-derived molecules for drug discovery and autoimmune medicine. The atlas maps ranked human disease targets to parasite, tick, helminth and viral molecules that act on them, grades the strength of the evidence, and adds pathway context. The result is a set of clear hypotheses and experiment-ready briefs instead of scattered literature. It is the best thing I have built.",
   "projectUrl": "https://parasite-therapeutics.vercel.app/target-mapping",
-  "ctaLabel": "Explore Prototype",
-  "tags": ["Personal research", "Protein library", "Target mapping", "Evidence grading"]
+  "ctaLabel": "Explore Atlas",
+  "tags": [
+    "Drug discovery",
+    "Autoimmune targets",
+    "Evidence grading",
+    "Target mapping"
+  ],
+  "group": "Now building"
 }
