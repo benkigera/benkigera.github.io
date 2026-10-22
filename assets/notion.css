@@ -584,7 +584,7 @@ details.toggle > .toggle-body { padding-left: 26px; }
     overflow: hidden;
 }
 
-.card-cover img { width: 100%; height: 100%; object-fit: cover; }
+.card-cover img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 
 .card-cover.empty {
     display: grid;
@@ -700,7 +700,7 @@ table.db-table {
 .peek-top .left, .peek-top .right { display: flex; align-items: center; gap: 2px; }
 
 .peek-cover { height: 220px; background: var(--bg-soft); overflow: hidden; }
-.peek-cover img { width: 100%; height: 100%; object-fit: cover; }
+.peek-cover img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 
 .peek-inner { padding: 0 72px 64px; }
 .peek-inner .page-icon { font-size: 64px; width: 64px; height: 64px; margin-top: -34px; }
