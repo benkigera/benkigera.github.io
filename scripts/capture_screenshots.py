@@ -41,7 +41,44 @@ def write_json(path, data):
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+STORE_STRIP = """<!doctype html><html><head><style>
+html,body{margin:0;height:100%}
+body{display:flex;align-items:center;justify-content:center;gap:28px;background:#eef0f3;padding:56px 48px;box-sizing:border-box}
+img{height:100%;max-height:788px;border-radius:22px;box-shadow:0 12px 32px rgba(0,0,0,.18);object-fit:contain}
+</style></head><body>{imgs}</body></html>"""
+
+
+async def capture_play_store(browser, url, out_path):
+    """Build a cover from the app's own screenshots on its Google Play listing."""
+    context = await browser.new_context(viewport=VIEWPORT, locale="en-US")
+    page = await context.new_page()
+    try:
+        await page.goto(url + ("&" if "?" in url else "?") + "hl=en&gl=US", wait_until="domcontentloaded", timeout=45000)
+        await page.wait_for_timeout(3000)
+        srcs = await page.eval_on_selector_all(
+            'img[alt="Screenshot image"]',
+            "els => els.map(e => e.getAttribute('src') || e.getAttribute('data-src')).filter(Boolean)",
+        )
+        srcs = [s.split("=")[0] + "=h1000" if "googleusercontent" in s else s for s in dict.fromkeys(srcs)]
+        if not srcs:
+            print("  no store screenshots found; taking a page screenshot", file=sys.stderr)
+            return False
+        imgs = "".join(f'<img src="{s}">' for s in srcs[:4])
+        await page.set_content(STORE_STRIP.replace("{imgs}", imgs), wait_until="networkidle", timeout=45000)
+        await page.wait_for_timeout(1000)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        await page.screenshot(path=str(out_path), type="jpeg", quality=85)
+        return True
+    except Exception as err:
+        print(f"  store capture failed: {err}", file=sys.stderr)
+        return False
+    finally:
+        await context.close()
+
+
 async def capture(browser, url, out_path):
+    if "play.google.com/store/apps" in url and await capture_play_store(browser, url, out_path):
+        return True
     context = await browser.new_context(
         viewport=VIEWPORT,
         device_scale_factor=1,
