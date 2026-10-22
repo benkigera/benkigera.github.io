@@ -1,13 +1,23 @@
 {
-  "checked": "2026-10-22T16:02:43+00:00",
+  "checked": "2026-10-22T16:10:35+00:00",
   "projects": {
+    "focus-rail": {
+      "url": "https://play.google.com/store/apps/details?id=com.focusrail.game",
+      "code": 200,
+      "ok": true
+    },
+    "dereva-prep": {
+      "url": "https://derevaprep.app/",
+      "code": 200,
+      "ok": true
+    },
     "circle-yetu": {
       "url": "https://circleyetu.com/",
       "code": 200,
       "ok": true
     },
     "parasite-therapeutics": {
-      "url": "https://parasite-therapeutics.vercel.app/target-mapping",
+      "url": "https://parasite-target-atlas.vercel.app",
       "code": 200,
       "ok": true
     },
