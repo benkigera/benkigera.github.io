@@ -7,7 +7,7 @@
   "status": "Launching",
   "role": "Builder",
   "featured": true,
-  "image": "",
+  "image": "screenshot.jpg",
   "description": "Native iOS and Android app for EKM Push meters, with live readings, usage history, and cost tracking in one place.",
   "longDescription": "MeterFlow is a native mobile app built on the EKM Metering Push API. It shows live meter readings, usage history, and costs for EKM Push meters. I built it as unsolicited work for EKM Metering. EKM's CEO agreed to offer the app to EKM's customers, and it is the only native iOS and Android client for EKM Push meters.",
   "client": {
@@ -24,5 +24,6 @@
   ],
   "order": 5,
   "group": "Selected work",
-  "screenshot": true
+  "screenshot": true,
+  "imageAlt": "Screenshot of MeterFlow website"
 }
