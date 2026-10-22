@@ -41,37 +41,6 @@
     --mono: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --bg: #191919;
-        --bg-soft: #202020;
-        --text: rgba(255, 255, 255, 0.81);
-        --text-2: rgba(255, 255, 255, 0.46);
-        --text-3: rgba(255, 255, 255, 0.282);
-        --line: rgba(255, 255, 255, 0.094);
-        --line-strong: rgba(255, 255, 255, 0.13);
-        --hover: rgba(255, 255, 255, 0.055);
-        --callout: rgb(37, 37, 37);
-        --card: rgb(32, 32, 32);
-        --card-shadow: rgba(15, 15, 15, 0.2) 0 0 0 1px, rgba(15, 15, 15, 0.2) 0 2px 4px;
-        --peek-shadow: rgba(15, 15, 15, 0.1) 0 0 0 1px, rgba(15, 15, 15, 0.2) 0 5px 10px, rgba(15, 15, 15, 0.4) 0 15px 40px;
-        --link: rgba(255, 255, 255, 0.81);
-        --code-bg: rgba(135, 131, 120, 0.15);
-        --tag-text: rgba(255, 255, 255, 0.81);
-        --tag-default: rgba(55, 55, 55, 0.6);
-        --tag-gray: rgb(55, 55, 55);
-        --tag-brown: rgb(74, 50, 40);
-        --tag-orange: rgb(92, 59, 35);
-        --tag-yellow: rgb(86, 67, 40);
-        --tag-green: rgb(36, 61, 48);
-        --tag-blue: rgb(20, 58, 78);
-        --tag-purple: rgb(60, 45, 73);
-        --tag-pink: rgb(78, 44, 60);
-        --tag-red: rgb(82, 46, 42);
-        --cover: linear-gradient(115deg, #5b3b33 0%, #5a3640 28%, #43375a 58%, #2f4560 100%);
-    }
-}
-
 :root[data-theme="dark"] {
     --bg: #191919;
     --bg-soft: #202020;
