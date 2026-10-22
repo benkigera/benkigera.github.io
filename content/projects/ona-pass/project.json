@@ -7,13 +7,13 @@
   "status": "Live",
   "role": "Builder",
   "featured": true,
-  "image": "cover.svg",
-  "imageAlt": "ONA Pass cover",
+  "image": "",
   "description": "Details coming soon.",
   "longDescription": "Details coming soon.",
   "projectUrl": "",
   "ctaLabel": "View Product",
   "tags": [],
   "order": 3,
-  "group": "Now building"
+  "group": "Now building",
+  "screenshot": true
 }

@@ -7,8 +7,7 @@
   "status": "Live",
   "role": "Builder",
   "featured": true,
-  "image": "cover.svg",
-  "imageAlt": "Focus Rail cover: train tracks leading to a horizon",
+  "image": "",
   "description": "Mobile game against brain rot. Short, focused play replaces endless scrolling.",
   "longDescription": "Focus Rail is a mobile game I built to work against brain rot: it rewards focus instead of endless scrolling. It launched in October 2026 with ads and in-app purchases, and I localise it for different audiences so it can grow globally through paid ads.",
   "projectUrl": "",
@@ -20,5 +19,6 @@
     "Paid growth"
   ],
   "order": 0,
-  "group": "Now building"
+  "group": "Now building",
+  "screenshot": true
 }
