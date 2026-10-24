@@ -22,5 +22,6 @@
   "group": "Now building",
   "screenshot": true,
   "imageAlt": "Screenshot of Focus Rail website",
-  "thumb": "thumb.webp"
+  "thumb": "thumb.webp",
+  "favicon": "favicon.webp"
 }
