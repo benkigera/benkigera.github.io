@@ -19,6 +19,7 @@ on:
       - "scripts/scan_projects.py"
       - "scripts/capture_screenshots.py"
       - "scripts/optimize_images.py"
+      - "scripts/fetch_favicons.py"
       - ".github/workflows/scan-projects.yml"
 
 permissions:
@@ -55,6 +56,14 @@ jobs:
             python3 scripts/capture_screenshots.py --refresh
           else
             python3 scripts/capture_screenshots.py
+          fi
+
+      - name: Fetch site favicons
+        run: |
+          if [ "${{ inputs.refresh }}" = "true" ] || [ "$(date -u +%u)" = "1" -a "${{ github.event_name }}" = "schedule" ]; then
+            python3 scripts/fetch_favicons.py --refresh
+          else
+            python3 scripts/fetch_favicons.py
           fi
 
       - name: Make light WebP covers and thumbnails

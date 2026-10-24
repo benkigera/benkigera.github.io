@@ -14,11 +14,13 @@ Useful fields: `name`, `icon` (an emoji), `category`, `year`, `status` (`Live`, 
 
 ## Automatic project scan
 
-`.github/workflows/scan-projects.yml` runs every day at 06:17 Nairobi time, on each push that changes project data, and on demand from the Actions tab. It does three things:
+`.github/workflows/scan-projects.yml` runs every day at 06:17 Nairobi time, on each push that changes project data, and on demand from the Actions tab. It does four things:
 
 - **Checks every project link.** Results go to `content/projects/status.json`. If a link responds, a project marked `Launching` or `In progress` shows as `Live`. If a `Live` project's link stops responding, it shows as `Offline`.
 - **Finds new repos.** Any public repo on github.com/benkigera with the topic `portfolio` that is not already a project folder appears on the page automatically, using the repo's name, description, homepage and topics. Repos pushed in the last 60 days go into "Now building". To give one a proper page, create a project folder for it and set `"repo": "benkigera/<name>"` so the scan stops listing it twice.
 
 - **Takes real screenshots.** For every project with `"screenshot": true`, `scripts/capture_screenshots.py` opens the website in Chromium and saves `screenshot.webp` in the project folder. `scripts/optimize_images.py` then makes a light `cover.webp` (max 1280 px) and `thumb.webp` (640 px) from it. The cards load the thumbnail; the full cover loads only when a project is opened. Set `screenshotUrl` to capture a different page than `projectUrl`. Screenshots are retaken every Monday, or when you run the workflow with "Retake every screenshot" checked. YouTube links are skipped. For a mobile app with no website, put your own phone screenshot in the folder and set `"image"` to its file name.
+
+- **Fetches real favicons.** `scripts/fetch_favicons.py` opens each project website, takes the best icon the site declares (or the app icon for a Google Play link), and saves it as a 96 px `favicon.webp` of about 1-4 KB. The page shows it in place of the emoji. YouTube links are skipped, so those projects keep their emoji.
 
 Run the scan locally with `python3 scripts/scan_projects.py`.

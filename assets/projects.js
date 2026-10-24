@@ -56,7 +56,8 @@
                     return Object.assign({}, p, {
                         slug: p.slug || folder,
                         image: resolve(folder, p.image),
-                        thumb: resolve(folder, p.thumb)
+                        thumb: resolve(folder, p.thumb),
+                        favicon: resolve(folder, p.favicon)
                     });
                 })),
                 getJSON(BASE + "status.json", true),
@@ -181,6 +182,12 @@
         });
     }
 
+    // The site's real favicon when the scan found one, else the emoji.
+    function iconHTML(p, size) {
+        if (p.favicon) return '<img class="fav" src="' + esc(p.favicon) + '" alt="" width="' + size + '" height="' + size + '" loading="lazy" decoding="async">';
+        return esc(p.icon || "📄");
+    }
+
     function coverHTML(p, cls) {
         const src = p.thumb || p.image;
         if (src) return '<div class="' + cls + '"><img src="' + esc(src) + '" alt="' + esc(p.imageAlt || p.name) + '" loading="lazy" decoding="async" width="640" height="400"></div>';
@@ -191,7 +198,7 @@
         return '<button class="card" type="button" data-slug="' + esc(p.slug) + '">' +
             coverHTML(p, "card-cover") +
             '<div class="card-body">' +
-            '<div class="card-title"><span class="ic" aria-hidden="true">' + esc(p.icon || "📄") + "</span>" + esc(p.name) + "</div>" +
+            '<div class="card-title"><span class="ic" aria-hidden="true">' + iconHTML(p, 18) + "</span>" + esc(p.name) + "</div>" +
             (p.description ? '<div class="card-text">' + esc(p.description) + "</div>" : "") +
             '<div class="card-props">' + statusPill(p.displayStatus) + (p.category ? tag(p.category) : "") + (p.year ? '<span class="tag">' + esc(p.year) + "</span>" : "") + "</div>" +
             "</div></button>";
@@ -200,7 +207,7 @@
     function tableView(list) {
         const th = (icon, label) => '<th><span>' + ICONS[icon] + esc(label) + "</span></th>";
         const rows = list.map((p) => '<tr class="row" tabindex="0" data-slug="' + esc(p.slug) + '">' +
-            '<td class="name-cell"><span class="ic" aria-hidden="true">' + esc(p.icon || "📄") + '</span><span class="t">' + esc(p.name) + "</span></td>" +
+            '<td class="name-cell"><span class="ic" aria-hidden="true">' + iconHTML(p, 18) + '</span><span class="t">' + esc(p.name) + "</span></td>" +
             "<td>" + statusPill(p.displayStatus) + "</td>" +
             "<td>" + (p.category ? tag(p.category) : "") + "</td>" +
             "<td>" + esc(p.year || "") + "</td>" +
@@ -242,7 +249,7 @@
 
         document.getElementById("peek-cover").innerHTML = p.image ? '<img src="' + esc(p.image) + '" alt="' + esc(p.imageAlt || p.name) + '" decoding="async">' : "";
         document.getElementById("peek-cover").style.display = p.image ? "" : "none";
-        document.getElementById("peek-icon").textContent = p.icon || "📄";
+        document.getElementById("peek-icon").innerHTML = iconHTML(p, 64);
         document.getElementById("peek-title").textContent = p.name;
         document.getElementById("peek-crumb").textContent = "Projects / " + p.name;
 
