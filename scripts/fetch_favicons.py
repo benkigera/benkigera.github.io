@@ -16,8 +16,10 @@ Needs Playwright and Pillow. Run from the repository root:
 """
 
 import asyncio
+import base64
 import io
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -62,6 +64,13 @@ img{display:block;width:%dpx;height:%dpx;object-fit:contain}
 </style></head><body><img id="i" src="%s"></body></html>"""
 
 
+def note(message):
+    """Print a message and also show it as a warning on the GitHub Actions run."""
+    print(f"  {message}", file=sys.stderr)
+    if os.environ.get("GITHUB_ACTIONS"):
+        print(f"::warning title=fetch_favicons::{message}")
+
+
 def load_json(path, default=None):
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -89,33 +98,91 @@ async def find_icon_urls(page, url):
     return list(dict.fromkeys(urls))
 
 
-async def render_icon(page, icon_url):
+async def icon_source(context, icon_url):
+    """Download the icon with the browser's network stack and return a data: URL.
+
+    Downloading first avoids sites that refuse icons loaded from another page.
+    Falls back to the plain URL when the download fails.
+    """
+    try:
+        res = await context.request.get(icon_url, timeout=20000, headers={"Accept": "image/*,*/*"})
+        if not res.ok:
+            return None, f"HTTP {res.status}"
+        body = await res.body()
+        if not body:
+            return None, "empty file"
+        ctype = (res.headers.get("content-type") or "").split(";")[0].strip()
+        if not ctype.startswith("image/"):
+            head = body[:200].lstrip().lower()
+            if head.startswith(b"<svg") or b"<svg" in head:
+                ctype = "image/svg+xml"
+            elif body[:4] == b"\x00\x00\x01\x00":
+                ctype = "image/x-icon"
+            elif body[:8] == b"\x89PNG\r\n\x1a\n":
+                ctype = "image/png"
+            else:
+                return None, f"not an image ({ctype or 'unknown type'})"
+        return f"data:{ctype};base64," + base64.b64encode(body).decode("ascii"), ""
+    except Exception as err:
+        return icon_url, f"download failed ({type(err).__name__}), trying direct load"
+
+
+async def render_icon(page, src):
     """Draw the icon at SIZE x SIZE in the browser (handles SVG and ICO) and return PNG bytes."""
-    await page.set_content(RENDER % (SIZE, SIZE, icon_url.replace('"', "%22")), wait_until="load", timeout=20000)
+    await page.set_content(RENDER % (SIZE, SIZE, src.replace('"', "%22")), wait_until="load", timeout=20000)
     ok = await page.evaluate("() => { const i = document.getElementById('i'); return i.complete && i.naturalWidth > 0; }")
     if not ok:
         return None
     return await page.locator("#i").screenshot(omit_background=True)
 
 
+def check_icon(im):
+    """Return a reason to reject the icon, or '' when it is usable at small sizes."""
+    box = im.getbbox()
+    if box is None:
+        return "fully transparent"
+    w, h = box[2] - box[0], box[3] - box[1]
+    if w < 8 or h < 8:
+        return "nearly empty"
+    if w / h > 1.8 or h / w > 1.8:
+        return "wide text logo, unreadable at icon size"
+    return ""
+
+
 async def fetch(browser, url, out_path):
-    context = await browser.new_context(viewport={"width": 1280, "height": 800}, device_scale_factor=1, locale="en-US")
+    context = await browser.new_context(
+        viewport={"width": 1280, "height": 800},
+        device_scale_factor=1,
+        locale="en-US",
+        user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    )
     page = await context.new_page()
     try:
-        for icon_url in await find_icon_urls(page, url):
-            png = await render_icon(page, icon_url)
+        candidates = await find_icon_urls(page, url)
+        if not candidates:
+            note(f"{url}: page lists no icons")
+        reasons = []
+        for icon_url in candidates:
+            src, why = await icon_source(context, icon_url)
+            if not src:
+                reasons.append(f"{icon_url} ({why})")
+                continue
+            png = await render_icon(page, src)
             if not png:
+                reasons.append(f"{icon_url} (browser could not draw it)")
                 continue
             im = Image.open(io.BytesIO(png)).convert("RGBA")
-            if im.getbbox() is None:  # fully transparent: try the next icon
+            bad = check_icon(im)
+            if bad:
+                reasons.append(f"{icon_url} ({bad})")
                 continue
             im.save(out_path, "WEBP", quality=82, method=6)
             print(f"  {out_path.stat().st_size} bytes from {icon_url}")
             return True
-        print("  no usable icon found", file=sys.stderr)
+        note(f"{url}: no usable icon. Tried: " + "; ".join(reasons)[:900])
         return False
     except Exception as err:
-        print(f"  failed: {err}", file=sys.stderr)
+        note(f"{url}: failed: {err}")
         return False
     finally:
         await context.close()
