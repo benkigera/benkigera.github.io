@@ -138,13 +138,16 @@ async def render_icon(page, src):
 
 def check_icon(im):
     """Return a reason to reject the icon, or '' when it is usable at small sizes."""
-    box = im.getbbox()
-    if box is None:
+    if im.getbbox() is None:
         return "fully transparent"
+    # Measure the solid part only, so a faint glow does not hide a wide logo.
+    box = im.split()[3].point(lambda v: 255 if v > 64 else 0).getbbox()
+    if box is None:
+        return "nearly empty"
     w, h = box[2] - box[0], box[3] - box[1]
     if w < 8 or h < 8:
         return "nearly empty"
-    if w / h > 1.8 or h / w > 1.8:
+    if w / h > 1.4 or h / w > 1.4:
         return "wide text logo, unreadable at icon size"
     return ""
 
@@ -157,6 +160,9 @@ async def fetch(browser, url, out_path):
         user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
     )
     page = await context.new_page()
+    # Draw icons on a separate blank page: some sites (Google Play) block
+    # injected HTML on their own pages.
+    canvas = await context.new_page()
     try:
         candidates = await find_icon_urls(page, url)
         if not candidates:
@@ -167,7 +173,7 @@ async def fetch(browser, url, out_path):
             if not src:
                 reasons.append(f"{icon_url} ({why})")
                 continue
-            png = await render_icon(page, src)
+            png = await render_icon(canvas, src)
             if not png:
                 reasons.append(f"{icon_url} (browser could not draw it)")
                 continue
