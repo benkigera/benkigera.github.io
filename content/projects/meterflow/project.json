@@ -26,5 +26,6 @@
   "group": "Selected work",
   "screenshot": true,
   "imageAlt": "Screenshot of MeterFlow website",
-  "thumb": "thumb.webp"
+  "thumb": "thumb.webp",
+  "favicon": "favicon.webp"
 }

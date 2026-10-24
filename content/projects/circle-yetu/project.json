@@ -26,5 +26,6 @@
   ],
   "group": "Now building",
   "screenshot": true,
-  "thumb": "thumb.webp"
+  "thumb": "thumb.webp",
+  "favicon": "favicon.webp"
 }

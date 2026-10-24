@@ -7,7 +7,7 @@
   "status": "Live",
   "role": "Builder",
   "featured": true,
-  "image": "",
+  "image": "cover.webp",
   "description": "Sunday School sign-in and secure pickup app for churches, so children go home only with the right adult.",
   "longDescription": "ONA Pass is a check-in app for church children's programs. Parents sign their children in to Sunday School, and at the end of the session the child is released only through a secure pickup. It gives teachers a clear list of who is in the room and gives parents confidence about who collects their child.",
   "projectUrl": "https://app.onapass.ke/",
@@ -20,5 +20,7 @@
   ],
   "order": 3,
   "group": "Now building",
-  "screenshot": true
+  "screenshot": true,
+  "favicon": "favicon.webp",
+  "thumb": "thumb.webp"
 }

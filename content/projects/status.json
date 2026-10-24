@@ -1,5 +1,5 @@
 {
-  "checked": "2026-10-24T08:09:06+00:00",
+  "checked": "2026-10-24T16:36:21+00:00",
   "projects": {
     "focus-rail": {
       "url": "https://play.google.com/store/apps/details?id=com.focusrail.game",
@@ -13,6 +13,11 @@
     },
     "circle-yetu": {
       "url": "https://circleyetu.com/",
+      "code": 200,
+      "ok": true
+    },
+    "ona-pass": {
+      "url": "https://app.onapass.ke/",
       "code": 200,
       "ok": true
     },
