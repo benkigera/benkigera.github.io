@@ -29,6 +29,7 @@
         person: '<svg viewBox="0 0 16 16"><path d="M8 8a3 3 0 100-6 3 3 0 000 6zm0 1.5c-3 0-5.5 1.5-5.5 3.5V14h11v-1c0-2-2.5-3.5-5.5-3.5z"/></svg>',
         client: '<svg viewBox="0 0 16 16"><path d="M2 14V3l6-2v4l6 2v7zm2-9v1.5h1.5V5zm0 3v1.5h1.5V8zm0 3v1.5h1.5V11zm6-1v1.5h1.5V10z"/></svg>',
         url: '<svg viewBox="0 0 16 16"><path d="M6.4 9.6a3 3 0 004.2 0l3-3a3 3 0 00-4.2-4.2l-.9.9 1 1 .9-.9a1.6 1.6 0 112.2 2.2l-3 3a1.6 1.6 0 01-2.2 0l-1 1zm3.2-3.2a3 3 0 00-4.2 0l-3 3a3 3 0 004.2 4.2l.9-.9-1-1-.9.9a1.6 1.6 0 11-2.2-2.2l3-3a1.6 1.6 0 012.2 0l1-1z"/></svg>',
+        metric: '<svg viewBox="0 0 16 16"><path d="M1 14h14v1.5H1zm1-3l3.5-4 3 2.5L14 3l1 1-6.4 7.2-3-2.5L3 12z"/></svg>',
         tags: '<svg viewBox="0 0 16 16"><path d="M2 2h6l7 7-6 6-7-7zm3 2a1 1 0 100 2 1 1 0 000-2z"/></svg>',
         title: '<svg viewBox="0 0 16 16"><path d="M2 3h12v2H9v8H7V5H2z"/></svg>',
         code: '<svg viewBox="0 0 16 16"><path d="M5.3 4.3L1.6 8l3.7 3.7-1 1L-.1 8l4.4-4.7zm5.4 0l1-1L16.1 8l-4.4 4.7-1-1L14.4 8z"/></svg>'
@@ -200,8 +201,23 @@
             '<div class="card-body">' +
             '<div class="card-title"><span class="ic" aria-hidden="true">' + iconHTML(p, 18) + "</span>" + esc(p.name) + "</div>" +
             (p.description ? '<div class="card-text">' + esc(p.description) + "</div>" : "") +
+            metricLine(p) +
             '<div class="card-props">' + statusPill(p.displayStatus) + (p.category ? tag(p.category) : "") + (p.year ? '<span class="tag">' + esc(p.year) + "</span>" : "") + "</div>" +
             "</div></button>";
+    }
+
+    // First metric on the card, all metrics in the page peek.
+    function metricLine(p) {
+        const m = Array.isArray(p.metrics) && p.metrics[0];
+        if (!m) return "";
+        return '<div class="card-metric"><span class="m-label">' + esc(m.label) + '</span><span class="m-value">' + esc(m.value) + "</span></div>";
+    }
+
+    function metricsValue(p) {
+        if (!Array.isArray(p.metrics) || !p.metrics.length) return "";
+        return '<div class="metric-list">' + p.metrics.map((m) =>
+            '<div class="metric-row"><span class="m-value">' + esc(m.value) + '</span><span class="m-label">' + esc(m.label) + (m.note ? " · " + esc(m.note) : "") + "</span></div>").join("") +
+            (p.metricsSource ? '<div class="m-source">Source: ' + esc(p.metricsSource) + "</div>" : "") + "</div>";
     }
 
     function tableView(list) {
@@ -259,6 +275,7 @@
             prop("date", "Year", esc(p.year || "")) +
             prop("person", "Role", esc(p.role || "")) +
             prop("client", "Client", p.client && p.client.name ? (p.client.url ? '<a href="' + esc(p.client.url) + '" target="_blank" rel="noreferrer">' + esc(p.client.name) + "</a>" : esc(p.client.name)) : "") +
+            prop("metric", "Results", metricsValue(p)) +
             prop("url", "Link", linkValue(p)) +
             prop("code", "Repository", p.repoUrl ? '<a href="' + esc(p.repoUrl) + '" target="_blank" rel="noreferrer">' + esc(p.repoUrl.replace(/^https:\/\/github\.com\//, "")) + "</a>" : "") +
             prop("tags", "Tags", (p.tags || []).map(tag).join(""));
