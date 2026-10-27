@@ -13,10 +13,11 @@
   "projectUrl": "https://play.google.com/store/apps/details?id=com.focusrail.game",
   "ctaLabel": "Get it on Google Play",
   "tags": [
-    "Puzzle game",
-    "Android",
-    "In-app purchases",
-    "Localisation"
+    "Flutter",
+    "Dart",
+    "Google AdMob",
+    "Firebase Analytics",
+    "Google Play"
   ],
   "order": 0,
   "group": "Now building",
@@ -28,7 +29,7 @@
     {
       "label": "Active users, first week",
       "value": "50",
-      "note": "no paid installs; I do the marketing"
+      "note": "I do the marketing myself"
     },
     {
       "label": "Ad requests, last 7 days",
@@ -38,8 +39,13 @@
     {
       "label": "AdMob earnings",
       "value": "€0.15",
-      "note": "first month, rewarded ads not yet added"
+      "note": "first month"
     }
   ],
-  "metricsSource": "Google AdMob and Google Analytics for Firebase"
+  "metricsSource": "Google AdMob and Google Analytics for Firebase",
+  "caseStudy": {
+    "problem": "I wanted a short game that people can play in place of short-video apps. The game must ask the player for focus.",
+    "built": "Focus Rail is a railway puzzle game for Android. The player changes switches so each train goes to the correct station. The game has twelve lines, and each line is harder than the last. It earns money from AdMob ads and in-app purchases.",
+    "result": "Focus Rail went live on Google Play in October 2026. I do all the marketing myself. In the first week, the game had 50 active users. In the last 7 days, it sent 228 ad requests with an 84% match rate."
+  }
 }

@@ -19,10 +19,14 @@
   "projectUrl": "https://circleyetu.com/",
   "ctaLabel": "View Product",
   "tags": [
-    "Digital products",
-    "Google Calendar bookings",
-    "M-Pesa payments",
-    "Direct tips"
+    "Next.js",
+    "React",
+    "Convex",
+    "Clerk",
+    "Resend",
+    "PostHog",
+    "M-Pesa",
+    "Google Calendar API"
   ],
   "group": "Now building",
   "screenshot": true,
@@ -45,5 +49,10 @@
       "note": "the next step to fix"
     }
   ],
-  "metricsSource": "Circle Yetu finance dashboard"
+  "metricsSource": "Circle Yetu finance dashboard",
+  "caseStudy": {
+    "problem": "Creators need one link where fans can buy digital products, book a session or send a tip. The payment must work with M-Pesa and cards.",
+    "built": "As co-founder and CTO, I built the platform. A creator puts one Circle Yetu link in a bio, and the link opens the creator's store. The store sells e-books, templates and courses. Circle Yetu sends each product by email after the payment. Fans can book 1-on-1 sessions that sync with Google Calendar, or send a tip through M-Pesa.",
+    "result": "We launched Circle Yetu on 20 October 2026. In the first week, 17 creators signed up and 15 listed a product. Their stores made 64 sales worth KSh 5,685. The admin funnel shows the biggest drop at ID verification: only 24% of creators send their ID. That step is the next one I will fix."
+  }
 }

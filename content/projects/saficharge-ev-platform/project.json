@@ -18,6 +18,8 @@
   "projectUrl": "https://play.google.com/store/apps/details?id=app.safivolt.saficharge",
   "ctaLabel": "View Platform Notes",
   "tags": [
+    "Flutter",
+    "Dart",
     "EV charging",
     "Payments",
     "Station discovery",

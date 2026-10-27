@@ -13,10 +13,14 @@
   "projectUrl": "https://derevaprep.app/",
   "ctaLabel": "Visit Dereva Prep",
   "tags": [
-    "Model town board",
-    "Subscriptions",
-    "Paid acquisition",
-    "Product analytics"
+    "Next.js",
+    "React",
+    "Convex",
+    "Clerk",
+    "Resend",
+    "PostHog",
+    "M-Pesa",
+    "Meta Ads"
   ],
   "order": 1,
   "group": "Now building",
@@ -46,5 +50,11 @@
       "note": "same two weeks"
     }
   ],
-  "metricsSource": "Dereva Prep admin dashboard, PostHog events and Meta Ads spend; test accounts excluded"
+  "metricsSource": "Dereva Prep admin dashboard, PostHog events and Meta Ads spend; test accounts excluded",
+  "caseStudy": {
+    "problem": "Many learner drivers in Kenya fail the model town board part of the driving test. In one class at my driving school, more than 40 students could not use the board.",
+    "built": "I built Dereva Prep, a web app where learners practise model town board routes and road sign quizzes. Learners pay KSh 500 each month through M-Pesa. I am the founder, and I run the Facebook and TikTok ads myself.",
+    "changed": "In the week of 12 October 2026, the Facebook ads lost money. KSh 1,432 of ad spend brought KSh 1,251 of revenue. I used PostHog funnels to find the step where users stopped between the ad and the payment. I moved the paywall before sign-up, so users see the price before they make an account. I replaced the KSh 200 weekly plan with a KSh 500 monthly plan. I set the ads to optimise for sales, not for leads.",
+    "result": "In the next week, KSh 1,303 of ad spend brought KSh 3,800 of revenue. The return on ad spend went from 0.87x to 2.9x. After one month, 16 learners pay for Dereva Prep. Revenue in the last 30 days is KSh 7,921, from 160 sign-ups."
+  }
 }

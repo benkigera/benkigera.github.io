@@ -17,15 +17,21 @@
   "projectUrl": "https://meterflow-app.pages.dev/",
   "ctaLabel": "View Product",
   "tags": [
-    "Live meter data",
-    "Usage history",
-    "Cost tracking",
-    "Native mobile"
+    "Flutter",
+    "Dart",
+    "EKM Push API",
+    "iOS",
+    "Android"
   ],
   "order": 5,
   "group": "Selected work",
   "screenshot": true,
   "imageAlt": "Screenshot of MeterFlow website",
   "thumb": "thumb.webp",
-  "favicon": "favicon.webp"
+  "favicon": "favicon.webp",
+  "caseStudy": {
+    "problem": "Owners of EKM Push meters had no native iOS or Android app for their meter data.",
+    "built": "I built MeterFlow with Flutter on the EKM Metering Push API. The app shows live meter readings, usage history and costs.",
+    "result": "I sent the app to EKM Metering as unsolicited work. EKM's CEO agreed to offer the app to EKM's customers. MeterFlow is the only native iOS and Android client for EKM Push meters."
+  }
 }

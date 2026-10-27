@@ -737,3 +737,4 @@ table.db-table.results-table { width: 100%; min-width: 0; }
 .results-note { font-size: 13px; margin-top: 4px; }
 .results-table + .results-table, .table-wrap + .table-wrap { margin-top: 12px; }
 .results-table td:last-child { text-align: right; }
+.cs-h { font-size: 1.15em; font-weight: 600; margin: 1.2em 0 2px; }

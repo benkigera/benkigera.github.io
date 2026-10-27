@@ -278,11 +278,16 @@
             prop("metric", "Results", metricsValue(p)) +
             prop("url", "Link", linkValue(p)) +
             prop("code", "Repository", p.repoUrl ? '<a href="' + esc(p.repoUrl) + '" target="_blank" rel="noreferrer">' + esc(p.repoUrl.replace(/^https:\/\/github\.com\//, "")) + "</a>" : "") +
-            prop("tags", "Tags", (p.tags || []).map(tag).join(""));
+            prop("tags", "Stack", (p.tags || []).map(tag).join(""));
 
-        const paragraphs = String(p.longDescription || p.description || "").split(/\n\s*\n/).filter(Boolean);
+        const cs = p.caseStudy;
+        const caseHTML = cs ? [["problem", "Problem"], ["built", "What I built"], ["changed", "What I changed"], ["result", "Result"]]
+            .filter(([k]) => cs[k])
+            .map(([k, h]) => '<h3 class="cs-h">' + h + "</h3>" + String(cs[k]).split(/\n\s*\n/).map((t) => "<p>" + esc(t) + "</p>").join(""))
+            .join("") : "";
+        const paragraphs = cs ? [] : String(p.longDescription || p.description || "").split(/\n\s*\n/).filter(Boolean);
         document.getElementById("peek-body").innerHTML =
-            paragraphs.map((t) => "<p>" + esc(t) + "</p>").join("") +
+            caseHTML + paragraphs.map((t) => "<p>" + esc(t) + "</p>").join("") +
             (p.projectUrl ? '<p></p><a class="page-link" href="' + esc(p.projectUrl) + '" target="_blank" rel="noreferrer"><span class="pl-icon">🔗</span><span class="pl-title">' + esc(p.ctaLabel || "Open project") + '</span><span class="pl-meta">' + esc(host(p.projectUrl)) + "</span></a>" : "");
 
         const open = document.getElementById("peek-open");
