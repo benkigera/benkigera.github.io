@@ -215,9 +215,10 @@
 
     function metricsValue(p) {
         if (!Array.isArray(p.metrics) || !p.metrics.length) return "";
-        return '<div class="metric-list">' + p.metrics.map((m) =>
-            '<div class="metric-row"><span class="m-value">' + esc(m.value) + '</span><span class="m-label">' + esc(m.label) + (m.note ? " · " + esc(m.note) : "") + "</span></div>").join("") +
-            (p.metricsSource ? '<div class="m-source">Source: ' + esc(p.metricsSource) + "</div>" : "") + "</div>";
+        return '<h3 class="cs-h">Growth results</h3><div class="table-wrap"><table class="db-table results-table"><tbody>' +
+            p.metrics.map((m) => '<tr><td>' + esc(m.label) + (m.note ? '<div class="m-note">' + esc(m.note) + "</div>" : "") + '</td><td><strong>' + esc(m.value) + "</strong></td></tr>").join("") +
+            "</tbody></table></div>" +
+            (p.metricsSource ? '<p class="m-source">Source: ' + esc(p.metricsSource) + "</p>" : "");
     }
 
     function tableView(list) {
@@ -275,7 +276,6 @@
             prop("date", "Year", esc(p.year || "")) +
             prop("person", "Role", esc(p.role || "")) +
             prop("client", "Client", p.client && p.client.name ? (p.client.url ? '<a href="' + esc(p.client.url) + '" target="_blank" rel="noreferrer">' + esc(p.client.name) + "</a>" : esc(p.client.name)) : "") +
-            prop("metric", "Results", metricsValue(p)) +
             prop("url", "Link", linkValue(p)) +
             prop("code", "Repository", p.repoUrl ? '<a href="' + esc(p.repoUrl) + '" target="_blank" rel="noreferrer">' + esc(p.repoUrl.replace(/^https:\/\/github\.com\//, "")) + "</a>" : "") +
             prop("tags", "Stack", (p.tags || []).map(tag).join(""));
@@ -287,7 +287,7 @@
             .join("") : "";
         const paragraphs = cs ? [] : String(p.longDescription || p.description || "").split(/\n\s*\n/).filter(Boolean);
         document.getElementById("peek-body").innerHTML =
-            caseHTML + paragraphs.map((t) => "<p>" + esc(t) + "</p>").join("") +
+            metricsValue(p) + caseHTML + paragraphs.map((t) => "<p>" + esc(t) + "</p>").join("") +
             (p.projectUrl ? '<p></p><a class="page-link" href="' + esc(p.projectUrl) + '" target="_blank" rel="noreferrer"><span class="pl-icon">🔗</span><span class="pl-title">' + esc(p.ctaLabel || "Open project") + '</span><span class="pl-meta">' + esc(host(p.projectUrl)) + "</span></a>" : "");
 
         const open = document.getElementById("peek-open");

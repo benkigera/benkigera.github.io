@@ -738,3 +738,5 @@ table.db-table.results-table { width: 100%; min-width: 0; }
 .results-table + .results-table, .table-wrap + .table-wrap { margin-top: 12px; }
 .results-table td:last-child { text-align: right; }
 .cs-h { font-size: 1.15em; font-weight: 600; margin: 1.2em 0 2px; }
+.m-note { color: var(--text-2); font-size: 13px; }
+.m-source { color: var(--text-2); font-size: 13px; margin-top: 4px; }
