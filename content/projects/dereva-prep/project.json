@@ -9,7 +9,7 @@
   "featured": true,
   "image": "cover.webp",
   "description": "Driving-test prep app for Kenyan learner drivers, built around the model town board that many students fail on.",
-  "longDescription": "Dereva Prep helps Kenyan learner drivers prepare for the driving test. I started it as a student at driving school, after I saw more than 40 students in one class struggle with the model town board. The app runs on a KSh 500 monthly subscription. I grow it with Facebook and TikTok ads and use PostHog to find where the funnel loses people.\n\nIn the week of 12 October 2026 the ads lost money: KSh 1,432 of ad spend brought KSh 1,251 of revenue. I used PostHog funnels to find where users stopped between the ad and the payment. I moved the paywall before sign-up, replaced the KSh 200 weekly plan with a KSh 500 monthly plan, and set the ads to optimise for sales, not leads. In the next week, KSh 1,303 of ad spend brought KSh 3,800 of revenue, a 2.9x return. Weekly revenue went up 3 times.",
+  "longDescription": "Dereva Prep helps Kenyan learner drivers prepare for the driving test. I started it as a student at driving school, after I saw more than 40 students in one class struggle with the model town board. The app runs on a KSh 500 monthly subscription. I grow it with Facebook and TikTok ads and use PostHog to find where the funnel loses people.\n\nIn the week of 12 October 2026 the ads lost money: KSh 1,432 of ad spend brought KSh 1,251 of revenue. I used PostHog funnels to find where users stopped between the ad and the payment. I moved the paywall before sign-up, replaced the KSh 200 weekly plan with a KSh 500 monthly plan, and set the ads to optimise for sales, not leads. In the next week, KSh 1,303 of ad spend brought KSh 3,800 of revenue, a 2.9x return. Weekly revenue went up 3 times. Dereva Prep has run for one month: 16 paying subscribers and KSh 7,921 of revenue in the last 30 days.",
   "projectUrl": "https://derevaprep.app/",
   "ctaLabel": "Visit Dereva Prep",
   "tags": [
@@ -26,9 +26,14 @@
   "favicon": "favicon.webp",
   "metrics": [
     {
-      "label": "MRR",
-      "value": "KSh 5,150",
-      "note": "11 monthly subscribers, 27 Oct 2026"
+      "label": "Paying subscribers",
+      "value": "16",
+      "note": "active on 27 Oct 2026"
+    },
+    {
+      "label": "Revenue, last 30 days",
+      "value": "KSh 7,921",
+      "note": "160 sign-ups in the same 30 days"
     },
     {
       "label": "Return on ad spend",
@@ -41,5 +46,5 @@
       "note": "same two weeks"
     }
   ],
-  "metricsSource": "PostHog events and Meta Ads spend, test accounts excluded"
+  "metricsSource": "Dereva Prep admin dashboard, PostHog events and Meta Ads spend; test accounts excluded"
 }

@@ -11,7 +11,7 @@
   "image": "cover.webp",
   "imageAlt": "Screenshot of Circle Yetu website",
   "description": "Creator platform for turning a bio into a storefront, with digital products, 1-on-1 bookings, direct tips, and M-Pesa or card payments built in.",
-  "longDescription": "Circle Yetu helps creators turn their bio into a bank account. The platform lets creators sell e-books, templates, courses, and other digital products with automatic email delivery after M-Pesa or card payment. Creators can also take 1-on-1 bookings that sync with Google Calendar and collect direct tips through M-Pesa.",
+  "longDescription": "Circle Yetu helps creators turn their bio into a bank account. The platform lets creators sell e-books, templates, courses, and other digital products with automatic email delivery after M-Pesa or card payment. Creators can also take 1-on-1 bookings that sync with Google Calendar and collect direct tips through M-Pesa.\n\nResults in the first week after launch on 20 October 2026: creators made 64 sales worth KSh 5,685 through their stores. 17 creators signed up and 15 listed a product. The admin dashboard shows where creators stop: only 24% send their ID for verification, so that step is the next one to fix.",
   "client": {
     "name": "Circle Yetu",
     "url": "https://circleyetu.com/"
@@ -27,5 +27,23 @@
   "group": "Now building",
   "screenshot": true,
   "thumb": "thumb.webp",
-  "favicon": "favicon.webp"
+  "favicon": "favicon.webp",
+  "metrics": [
+    {
+      "label": "Creator sales, first week",
+      "value": "64 sales · KSh 5,685",
+      "note": "launched 20 Oct 2026"
+    },
+    {
+      "label": "Creators",
+      "value": "17 signed up · 15 listed a product",
+      "note": "88% listed a product"
+    },
+    {
+      "label": "Biggest drop",
+      "value": "ID verification, 24%",
+      "note": "the next step to fix"
+    }
+  ],
+  "metricsSource": "Circle Yetu finance dashboard"
 }

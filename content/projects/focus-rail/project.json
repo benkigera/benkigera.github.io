@@ -23,5 +23,23 @@
   "screenshot": true,
   "imageAlt": "Screenshot of Focus Rail website",
   "thumb": "thumb.webp",
-  "favicon": "favicon.webp"
+  "favicon": "favicon.webp",
+  "metrics": [
+    {
+      "label": "Active users, first week",
+      "value": "50",
+      "note": "no paid installs; I do the marketing"
+    },
+    {
+      "label": "Ad requests, last 7 days",
+      "value": "228",
+      "note": "84% match rate"
+    },
+    {
+      "label": "AdMob earnings",
+      "value": "€0.15",
+      "note": "first month, rewarded ads not yet added"
+    }
+  ],
+  "metricsSource": "Google AdMob and Google Analytics for Firebase"
 }
