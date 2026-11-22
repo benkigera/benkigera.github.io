@@ -9,7 +9,7 @@
   "featured": true,
   "image": "cover.webp",
   "description": "Driving-test prep app for Kenyan learner drivers, built around the model town board that many students fail on.",
-  "longDescription": "Dereva Prep helps Kenyan learner drivers prepare for the driving test. I started it as a student at driving school, after I saw more than 40 students in one class struggle with the model town board. The app runs on a KSh 500 monthly subscription, and driving schools also sign up their students. I grow it with Facebook and TikTok ads and use PostHog to find where the funnel loses people.\n\nIn the week of 12 October 2026 the ads lost money: KSh 1,432 of ad spend brought KSh 1,251 of revenue. I used PostHog funnels to find where users stopped between the ad and the payment. I moved the paywall before sign-up, replaced the KSh 200 weekly plan with a KSh 500 monthly plan, and set the ads to optimise for sales, not leads. In the next week, KSh 1,303 of ad spend brought KSh 3,800 of revenue, a 2.9x return. Weekly revenue went up 3 times. Dereva Prep now has 56 paying subscribers and made KSh 24,100 in the last 30 days.",
+  "longDescription": "Dereva Prep helps Kenyan learner drivers prepare for the driving test. I started it as a student at driving school, after I saw more than 40 students in one class struggle with the model town board. The app runs on a KSh 500 monthly subscription, and driving schools also sign up their students. I grow it with Facebook and TikTok ads and use PostHog to find where the funnel loses people.\n\nIn the week of 12 October 2026 the ads lost money: KSh 1,432 of ad spend brought KSh 1,251 of revenue. I used PostHog funnels to find where users stopped between the ad and the payment. I moved the paywall before sign-up, replaced the KSh 200 weekly plan with a KSh 500 monthly plan, and set the ads to optimise for sales, not leads. In the next week, KSh 1,303 of ad spend brought KSh 3,800 of revenue, a 2.9x return. Weekly revenue went up 3 times. Dereva Prep now has 56 paying subscribers, makes about KSh 10,000 a week, and returns about 4x its ad spend.",
   "projectUrl": "https://derevaprep.app/",
   "ctaLabel": "Visit Dereva Prep",
   "tags": [
@@ -35,19 +35,19 @@
       "note": "November 2026"
     },
     {
-      "label": "Revenue, last 30 days",
-      "value": "KSh 24,100",
-      "note": "257 sign-ups, 149 through driving schools"
-    },
-    {
-      "label": "Sales this week",
-      "value": "KSh 7,200",
-      "note": "November 2026"
+      "label": "Weekly revenue",
+      "value": "KSh 10,000",
+      "note": "weekly average, November 2026"
     },
     {
       "label": "Return on ad spend",
-      "value": "0.87x → 2.9x",
-      "note": "week of 12 Oct vs week of 19 Oct 2026"
+      "value": "4x",
+      "note": "November 2026, up from 0.87x in early October"
+    },
+    {
+      "label": "Revenue, last 30 days",
+      "value": "KSh 24,100",
+      "note": "257 sign-ups, 149 through driving schools"
     }
   ],
   "metricsSource": "Dereva Prep admin dashboard, PostHog events and Meta Ads spend; test accounts excluded",
@@ -55,6 +55,6 @@
     "problem": "Many learner drivers in Kenya fail the model town board part of the driving test. In one class at my driving school, more than 40 students could not use the board.",
     "built": "I built Dereva Prep, a web app where learners practise model town board routes and road sign quizzes. Learners pay KSh 500 each month through M-Pesa. I am the founder, and I run the Facebook and TikTok ads myself.",
     "changed": "In the week of 12 October 2026, the Facebook ads lost money. KSh 1,432 of ad spend brought KSh 1,251 of revenue. I used PostHog funnels to find the step where users stopped between the ad and the payment. I moved the paywall before sign-up, so users see the price before they make an account. I replaced the KSh 200 weekly plan with a KSh 500 monthly plan. I set the ads to optimise for sales, not for leads.",
-    "result": "In the next week, KSh 1,303 of ad spend brought KSh 3,800 of revenue. The return on ad spend went from 0.87x to 2.9x. Dereva Prep now has 56 paying subscribers and made KSh 24,100 in the last 30 days."
+    "result": "In the next week, KSh 1,303 of ad spend brought KSh 3,800 of revenue. The return on ad spend went from 0.87x to 2.9x. Dereva Prep now has 56 paying subscribers, makes about KSh 10,000 a week, and returns about 4x its ad spend."
   }
 }
