@@ -1,0 +1,35 @@
+{
+  "slug": "getmwalimu",
+  "name": "getmwalimu",
+  "icon": "📝",
+  "category": "AI EdTech",
+  "year": "2026",
+  "status": "Live",
+  "role": "Founder",
+  "featured": true,
+  "image": "cover.webp",
+  "description": "AI exam tutor: it sets practice papers like the real exam, marks photos of handwritten answers, and shows where each mark went.",
+  "longDescription": "getmwalimu is a personal tutor for exams. Each day a student gets a short paper like the real exam. The student writes the answers on paper and sends photos. getmwalimu marks them the same day, explains every mistake, and tracks weak topics until they are fixed. It covers Kenya's KPSEA, KJSEA and KCSE, and also IGCSE, GCSE, A-level, IB, SAT and WAEC.\n\nA new student starts with a short chat. The tutor learns about the student and builds a plan before sign-in. The first marked paper is free. The same tutor also works as a connector inside Claude and ChatGPT, so a student can get papers set and marked there.",
+  "projectUrl": "https://getmwalimu.com/",
+  "screenshotUrl": "https://app.getmwalimu.com/",
+  "ctaLabel": "Open getmwalimu",
+  "tags": [
+    "Next.js",
+    "React",
+    "Convex",
+    "Clerk",
+    "Claude API",
+    "MCP",
+    "PostHog",
+    "M-Pesa"
+  ],
+  "order": 1.5,
+  "group": "Now building",
+  "screenshot": true,
+  "imageAlt": "Screenshot of the getmwalimu tutor chat",
+  "thumb": "thumb.webp",
+  "caseStudy": {
+    "problem": "Students preparing for national exams need practice papers that are marked fast, with clear feedback on each mistake. A human tutor who marks every paper costs too much for most families.",
+    "built": "I built getmwalimu, a web app with an AI tutor. It sets papers like the real exam from each student's weak topics. Students send photos of their handwritten answers, and the Claude API marks them against a marking scheme, question part by question part. An admin dashboard shows students, papers, ad spend and AI spend. A monthly cap stops AI spend from going over budget. I also built an MCP connector, so the tutor works inside Claude and ChatGPT."
+  }
+}
