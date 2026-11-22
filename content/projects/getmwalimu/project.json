@@ -31,5 +31,6 @@
   "caseStudy": {
     "problem": "Students preparing for national exams need practice papers that are marked fast, with clear feedback on each mistake. A human tutor who marks every paper costs too much for most families.",
     "built": "I built getmwalimu, a web app with an AI tutor. It sets papers like the real exam from each student's weak topics. Students send photos of their handwritten answers, and the Claude API marks them against a marking scheme, question part by question part. An admin dashboard shows students, papers, ad spend and AI spend. A monthly cap stops AI spend from going over budget. I also built an MCP connector, so the tutor works inside Claude and ChatGPT."
-  }
+  },
+  "favicon": "favicon.webp"
 }
